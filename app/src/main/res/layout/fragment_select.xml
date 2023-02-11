@@ -11,11 +11,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/select"
+        android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Name" />
+    <Button
+        android:id="@+id/button_easy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Easy"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_name"
+        app:layout_constraintEnd_toEndOf="@id/frog"
+        app:layout_constraintStart_toStartOf="@id/frog"
+        app:layout_constraintTop_toBottomOf="@id/textView_difficulty" />
+    <Button
+        android:id="@+id/button_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Normal"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_name"
+        app:layout_constraintEnd_toEndOf="@id/cat"
+        app:layout_constraintStart_toStartOf="@id/cat"
+        app:layout_constraintTop_toBottomOf="@id/textView_difficulty" />
+    <Button
+        android:id="@+id/button_hard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hard"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_name"
+        app:layout_constraintEnd_toEndOf="@id/dog"
+        app:layout_constraintStart_toStartOf="@id/dog"
+        app:layout_constraintTop_toBottomOf="@id/textView_difficulty" />
+
+
+
 
     <EditText
         android:id="@+id/Name"
@@ -30,29 +64,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_name" />
+        app:layout_constraintTop_toBottomOf="@id/button_easy" />
 
     <TextView
         android:id="@+id/textView_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/name_input"
+        android:layout_marginTop="15dp"
         app:layout_constraintBottom_toTopOf="@id/Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_easy" />
+    <TextView
+        android:id="@+id/textView_difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please choose difficulty"
+        app:layout_constraintBottom_toTopOf="@id/button_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cat" />
+
 
     <TextView
         android:id="@+id/textView_character"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:text="@string/character_select"
-        android:layout_marginTop="100dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/cat"
-        tools:layout_editor_absoluteX="126dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/frog"
@@ -61,6 +105,7 @@
         android:layout_centerHorizontal="true"
         android:scaleType="fitXY"
         android:src="@drawable/frog"
+        android:layout_marginBottom="70dp"
         app:layout_constraintTop_toBottomOf="@id/textView_character"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/textView_name"
@@ -72,12 +117,13 @@
         android:layout_width="@dimen/image_button"
         android:layout_height="@dimen/image_button"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="70dp"
         android:scaleType="fitXY"
         android:src="@drawable/cat"
-        app:layout_constraintStart_toEndOf="@id/frog"
-        app:layout_constraintTop_toBottomOf="@id/textView_character"
         app:layout_constraintBottom_toTopOf="@id/textView_name"
-        app:layout_constraintEnd_toStartOf="@id/dog" />
+        app:layout_constraintEnd_toStartOf="@id/dog"
+        app:layout_constraintStart_toEndOf="@id/frog"
+        app:layout_constraintTop_toBottomOf="@id/textView_character" />
 
     <ImageButton
         android:id="@+id/dog"
@@ -87,6 +133,7 @@
         android:layout_centerHorizontal="true"
         android:scaleType="fitXY"
         android:src="@drawable/dog"
+        android:layout_marginBottom="70dp"
         app:layout_constraintTop_toBottomOf="@id/textView_character"
         app:layout_constraintStart_toEndOf="@id/cat"
         app:layout_constraintBottom_toTopOf="@id/textView_name"
