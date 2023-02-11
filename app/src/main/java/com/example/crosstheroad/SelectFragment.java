@@ -32,15 +32,42 @@ public class SelectFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.buttonEasy.setOnClickListener(view1 -> lives = 7);
-        binding.buttonNormal.setOnClickListener(view1 -> lives = 5);
-        binding.buttonHard.setOnClickListener(view1 -> lives = 3);
+
+        binding.buttonEasy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lives = 7;
+                Snackbar snackbar = Snackbar
+                        .make(view, "You have selected Easy", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+        });
+
+        binding.buttonNormal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lives = 5;
+                Snackbar snackbar = Snackbar
+                        .make(view, "You have selected Normal", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+        });
+
+        binding.buttonHard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lives = 3;
+                Snackbar snackbar = Snackbar
+                        .make(view, "You have selected Hard", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+        });
 
         binding.frog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar snackbar = Snackbar
-                        .make(view, "you have selected a Frog", Snackbar.LENGTH_LONG);
+                        .make(view, "You have selected a Frog", Snackbar.LENGTH_LONG);
                 snackbar.show();
             }
         });
@@ -49,7 +76,7 @@ public class SelectFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Snackbar snackbar = Snackbar
-                        .make(view, "you have selected a Cat", Snackbar.LENGTH_LONG);
+                        .make(view, "You have selected a Cat", Snackbar.LENGTH_LONG);
                 snackbar.show();
             }
         });
@@ -58,7 +85,7 @@ public class SelectFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Snackbar snackbar = Snackbar
-                        .make(view, "you have selected a Dog", Snackbar.LENGTH_LONG);
+                        .make(view, "You have selected a Dog", Snackbar.LENGTH_LONG);
                 snackbar.show();
             }
         });

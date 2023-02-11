@@ -15,4 +15,5 @@
     <string name="score_value">000000</string>
     <string name="lives">Lives</string>
     <string name="lives_value">3</string>
+    <string name="select_difficulty">Please choose the difficulty</string>
 </resources>
