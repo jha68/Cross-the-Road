@@ -17,6 +17,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Name" />
+
     <Button
         android:id="@+id/button_easy"
         android:layout_width="wrap_content"
@@ -27,6 +28,7 @@
         app:layout_constraintEnd_toEndOf="@id/frog"
         app:layout_constraintStart_toStartOf="@id/frog"
         app:layout_constraintTop_toBottomOf="@id/textView_difficulty" />
+
     <Button
         android:id="@+id/button_normal"
         android:layout_width="wrap_content"
@@ -37,6 +39,7 @@
         app:layout_constraintEnd_toEndOf="@id/cat"
         app:layout_constraintStart_toStartOf="@id/cat"
         app:layout_constraintTop_toBottomOf="@id/textView_difficulty" />
+
     <Button
         android:id="@+id/button_hard"
         android:layout_width="wrap_content"
@@ -48,9 +51,6 @@
         app:layout_constraintStart_toStartOf="@id/dog"
         app:layout_constraintTop_toBottomOf="@id/textView_difficulty" />
 
-
-
-
     <EditText
         android:id="@+id/Name"
         android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
         android:layout_marginBottom="@dimen/Name_bottom"
         android:height="@dimen/Name_height"
         android:ems="10"
-        android:inputType="textPassword"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@id/button_select"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -76,16 +76,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_easy" />
+
     <TextView
         android:id="@+id/textView_difficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please choose difficulty"
+        android:text="@string/select_difficulty"
         app:layout_constraintBottom_toTopOf="@id/button_normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cat" />
-
 
     <TextView
         android:id="@+id/textView_character"
@@ -110,7 +110,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/textView_name"
         app:layout_constraintEnd_toStartOf="@+id/cat" />
-
 
     <ImageButton
         android:id="@+id/cat"
@@ -138,6 +137,5 @@
         app:layout_constraintStart_toEndOf="@id/cat"
         app:layout_constraintBottom_toTopOf="@id/textView_name"
         app:layout_constraintEnd_toEndOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
