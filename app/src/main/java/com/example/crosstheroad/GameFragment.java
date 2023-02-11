@@ -8,19 +8,14 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 public class GameFragment extends Fragment {
-
     private double score;
     private int lives;
     private String name;
 
-    public GameFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        score = 00000;
+        score = 0;
         lives = 0;
         name = "asdf";
     }

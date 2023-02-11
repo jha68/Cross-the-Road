@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.crosstheroad.databinding.FragmentSelectBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 public class SelectFragment extends Fragment {
 
@@ -31,7 +32,36 @@ public class SelectFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        binding.frog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar snackbar = Snackbar
+                        .make(view, "you have selected a Frog", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+        });
+
+        binding.cat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar snackbar = Snackbar
+                        .make(view, "you have selected a Cat", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+        });
+
+        binding.dog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar snackbar = Snackbar
+                        .make(view, "you have selected a Dog", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+        });
+
         binding.buttonSelect.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 name = requireContext().getString(R.id.Name);
@@ -41,14 +71,6 @@ public class SelectFragment extends Fragment {
                 }
             }
         });
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getSprite() {
-        return sprite;
     }
 
     @Override
