@@ -1,3 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="Name_height">48dp</dimen>
+    <dimen name="Name_bottom">50dp</dimen>
+    <dimen name="Welcome_font">10pt</dimen>
+    <dimen name="image_button">80dp</dimen>
 </resources>
