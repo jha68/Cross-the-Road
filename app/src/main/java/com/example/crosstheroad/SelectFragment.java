@@ -14,6 +14,9 @@ import com.example.crosstheroad.databinding.FragmentSelectBinding;
 public class SelectFragment extends Fragment {
 
     private FragmentSelectBinding binding;
+    private String sprite;
+    private String name;
+    private int lives;
 
     @Override
     public View onCreateView(
@@ -28,14 +31,24 @@ public class SelectFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         binding.buttonSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(SelectFragment.this)
-                        .navigate(R.id.action_SelectFragment_to_gameFragment);
+                name = requireContext().getString(R.id.Name);
+                if (name != null && !name.equals(" ")) {
+                    NavHostFragment.findNavController(SelectFragment.this)
+                            .navigate(R.id.action_SelectFragment_to_gameFragment);
+                }
             }
         });
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSprite() {
+        return sprite;
     }
 
     @Override
