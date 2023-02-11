@@ -15,32 +15,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Name" />
-
-    <EditText
-        android:id="@+id/Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="@dimen/Name_bottom"
-        android:height="@dimen/Name_height"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@id/button_select"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_name" />
+        app:layout_constraintTop_toBottomOf="@id/Name"
+        />
 
     <TextView
         android:id="@+id/textView_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/name_input"
-        app:layout_constraintBottom_toTopOf="@id/Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cat" />
+        app:layout_constraintTop_toBottomOf="@id/cat"
+        app:layout_constraintBottom_toTopOf="@id/Name"
+        />
 
     <TextView
         android:id="@+id/textView_character"
@@ -91,6 +78,21 @@
         app:layout_constraintStart_toEndOf="@id/cat"
         app:layout_constraintBottom_toTopOf="@id/textView_name"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="455dp"
+        app:layout_constraintTop_toBottomOf="@id/textView_name"
+        app:layout_constraintBottom_toTopOf="@id/button_select"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
