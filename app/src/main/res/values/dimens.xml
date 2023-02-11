@@ -4,4 +4,6 @@
     <dimen name="Name_bottom">50dp</dimen>
     <dimen name="Welcome_font">10pt</dimen>
     <dimen name="image_button">80dp</dimen>
+    <dimen name="value_margin_top">10dp</dimen>
+    <dimen name="text_margin_top">20dp</dimen>
 </resources>
