@@ -1,5 +1,6 @@
 package com.example.crosstheroad;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import android.app.Activity;
 
 import com.example.crosstheroad.databinding.FragmentSelectBinding;
 
@@ -48,6 +50,9 @@ public class SelectFragment extends Fragment {
 
     public String getName() {
         return name;
+    }
+    public int getLives() {
+        return lives;
     }
 
     public String getSprite() {
