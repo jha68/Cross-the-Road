@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ public class GameFragment extends Fragment {
     private double score;
     private int lives;
     private String name;
+    private String difficulty;
 
     public GameFragment() {
         // Required empty public constructor
@@ -25,6 +27,7 @@ public class GameFragment extends Fragment {
         score = 00000;
         lives = 0;
         name = "asdf";
+        difficulty = "difficulty";
     }
 
     @Override
@@ -39,7 +42,20 @@ public class GameFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TextView livesValue = view.findViewById(R.id.lives_value);
-        livesValue.setText(getArguments().getString("lives"));
+        lives = getArguments().getInt("lives");
+        String lives_string =String.valueOf(lives);
+        livesValue.setText(lives_string);
 
+
+
+        TextView nameValue = view.findViewById(R.id.name_value);
+        name = getArguments().getString("name");
+        nameValue.setText(name);
+
+
+        TextView difficultyValue = view.findViewById(R.id.difficulty_value);
+        difficulty = getArguments().getString("difficulty");
+        difficultyValue.setText(difficulty);
     }
+
 }

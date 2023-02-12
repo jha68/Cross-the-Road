@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,6 +19,9 @@ public class SelectFragment extends Fragment {
     private String sprite;
     private String name;
     private int lives;
+    private String difficulty;
+
+
 
     Fragment fragment = new Fragment();
     @Override
@@ -32,16 +37,49 @@ public class SelectFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.buttonEasy.setOnClickListener(view1 -> lives = 7);
-        binding.buttonNormal.setOnClickListener(view1 -> lives = 5);
-        binding.buttonHard.setOnClickListener(view1 -> lives = 3);
+        binding.frog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.frog.setImageResource(R.drawable.selected_frog);
+                binding.dog.setImageResource(R.drawable.dog);
+                binding.cat.setImageResource(R.drawable.cat);
+
+            }
+        });
+        binding.dog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.frog.setImageResource(R.drawable.frog);
+                binding.dog.setImageResource(R.drawable.selected_dog);
+                binding.cat.setImageResource(R.drawable.cat);
+            }
+        });
+        binding.cat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.frog.setImageResource(R.drawable.frog);
+                binding.dog.setImageResource(R.drawable.dog);
+                binding.cat.setImageResource(R.drawable.selected_cat);
+
+            }
+        });
+        binding.buttonEasy.setOnClickListener(view1 -> {lives = 3;
+            difficulty = "Easy";});
+        binding.buttonNormal.setOnClickListener(view1 -> {lives = 5;
+            difficulty = "Normal";
+        });
+        binding.buttonHard.setOnClickListener(view1 -> {lives = 7;
+            difficulty = "Hard";
+        });
+        name = binding.Name.getText().toString();
         binding.buttonSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                name = requireContext().getString(R.id.Name);
                 if (name != null && !name.equals(" ")) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("lives", Integer.toString(lives));
+                    bundle.putInt("lives", lives);
+                    bundle.putString("name", name);
+                    bundle.putString("difficulty", difficulty);
                     NavHostFragment.findNavController(SelectFragment.this)
                             .navigate(R.id.action_SelectFragment_to_gameFragment,bundle);
                 }
