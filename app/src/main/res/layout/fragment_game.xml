@@ -32,18 +32,17 @@
         android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/text_margin_top"
+        android:layout_marginTop="20dp"
         android:text="@string/score"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/name"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toEndOf="@id/name"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/lives_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/value_margin_top"
+        android:layout_marginTop="@dimen/text_margin_top"
         android:digits="3"
         app:layout_constraintTop_toBottomOf="@id/lives"
         app:layout_constraintStart_toStartOf="@id/lives"
@@ -64,11 +63,27 @@
         android:id="@+id/score_value"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/value_margin_top"
+        android:layout_marginTop="12dp"
         android:digits="00000"
-        app:layout_constraintTop_toBottomOf="@id/score"
-        app:layout_constraintStart_toStartOf="@id/score"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@id/score"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/score"
+        app:layout_constraintTop_toBottomOf="@id/score" />
+
+<!--    need to change the location of difficulty value-->
+    <TextView
+        android:id="@+id/difficulty_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin_top"
+        android:text="difficulty"
+        app:layout_constraintEnd_toEndOf="@id/name_value"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="@id/name_value"
+        app:layout_constraintTop_toBottomOf="@id/name_value"
         />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
