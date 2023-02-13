@@ -34,25 +34,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_easy" />
+        app:layout_constraintTop_toBottomOf="@id/textView_name" />
 
     <TextView
         android:id="@+id/textView_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/name_input"
         android:layout_marginTop="15dp"
+        android:text="@string/name_input"
         app:layout_constraintBottom_toTopOf="@id/Name"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_easy" />
+        app:layout_constraintTop_toBottomOf="@id/button_normal" />
 
     <TextView
         android:id="@+id/textView_difficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/select_difficulty"
-        app:layout_constraintBottom_toTopOf="@id/button_normal"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cat" />
@@ -131,12 +132,13 @@
         android:id="@+id/button_normal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/normal"
         android:layout_marginBottom="10dp"
+        android:text="@string/normal"
         app:layout_constraintBottom_toBottomOf="@+id/textView_name"
         app:layout_constraintEnd_toEndOf="@id/cat"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="@id/cat"
-        app:layout_constraintTop_toBottomOf="@id/textView_difficulty"  />
+        app:layout_constraintTop_toBottomOf="@id/textView_difficulty" />
 
     <RadioButton
         android:id="@+id/button_hard"
