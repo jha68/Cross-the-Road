@@ -8,15 +8,25 @@
     android:background="@drawable/temp">
 
     <TextView
+        android:id="@+id/difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin_top"
+        android:text="@string/difficulty"
+        app:layout_constraintEnd_toStartOf="@id/name"
+        app:layout_constraintHorizontal_bias="0.803"
+        app:layout_constraintStart_toEndOf="@id/lives"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/lives"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin_top"
         android:text="@string/lives"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/difficulty"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/name"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/name"
@@ -24,16 +34,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin_top"
         android:text="@string/name"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/lives"
         app:layout_constraintEnd_toStartOf="@id/score"
-        />
+        app:layout_constraintStart_toEndOf="@id/difficulty"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/text_margin_top"
         android:text="@string/score"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/name"
@@ -41,14 +50,13 @@
 
     <TextView
         android:id="@+id/lives_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="2dp"
+        android:layout_height="15dp"
         android:layout_marginTop="@dimen/text_margin_top"
         android:digits="3"
-        app:layout_constraintTop_toBottomOf="@id/lives"
-        app:layout_constraintStart_toStartOf="@id/lives"
         app:layout_constraintEnd_toEndOf="@id/lives"
-        />
+        app:layout_constraintStart_toStartOf="@id/lives"
+        app:layout_constraintTop_toBottomOf="@id/lives" />
 
     <TextView
         android:id="@+id/name_value"
@@ -60,30 +68,25 @@
         app:layout_constraintStart_toStartOf="@id/name"
         app:layout_constraintTop_toBottomOf="@id/name" />
 
-    <EditText
+    <TextView
         android:id="@+id/score_value"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:digits="00000"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@id/score"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/score"
         app:layout_constraintTop_toBottomOf="@id/score" />
 
-<!--    need to change the location of difficulty value-->
     <TextView
         android:id="@+id/difficulty_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="difficulty"
-        app:layout_constraintEnd_toEndOf="@id/name_value"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="@id/name_value"
-        app:layout_constraintTop_toBottomOf="@id/name_value" />
-
-
+        android:layout_marginTop="@dimen/text_margin_top"
+        app:layout_constraintEnd_toEndOf="@id/difficulty"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="@id/difficulty"
+        app:layout_constraintTop_toBottomOf="@id/difficulty" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
