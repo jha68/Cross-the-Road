@@ -76,6 +76,7 @@ public class SelectFragment extends Fragment {
         // Difficulty with the number of life
         binding.buttonEasy.setOnClickListener(view1 -> {lives = 3;
             difficulty = "Easy";});
+
         binding.buttonNormal.setOnClickListener(view1 -> {lives = 5;
             difficulty = "Normal";
         });
