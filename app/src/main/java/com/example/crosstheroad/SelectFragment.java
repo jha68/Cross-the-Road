@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -44,6 +42,8 @@ public class SelectFragment extends Fragment {
                 binding.dog.setImageResource(R.drawable.dog);
                 binding.cat.setImageResource(R.drawable.cat);
 
+
+
             }
         });
         binding.dog.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +65,7 @@ public class SelectFragment extends Fragment {
         });
         binding.buttonEasy.setOnClickListener(view1 -> {lives = 3;
             difficulty = "Easy";});
+
         binding.buttonNormal.setOnClickListener(view1 -> {lives = 5;
             difficulty = "Normal";
         });
