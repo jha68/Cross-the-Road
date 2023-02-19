@@ -98,6 +98,12 @@ public class SelectFragment extends Fragment {
                 if (name == null || name.trim().length() == 0) {
                     String message = "Check the name";
                     Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                } else if (difficulty == null) {
+                    String message = "Check the difficulty";
+                    Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                } else if (sprite == null) {
+                    String message = "Check the character";
+                    Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                 } else {
                     Bundle bundle = new Bundle();
                     bundle.putInt("lives", lives);
