@@ -13,8 +13,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.crosstheroad.databinding.FragmentSelectBinding;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.logging.LogManager;
-
 public class SelectFragment extends Fragment {
 
     private FragmentSelectBinding binding;
@@ -95,6 +93,7 @@ public class SelectFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 name = nameInput.getText().toString();
+
                 if (!name.equals("")) {
                     boolean valid = true;
                     for (char letter: name.toCharArray()) {
@@ -103,11 +102,8 @@ public class SelectFragment extends Fragment {
                             break;
                         }
                     }
-                    System.out.println(name);
-                    System.out.println(valid);
 
                     if (valid) {
-                        System.out.println("GOOD");
                         Bundle bundle = new Bundle();
                         bundle.putInt("lives", lives);
                         bundle.putString("name", name);
