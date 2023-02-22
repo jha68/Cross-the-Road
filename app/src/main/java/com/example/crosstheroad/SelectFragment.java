@@ -4,29 +4,29 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.crosstheroad.databinding.FragmentSelectBinding;
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.logging.LogManager;
 
 public class SelectFragment extends Fragment {
 
     private FragmentSelectBinding binding;
     private String sprite;
-    private String name;
+    private String name = null;
     private int lives;
     private int spriteInt;
     private String difficulty;
 
     // frog = 0, dog = 1,cat = 2;
 
-    Fragment fragment = new Fragment();
+    private Fragment fragment = new Fragment();
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -74,13 +74,17 @@ public class SelectFragment extends Fragment {
         });
 
         // Difficulty with the number of life
-        binding.buttonEasy.setOnClickListener(view1 -> {lives = 3;
-            difficulty = "Easy";});
+        binding.buttonEasy.setOnClickListener(view1 -> {
+            lives = 7;
+            difficulty = "Easy";
+        });
 
-        binding.buttonNormal.setOnClickListener(view1 -> {lives = 5;
+        binding.buttonNormal.setOnClickListener(view1 -> {
+            lives = 5;
             difficulty = "Normal";
         });
-        binding.buttonHard.setOnClickListener(view1 -> {lives = 7;
+        binding.buttonHard.setOnClickListener(view1 -> {
+            lives = 3;
             difficulty = "Hard";
         });
 
@@ -91,18 +95,37 @@ public class SelectFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 name = nameInput.getText().toString();
+                if (!name.equals("")) {
+                    boolean valid = true;
+                    for (char letter: name.toCharArray()) {
+                        if (letter == ' ') {
+                            valid = false;
+                            break;
+                        }
+                    }
+                    System.out.println(name);
+                    System.out.println(valid);
 
-                if (name != null && !name.equals(" ")) {
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("lives", lives);
-                    bundle.putString("name", name);
-                    bundle.putString("difficulty", difficulty);
-                    bundle.putString("sprite", sprite);
-                    bundle.putInt("spriteInt", spriteInt);
-                    NavHostFragment.findNavController(SelectFragment.this)
-                            .navigate(R.id.action_SelectFragment_to_gameFragment,bundle);
+                    if (valid) {
+                        System.out.println("GOOD");
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("lives", lives);
+                        bundle.putString("name", name);
+                        bundle.putString("difficulty", difficulty);
+                        bundle.putString("sprite", sprite);
+                        bundle.putInt("spriteInt", spriteInt);
+                        NavHostFragment.findNavController(SelectFragment.this)
+                                .navigate(R.id.action_SelectFragment_to_gameFragment, bundle);
+                    } else {
+                        Snackbar snackbar = Snackbar
+                                .make(view, "Invalid name has been entered", Snackbar.LENGTH_LONG);
+                        snackbar.show();
+                    }
+                } else {
+                    Snackbar snackbar = Snackbar
+                            .make(view, "Invalid name has been entered", Snackbar.LENGTH_LONG);
+                    snackbar.show();
                 }
-
             }
         });
     }
