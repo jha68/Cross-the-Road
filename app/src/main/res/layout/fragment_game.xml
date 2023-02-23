@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameFragment"
-    android:background="@drawable/temp">
+    tools:context=".GameFragment">
 
     <TextView
         android:id="@+id/difficulty"
@@ -161,53 +160,56 @@
 
     <ImageView
         android:id="@+id/start_point"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_width="411dp"
+        android:layout_height="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/road"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        android:src="@color/black" />
 
     <ImageView
         android:id="@+id/road"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_width="411dp"
+        android:layout_height="310dp"
+        android:src="@color/purple_500"
         app:layout_constraintBottom_toTopOf="@id/start_point"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/safe_point"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintTop_toBottomOf="@id/safe_point" />
 
     <ImageView
         android:id="@+id/safe_point"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_width="411dp"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toTopOf="@id/road"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/river"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        android:src="@color/black" />
 
     <ImageView
         android:id="@+id/river"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_width="411dp"
+        android:layout_height="310dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toTopOf="@id/safe_point"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/goal"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        android:src="@color/purple_200" />
 
     <ImageView
         android:id="@+id/goal"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_width="411dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintBottom_toTopOf="@id/river"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        android:src="@color/black" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
