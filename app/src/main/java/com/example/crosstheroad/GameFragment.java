@@ -1,6 +1,7 @@
 package com.example.crosstheroad;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,13 +70,13 @@ public class GameFragment extends Fragment {
         ImageView imageView = view.findViewById(R.id.userCharacter);
         spriteInt = getArguments().getInt("spriteInt");
 
-        // frog = 0, dog = 1,cat = 2;
+        // blue = 0, green = 1,yellow = 2;
         if (spriteInt == 0) {
-            imageView.setImageResource(R.drawable.blue_frog);
+            imageView.setImageResource(R.drawable.blue_up);
         } else if (spriteInt == 1) {
-            imageView.setImageResource(R.drawable.green_frog);
+            imageView.setImageResource(R.drawable.green_up);
         } else {
-            imageView.setImageResource(R.drawable.yellow_frog);
+            imageView.setImageResource(R.drawable.yellow_up);
         }
 
         ImageView upArrowButton = view.findViewById(R.id.up_arrow);
@@ -84,12 +85,26 @@ public class GameFragment extends Fragment {
             public void onClick(View v) {
                 // Your code here
                 // This code will be executed when the ImageView is clicked
-
+                int landing;
                 ImageView character = view.findViewById(R.id.userCharacter);
-                character.setImageResource(R.drawable.blue_frog);
+                if (spriteInt == 0) {
+                    character.setImageResource(R.drawable.blue_up1);
+                    landing = R.drawable.blue_up;
+                } else if (spriteInt == 1) {
+                    character.setImageResource(R.drawable.green_up1);
+                    landing = R.drawable.green_up;
+                } else {
+                    character.setImageResource(R.drawable.yellow_up1);
+                    landing = R.drawable.yellow_up;
+                }
                 if (character.getY() > 300) {
                     character.setY(character.getY() - 30);
                 }
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        character.setImageResource(landing);
+                    }
+                }, 200);
             }
         });
         ImageView bottomArrowButton = view.findViewById(R.id.bottom_arrow);
@@ -99,10 +114,81 @@ public class GameFragment extends Fragment {
                 // Your code here
                 // This code will be executed when the ImageView is clicked
                 ImageView character = view.findViewById(R.id.userCharacter);
-                character.setImageResource(R.drawable.blue_frog1);
-                if (character.getY() < 1500) {
+                int landing;
+                if (spriteInt == 0) {
+                    character.setImageResource(R.drawable.blue_down1);
+                    landing = R.drawable.blue_down;
+                } else if (spriteInt == 1) {
+                    character.setImageResource(R.drawable.green_down1);
+                    landing = R.drawable.green_down;
+                } else {
+                    character.setImageResource(R.drawable.yellow_down1);
+                    landing = R.drawable.yellow_down;
+                }
+                if (character.getY() < 2000) {
                     character.setY(character.getY() + 30);
                 }
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        character.setImageResource(landing);
+                    }
+                }, 200);
+            }
+        });
+        ImageView rightArrowButton = view.findViewById(R.id.right_arrow);
+        rightArrowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Your code here
+                // This code will be executed when the ImageView is clicked
+                ImageView character = view.findViewById(R.id.userCharacter);
+                int landing;
+                if (spriteInt == 0) {
+                    character.setImageResource(R.drawable.blue_right1);
+                    landing = R.drawable.blue_right;
+                } else if (spriteInt == 1) {
+                    character.setImageResource(R.drawable.green_right1);
+                    landing = R.drawable.green_right;
+                } else {
+                    character.setImageResource(R.drawable.yellow_right1);
+                    landing = R.drawable.yellow_right;
+                }
+                if (character.getX() < 900) {
+                    character.setX(character.getX() + 30);
+                }
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        character.setImageResource(landing);
+                    }
+                }, 200);
+            }
+        });
+        ImageView leftArrowButton = view.findViewById(R.id.left_arrow);
+        leftArrowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Your code here
+                // This code will be executed when the ImageView is clicked
+                ImageView character = view.findViewById(R.id.userCharacter);
+                int landing;
+                if (spriteInt == 0) {
+                    character.setImageResource(R.drawable.blue_left1);
+                    landing = R.drawable.blue_left;
+                } else if (spriteInt == 1) {
+                    character.setImageResource(R.drawable.green_left1);
+                    landing = R.drawable.green_left;
+                } else {
+                    character.setImageResource(R.drawable.yellow_left1);
+                    landing = R.drawable.yellow_left;
+                }
+                if (character.getX() > 100) {
+                    character.setX(character.getX() - 30);
+                }
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        character.setImageResource(landing);
+                    }
+                }, 200);
             }
         });
 

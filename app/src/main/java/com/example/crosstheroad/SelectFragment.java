@@ -1,14 +1,10 @@
 package com.example.crosstheroad;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -46,9 +42,9 @@ public class SelectFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // When frog is selected
-                binding.blueFrog.setImageResource(R.drawable.blue_frog1);
-                binding.greenFrog.setImageResource(R.drawable.green_frog);
-                binding.yellowFrog.setImageResource(R.drawable.yellow_frog);
+                binding.blueFrog.setImageResource(R.drawable.blue_up1);
+                binding.greenFrog.setImageResource(R.drawable.green_up);
+                binding.yellowFrog.setImageResource(R.drawable.yellow_up);
                 sprite = "blue_frog";
                 spriteInt = 0;
             }
@@ -57,9 +53,9 @@ public class SelectFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // when dog is selected
-                binding.blueFrog.setImageResource(R.drawable.blue_frog);
-                binding.greenFrog.setImageResource(R.drawable.green_frog1);
-                binding.yellowFrog.setImageResource(R.drawable.yellow_frog);
+                binding.blueFrog.setImageResource(R.drawable.blue_up);
+                binding.greenFrog.setImageResource(R.drawable.green_up1);
+                binding.yellowFrog.setImageResource(R.drawable.yellow_up);
                 sprite = "green_frog";
                 spriteInt = 1;
             }
@@ -68,9 +64,9 @@ public class SelectFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // When yellowFrog is selected
-                binding.blueFrog.setImageResource(R.drawable.blue_frog);
-                binding.greenFrog.setImageResource(R.drawable.green_frog);
-                binding.yellowFrog.setImageResource(R.drawable.yellow_frog1);
+                binding.blueFrog.setImageResource(R.drawable.blue_up);
+                binding.greenFrog.setImageResource(R.drawable.green_up);
+                binding.yellowFrog.setImageResource(R.drawable.yellow_up1);
                 sprite = "yellow_frog";
                 spriteInt = 2;
             }
