@@ -12,7 +12,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        com.example.crosstheroad.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        com.example.crosstheroad.databinding.ActivityMainBinding binding =
+                ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
 

@@ -1,18 +1,17 @@
 package com.example.crosstheroad;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.crosstheroad.databinding.FragmentSelectBinding;
-import com.google.android.material.snackbar.Snackbar;
 
 public class SelectFragment extends Fragment {
 
@@ -98,13 +97,16 @@ public class SelectFragment extends Fragment {
 
                 if (name == null || name.trim().length() == 0) {
                     String message = "Check the name";
-                    Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            message, Toast.LENGTH_SHORT).show();
                 } else if (difficulty == null) {
                     String message = "Check the difficulty";
-                    Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            message, Toast.LENGTH_SHORT).show();
                 } else if (sprite == null) {
                     String message = "Check the character";
-                    Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            message, Toast.LENGTH_SHORT).show();
                 } else {
                     Bundle bundle = new Bundle();
                     bundle.putInt("lives", lives);
@@ -113,7 +115,7 @@ public class SelectFragment extends Fragment {
                     bundle.putString("sprite", sprite);
                     bundle.putInt("spriteInt", spriteInt);
                     NavHostFragment.findNavController(SelectFragment.this)
-                            .navigate(R.id.action_SelectFragment_to_gameFragment,bundle);
+                            .navigate(R.id.action_SelectFragment_to_gameFragment, bundle);
                 }
             }
         });
