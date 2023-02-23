@@ -1,5 +1,6 @@
 package com.example.crosstheroad;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -25,6 +27,7 @@ public class SelectFragment extends Fragment {
     private String difficulty;
 
     // frog = 0, dog = 1,cat = 2;
+
 
     Fragment fragment = new Fragment();
     @Override
@@ -91,8 +94,17 @@ public class SelectFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 name = nameInput.getText().toString();
-
-                if (name != null && !name.equals(" ")) {
+                
+                if (name == null || name.trim().length() == 0) {
+                    String message = "Check the name";
+                    Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                } else if (difficulty == null) {
+                    String message = "Check the difficulty";
+                    Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                } else if (sprite == null) {
+                    String message = "Check the character";
+                    Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                } else {
                     Bundle bundle = new Bundle();
                     bundle.putInt("lives", lives);
                     bundle.putString("name", name);
