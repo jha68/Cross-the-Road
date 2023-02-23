@@ -87,12 +87,9 @@ public class GameFragment extends Fragment {
 
                 ImageView character = view.findViewById(R.id.userCharacter);
                 character.setImageResource(R.drawable.blue_frog);
-                if (character.getY() > 100) {
+                if (character.getY() > 300) {
                     character.setY(character.getY() - 30);
-                } else {
-                    character.setY(character.getY());
                 }
-
             }
         });
         ImageView bottomArrowButton = view.findViewById(R.id.bottom_arrow);
@@ -103,7 +100,9 @@ public class GameFragment extends Fragment {
                 // This code will be executed when the ImageView is clicked
                 ImageView character = view.findViewById(R.id.userCharacter);
                 character.setImageResource(R.drawable.blue_frog1);
-                character.setY(imageView.getY() + 30);
+                if (character.getY() < 1500) {
+                    character.setY(character.getY() + 30);
+                }
             }
         });
 
