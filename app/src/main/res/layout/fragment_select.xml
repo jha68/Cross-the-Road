@@ -31,7 +31,7 @@
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@id/button_select"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_name" />
 
@@ -54,7 +54,7 @@
         android:text="@string/select_difficulty"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cat"
+        app:layout_constraintTop_toBottomOf="@id/yellow_frog"
         app:layout_constraintBottom_toTopOf="@id/radioButton"/>
 
     <TextView
@@ -64,52 +64,52 @@
         android:layout_marginTop="60dp"
         android:layout_marginBottom="30dp"
         android:text="@string/character_select"
-        app:layout_constraintBottom_toTopOf="@id/cat"
+        app:layout_constraintBottom_toTopOf="@id/yellow_frog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/frog"
+        android:id="@+id/blue_frog"
         android:layout_width="@dimen/image_button"
         android:layout_height="@dimen/image_button"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
 
         android:scaleType="fitXY"
-        android:src="@drawable/frog1"
+        android:src="@drawable/blue_frog"
         app:layout_constraintBottom_toTopOf="@id/textView_difficulty"
-        app:layout_constraintEnd_toStartOf="@+id/cat"
+        app:layout_constraintEnd_toStartOf="@+id/yellow_frog"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_character"
         android:contentDescription="@string/todo" />
 
     <ImageButton
-        android:id="@+id/cat"
+        android:id="@+id/yellow_frog"
         android:layout_width="@dimen/image_button"
         android:layout_height="@dimen/image_button"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:scaleType="fitXY"
-        android:src="@drawable/cat1"
+        android:src="@drawable/yellow_frog"
         app:layout_constraintBottom_toTopOf="@id/textView_difficulty"
-        app:layout_constraintEnd_toStartOf="@id/dog"
-        app:layout_constraintStart_toEndOf="@id/frog"
+        app:layout_constraintEnd_toStartOf="@id/green_frog"
+        app:layout_constraintStart_toEndOf="@id/blue_frog"
         app:layout_constraintTop_toBottomOf="@id/textView_character"
         android:contentDescription="TODO"
         tools:ignore="HardcodedText" />
 
     <ImageButton
-        android:id="@+id/dog"
+        android:id="@+id/green_frog"
         android:layout_width="@dimen/image_button"
         android:layout_height="@dimen/image_button"
-        android:layout_below="@id/cat"
+        android:layout_below="@id/yellow_frog"
         android:layout_centerHorizontal="true"
         android:scaleType="fitXY"
-        android:src="@drawable/dog1"
+        android:src="@drawable/green_frog"
         android:layout_marginBottom="20dp"
         app:layout_constraintTop_toBottomOf="@id/textView_character"
-        app:layout_constraintStart_toEndOf="@id/cat"
+        app:layout_constraintStart_toEndOf="@id/yellow_frog"
         app:layout_constraintBottom_toTopOf="@id/textView_difficulty"
         app:layout_constraintEnd_toEndOf="parent"
         android:contentDescription="TODO" />

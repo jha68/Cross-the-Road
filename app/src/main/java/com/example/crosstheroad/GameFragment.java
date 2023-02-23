@@ -29,9 +29,9 @@ public class GameFragment extends Fragment {
         super.onCreate(savedInstanceState);
         score = 0;
         lives = 0;
-        name = "aaaa";
+        name = "name";
         difficulty = "difficulty";
-        sprite = "a";
+        sprite = "0";
     }
 
     @Override
@@ -71,12 +71,40 @@ public class GameFragment extends Fragment {
 
         // frog = 0, dog = 1,cat = 2;
         if (spriteInt == 0) {
-            imageView.setImageResource(R.drawable.selected_frog);
+            imageView.setImageResource(R.drawable.blue_frog);
         } else if (spriteInt == 1) {
-            imageView.setImageResource(R.drawable.selected_dog);
+            imageView.setImageResource(R.drawable.green_frog);
         } else {
-            imageView.setImageResource(R.drawable.selected_cat);
+            imageView.setImageResource(R.drawable.yellow_frog);
         }
+
+        ImageView upArrowButton = view.findViewById(R.id.up_arrow);
+        upArrowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Your code here
+                // This code will be executed when the ImageView is clicked
+
+                ImageView character = view.findViewById(R.id.userCharacter);
+                character.setImageResource(R.drawable.blue_frog);
+                if (character.getY() > 300) {
+                    character.setY(character.getY() - 30);
+                }
+            }
+        });
+        ImageView bottomArrowButton = view.findViewById(R.id.bottom_arrow);
+        bottomArrowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Your code here
+                // This code will be executed when the ImageView is clicked
+                ImageView character = view.findViewById(R.id.userCharacter);
+                character.setImageResource(R.drawable.blue_frog1);
+                if (character.getY() < 1500) {
+                    character.setY(character.getY() + 30);
+                }
+            }
+        });
 
     }
 }
