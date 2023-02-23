@@ -98,7 +98,7 @@ public class GameFragment extends Fragment {
                     landing = R.drawable.yellow_up;
                 }
                 if (character.getY() > 300) {
-                    character.setY(character.getY() - 30);
+                    character.setY(character.getY() - 60);
                 }
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
@@ -126,7 +126,7 @@ public class GameFragment extends Fragment {
                     landing = R.drawable.yellow_down;
                 }
                 if (character.getY() < 2000) {
-                    character.setY(character.getY() + 30);
+                    character.setY(character.getY() + 60);
                 }
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
@@ -154,7 +154,7 @@ public class GameFragment extends Fragment {
                     landing = R.drawable.yellow_right;
                 }
                 if (character.getX() < 900) {
-                    character.setX(character.getX() + 30);
+                    character.setX(character.getX() + 60);
                 }
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
@@ -182,7 +182,7 @@ public class GameFragment extends Fragment {
                     landing = R.drawable.yellow_left;
                 }
                 if (character.getX() > 100) {
-                    character.setX(character.getX() - 30);
+                    character.setX(character.getX() - 60);
                 }
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
