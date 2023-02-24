@@ -25,7 +25,7 @@ public class SelectFragment extends Fragment {
     // frog = 0, dog = 1,cat = 2;
 
 
-    Fragment fragment = new Fragment();
+    private Fragment fragment = new Fragment();
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -73,13 +73,17 @@ public class SelectFragment extends Fragment {
         });
 
         // Difficulty with the number of life
-        binding.buttonEasy.setOnClickListener(view1 -> {lives = 3;
-            difficulty = "Easy";});
+        binding.buttonEasy.setOnClickListener(view1 -> {
+            lives = 7;
+            difficulty = "Easy";
+        });
 
-        binding.buttonNormal.setOnClickListener(view1 -> {lives = 5;
+        binding.buttonNormal.setOnClickListener(view1 -> {
+            lives = 5;
             difficulty = "Normal";
         });
-        binding.buttonHard.setOnClickListener(view1 -> {lives = 7;
+        binding.buttonHard.setOnClickListener(view1 -> {
+            lives = 3;
             difficulty = "Hard";
         });
 
@@ -93,13 +97,16 @@ public class SelectFragment extends Fragment {
 
                 if (name == null || name.trim().length() == 0) {
                     String message = "Check the name";
-                    Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            message, Toast.LENGTH_SHORT).show();
                 } else if (difficulty == null) {
                     String message = "Check the difficulty";
-                    Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            message, Toast.LENGTH_SHORT).show();
                 } else if (sprite == null) {
                     String message = "Check the character";
-                    Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            message, Toast.LENGTH_SHORT).show();
                 } else {
                     Bundle bundle = new Bundle();
                     bundle.putInt("lives", lives);
@@ -108,9 +115,8 @@ public class SelectFragment extends Fragment {
                     bundle.putString("sprite", sprite);
                     bundle.putInt("spriteInt", spriteInt);
                     NavHostFragment.findNavController(SelectFragment.this)
-                            .navigate(R.id.action_SelectFragment_to_gameFragment,bundle);
+                            .navigate(R.id.action_SelectFragment_to_gameFragment, bundle);
                 }
-
             }
         });
     }
