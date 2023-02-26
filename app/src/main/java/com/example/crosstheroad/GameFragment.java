@@ -1,5 +1,6 @@
 package com.example.crosstheroad;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class GameFragment extends Fragment {
@@ -47,33 +49,35 @@ public class GameFragment extends Fragment {
 
         // Displaying the number of life
         TextView livesValue = view.findViewById(R.id.lives_value);
-        lives = getArguments().getInt("lives");
-        String livesString = String.valueOf(lives);
+        setLives(getArguments().getInt("lives"));
+        String livesString = String.valueOf(getLives());
         livesValue.setText(livesString);
 
         // Displaying the user name
         TextView nameValue = view.findViewById(R.id.name_value);
-        name = getArguments().getString("name");
-        nameValue.setText(name);
+        setName(getArguments().getString("name"));
+        nameValue.setText(getName());
 
         // Displaying the difficulty
         TextView difficultyValue = view.findViewById(R.id.difficulty_value);
-        difficulty = getArguments().getString("difficulty");
-        difficultyValue.setText(difficulty);
+        setDifficulty(getArguments().getString("difficulty"));
+
+        difficultyValue.setText(getDifficulty());
 
         // Default score
         TextView scoreValue = view.findViewById(R.id.score_value);
+
         String scoreString = String.valueOf(score);
         scoreValue.setText(scoreString);
 
         // Image changes depdends on user character
         ImageView imageView = view.findViewById(R.id.userCharacter);
-        spriteInt = getArguments().getInt("spriteInt");
+        setSpriteInt(getArguments().getInt("spriteInt"));
 
         // blue = 0, green = 1,yellow = 2;
-        if (spriteInt == 0) {
+        if (getSpriteInt() == 0) {
             imageView.setImageResource(R.drawable.blue_up);
-        } else if (spriteInt == 1) {
+        } else if (getSpriteInt() == 1) {
             imageView.setImageResource(R.drawable.green_up);
         } else {
             imageView.setImageResource(R.drawable.yellow_up);
@@ -87,10 +91,10 @@ public class GameFragment extends Fragment {
                 // This code will be executed when the ImageView is clicked
                 int landing;
                 ImageView character = view.findViewById(R.id.userCharacter);
-                if (spriteInt == 0) {
+                if (getSpriteInt() == 0) {
                     character.setImageResource(R.drawable.blue_up1);
                     landing = R.drawable.blue_up;
-                } else if (spriteInt == 1) {
+                } else if (getSpriteInt() == 1) {
                     character.setImageResource(R.drawable.green_up1);
                     landing = R.drawable.green_up;
                 } else {
@@ -115,10 +119,10 @@ public class GameFragment extends Fragment {
                 // This code will be executed when the ImageView is clicked
                 ImageView character = view.findViewById(R.id.userCharacter);
                 int landing;
-                if (spriteInt == 0) {
+                if (getSpriteInt() == 0) {
                     character.setImageResource(R.drawable.blue_down1);
                     landing = R.drawable.blue_down;
-                } else if (spriteInt == 1) {
+                } else if (getSpriteInt() == 1) {
                     character.setImageResource(R.drawable.green_down1);
                     landing = R.drawable.green_down;
                 } else {
@@ -143,10 +147,10 @@ public class GameFragment extends Fragment {
                 // This code will be executed when the ImageView is clicked
                 ImageView character = view.findViewById(R.id.userCharacter);
                 int landing;
-                if (spriteInt == 0) {
+                if (getSpriteInt() == 0) {
                     character.setImageResource(R.drawable.blue_right1);
                     landing = R.drawable.blue_right;
-                } else if (spriteInt == 1) {
+                } else if (getSpriteInt() == 1) {
                     character.setImageResource(R.drawable.green_right1);
                     landing = R.drawable.green_right;
                 } else {
@@ -171,10 +175,10 @@ public class GameFragment extends Fragment {
                 // This code will be executed when the ImageView is clicked
                 ImageView character = view.findViewById(R.id.userCharacter);
                 int landing;
-                if (spriteInt == 0) {
+                if (getSpriteInt() == 0) {
                     character.setImageResource(R.drawable.blue_left1);
                     landing = R.drawable.blue_left;
-                } else if (spriteInt == 1) {
+                } else if (getSpriteInt() == 1) {
                     character.setImageResource(R.drawable.green_left1);
                     landing = R.drawable.green_left;
                 } else {
@@ -193,4 +197,59 @@ public class GameFragment extends Fragment {
         });
 
     }
+
+    public double getScore() {
+        return score;
+    }
+
+    public int getLives() {
+        return lives;
+    }
+
+    public int getSpriteInt() {
+        return spriteInt;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSprite() {
+        return sprite;
+    }
+
+    @Nullable
+    @Override
+    public Context getContext() {
+        return super.getContext();
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    public void setSprite(String sprite) {
+        this.sprite = sprite;
+    }
+
+    public void setSpriteInt(int spriteInt) {
+        this.spriteInt = spriteInt;
+    }
+
 }
