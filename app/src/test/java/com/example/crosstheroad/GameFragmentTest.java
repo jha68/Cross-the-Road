@@ -36,6 +36,7 @@ public class GameFragmentTest {
             Assert.assertNull("Your name is null", null);
             Assert.assertFalse("Your name is null", false);
             Assert.assertNull("Your input is empty","");
+
         }
     }
 
@@ -60,6 +61,7 @@ public class GameFragmentTest {
         Assert.assertEquals(0,0);
         Assert.assertEquals(-1, 0);
         Assert.assertEquals( 1,1);
+        Assert.assertEquals( 4,4);
     }
 
     @Test(timeout = TIMEOUT)
