@@ -47,42 +47,53 @@ public class GameFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Displaying the number of life
-        TextView livesValue = view.findViewById(R.id.lives_value);
-        setLives(getArguments().getInt("lives"));
-        String livesString = String.valueOf(getLives());
-        livesValue.setText(livesString);
+        setUpLivesValue(view);
+        setUpUsernameValue(view);
+        setUpDifficultyValue(view);
+        setUpScoreValue(view);
+        setUpSprite(view);
+        setUpArrowButtons(view);
 
-        // Displaying the user name
-        TextView nameValue = view.findViewById(R.id.name_value);
-        setName(getArguments().getString("name"));
-        nameValue.setText(getName());
+    }
 
-        // Displaying the difficulty
-        TextView difficultyValue = view.findViewById(R.id.difficulty_value);
-        setDifficulty(getArguments().getString("difficulty"));
-
-        difficultyValue.setText(getDifficulty());
-
+    private void setUpScoreValue(@NonNull View view) {
         // Default score
         TextView scoreValue = view.findViewById(R.id.score_value);
 
         String scoreString = String.valueOf(score);
         scoreValue.setText(scoreString);
+    }
 
-        // Image changes depdends on user character
-        ImageView imageView = view.findViewById(R.id.userCharacter);
-        setSpriteInt(getArguments().getInt("spriteInt"));
+    private void setUpDifficultyValue(@NonNull View view) {
+        // Displaying the difficulty
+        TextView difficultyValue = view.findViewById(R.id.difficulty_value);
+        setDifficulty(getArguments().getString("difficulty"));
+        difficultyValue.setText(getDifficulty());
+    }
 
-        // blue = 0, green = 1,yellow = 2;
-        if (getSpriteInt() == 0) {
-            imageView.setImageResource(R.drawable.blue_up);
-        } else if (getSpriteInt() == 1) {
-            imageView.setImageResource(R.drawable.green_up);
-        } else {
-            imageView.setImageResource(R.drawable.yellow_up);
-        }
+    private void setUpUsernameValue(@NonNull View view) {
+        // Displaying the user name
+        TextView nameValue = view.findViewById(R.id.name_value);
+        setName(getArguments().getString("name"));
+        nameValue.setText(getName());
+    }
 
+    private void setUpLivesValue(@NonNull View view) {
+        // Displaying the number of life
+        TextView livesValue = view.findViewById(R.id.lives_value);
+        setLives(getArguments().getInt("lives"));
+        String livesString = String.valueOf(getLives());
+        livesValue.setText(livesString);
+    }
+
+    private void setUpArrowButtons(@NonNull View view) {
+        setUpUpButton(view);
+        setUpDownButton(view);
+        setUpRightButton(view);
+        setUpLeftButton(view);
+    }
+
+    private void setUpUpButton(@NonNull View view) {
         ImageView upArrowButton = view.findViewById(R.id.up_arrow);
         upArrowButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,6 +122,9 @@ public class GameFragment extends Fragment {
                 }, 200);
             }
         });
+    }
+
+    private void setUpDownButton(@NonNull View view) {
         ImageView bottomArrowButton = view.findViewById(R.id.bottom_arrow);
         bottomArrowButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,6 +153,9 @@ public class GameFragment extends Fragment {
                 }, 200);
             }
         });
+    }
+
+    private void setUpRightButton(@NonNull View view) {
         ImageView rightArrowButton = view.findViewById(R.id.right_arrow);
         rightArrowButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,6 +184,9 @@ public class GameFragment extends Fragment {
                 }, 200);
             }
         });
+    }
+
+    private void setUpLeftButton(@NonNull View view) {
         ImageView leftArrowButton = view.findViewById(R.id.left_arrow);
         leftArrowButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,8 +215,26 @@ public class GameFragment extends Fragment {
                 }, 200);
             }
         });
-
     }
+
+    private void setUpSprite(View view) {
+        // Image changes depdends on user character
+        ImageView imageView = view.findViewById(R.id.userCharacter);
+        assert getArguments() != null;
+        setSpriteInt(getArguments().getInt("spriteInt"));
+
+        // blue = 0, green = 1,yellow = 2;
+        int spriteType = getSpriteInt();
+        if (spriteInt == 0) {
+            imageView.setImageResource(R.drawable.blue_up);
+        } else if (spriteInt == 1) {
+            imageView.setImageResource(R.drawable.green_up);
+        } else {
+            imageView.setImageResource(R.drawable.yellow_up);
+        }
+    }
+
+
 
     public double getScore() {
         return score;
