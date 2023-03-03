@@ -5,13 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.crosstheroad.databinding.FragmentSelectBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 public class SelectFragment extends Fragment {
 
@@ -26,6 +26,7 @@ public class SelectFragment extends Fragment {
 
 
     private Fragment fragment = new Fragment();
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -95,18 +96,18 @@ public class SelectFragment extends Fragment {
             public void onClick(View view) {
                 name = nameInput.getText().toString();
 
-                if (name == null || name.trim().length() == 0) {
-                    String message = "Check the name";
-                    Toast.makeText(getActivity().getApplicationContext(),
-                            message, Toast.LENGTH_SHORT).show();
+                if (sprite == null) {
+                    Snackbar snackbar = Snackbar
+                            .make(view, "Check the character", Snackbar.LENGTH_LONG);
+                    snackbar.show();
                 } else if (difficulty == null) {
-                    String message = "Check the difficulty";
-                    Toast.makeText(getActivity().getApplicationContext(),
-                            message, Toast.LENGTH_SHORT).show();
-                } else if (sprite == null) {
-                    String message = "Check the character";
-                    Toast.makeText(getActivity().getApplicationContext(),
-                            message, Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(view, "Check the difficulty", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                } else if (name == null || name.trim().length() == 0) {
+                    Snackbar snackbar = Snackbar
+                            .make(view, "Check the name", Snackbar.LENGTH_LONG);
+                    snackbar.show();
                 } else {
                     Bundle bundle = new Bundle();
                     bundle.putInt("lives", lives);
