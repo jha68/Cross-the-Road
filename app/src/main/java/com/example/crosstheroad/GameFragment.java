@@ -47,6 +47,23 @@ public class GameFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        // Displaying the number of life
+        TextView livesValue = view.findViewById(R.id.lives_value);
+        setLives(getArguments().getInt("lives"));
+        String livesString = String.valueOf(getLives());
+        livesValue.setText(livesString);
+
+        // Displaying the user name
+        TextView nameValue = view.findViewById(R.id.name_value);
+        setName(getArguments().getString("name"));
+        nameValue.setText(getName());
+
+        // Displaying the difficulty
+        TextView difficultyValue = view.findViewById(R.id.difficulty_value);
+        setDifficulty(getArguments().getString("difficulty"));
+        difficultyValue.setText(getDifficulty());
+
         setUpLivesValue(view);
         setUpUsernameValue(view);
         setUpDifficultyValue(view);
@@ -56,10 +73,10 @@ public class GameFragment extends Fragment {
 
     }
 
+
     private void setUpScoreValue(@NonNull View view) {
         // Default score
         TextView scoreValue = view.findViewById(R.id.score_value);
-
         String scoreString = String.valueOf(score);
         scoreValue.setText(scoreString);
     }
@@ -102,6 +119,7 @@ public class GameFragment extends Fragment {
                 // This code will be executed when the ImageView is clicked
                 int landing;
                 ImageView character = view.findViewById(R.id.userCharacter);
+
                 if (getSpriteInt() == 0) {
                     character.setImageResource(R.drawable.blue_up1);
                     landing = R.drawable.blue_up;
@@ -112,9 +130,11 @@ public class GameFragment extends Fragment {
                     character.setImageResource(R.drawable.yellow_up1);
                     landing = R.drawable.yellow_up;
                 }
+
                 if (character.getY() > 300) {
                     character.setY(character.getY() - 60);
                 }
+
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
                         character.setImageResource(landing);
@@ -122,9 +142,11 @@ public class GameFragment extends Fragment {
                 }, 200);
             }
         });
+
     }
 
     private void setUpDownButton(@NonNull View view) {
+
         ImageView bottomArrowButton = view.findViewById(R.id.bottom_arrow);
         bottomArrowButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,9 +165,11 @@ public class GameFragment extends Fragment {
                     character.setImageResource(R.drawable.yellow_down1);
                     landing = R.drawable.yellow_down;
                 }
+
                 if (character.getY() < 2000) {
                     character.setY(character.getY() + 60);
                 }
+
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
                         character.setImageResource(landing);
@@ -153,9 +177,11 @@ public class GameFragment extends Fragment {
                 }, 200);
             }
         });
+
     }
 
     private void setUpRightButton(@NonNull View view) {
+
         ImageView rightArrowButton = view.findViewById(R.id.right_arrow);
         rightArrowButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,9 +200,11 @@ public class GameFragment extends Fragment {
                     character.setImageResource(R.drawable.yellow_right1);
                     landing = R.drawable.yellow_right;
                 }
+
                 if (character.getX() < 900) {
                     character.setX(character.getX() + 60);
                 }
+
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
                         character.setImageResource(landing);
@@ -184,9 +212,13 @@ public class GameFragment extends Fragment {
                 }, 200);
             }
         });
+
+
+
     }
 
     private void setUpLeftButton(@NonNull View view) {
+
         ImageView leftArrowButton = view.findViewById(R.id.left_arrow);
         leftArrowButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -205,9 +237,11 @@ public class GameFragment extends Fragment {
                     character.setImageResource(R.drawable.yellow_left1);
                     landing = R.drawable.yellow_left;
                 }
+
                 if (character.getX() > 100) {
                     character.setX(character.getX() - 60);
                 }
+
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
                         character.setImageResource(landing);
