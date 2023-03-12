@@ -212,9 +212,81 @@ public class GameFragment extends Fragment {
                 }, 200);
             }
         });
+    }
+
+    private void setUpSprite(View view) {
+        // Image changes depdends on user character
+        ImageView imageView = view.findViewById(R.id.userCharacter);
+        assert getArguments() != null;
+        setSpriteInt(getArguments().getInt("spriteInt"));
+
+        // blue = 0, green = 1,yellow = 2;
+        int spriteType = getSpriteInt();
+        if (spriteInt == 0) {
+            imageView.setImageResource(R.drawable.blue_up);
+        } else if (spriteInt == 1) {
+            imageView.setImageResource(R.drawable.green_up);
+        } else {
+            imageView.setImageResource(R.drawable.yellow_up);
+        }
+    }
 
 
 
+    public double getScore() {
+        return score;
+    }
+
+    public int getLives() {
+        return lives;
+    }
+
+    public int getSpriteInt() {
+        return spriteInt;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSprite() {
+        return sprite;
+    }
+
+    @Nullable
+    @Override
+    public Context getContext() {
+        return super.getContext();
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    public void setSprite(String sprite) {
+        this.sprite = sprite;
+    }
+
+
+
+    public void setSpriteInt(int spriteInt) {
+        this.spriteInt = spriteInt;
     }
 
     private void setUpLeftButton(@NonNull View view) {
