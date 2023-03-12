@@ -22,6 +22,8 @@ public class GameFragment extends Fragment {
     private String sprite;
     private int spriteInt;
     private double maxHeight = Double.POSITIVE_INFINITY;
+    private int[] points = {5, 10, 15, 20};
+
 
 
     public GameFragment() {
@@ -136,7 +138,7 @@ public class GameFragment extends Fragment {
                     character.setY(character.getY() - 155);
                     if (maxHeight > character.getY()) {
                         maxHeight = character.getY();
-                        score += 10;
+                        score += points[(int) maxHeight % 4];
                         TextView scoreValue = view.findViewById(R.id.score_value);
                         String scoreString = String.valueOf(score);
                         scoreValue.setText(scoreString);
