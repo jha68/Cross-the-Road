@@ -21,6 +21,7 @@ public class GameFragment extends Fragment {
     private String difficulty;
     private String sprite;
     private int spriteInt;
+    private double maxHeight = Double.POSITIVE_INFINITY;
 
 
     public GameFragment() {
@@ -117,9 +118,9 @@ public class GameFragment extends Fragment {
             public void onClick(View v) {
                 // Your code here
                 // This code will be executed when the ImageView is clicked
-                int landing;
-                ImageView character = view.findViewById(R.id.userCharacter);
 
+                ImageView character = view.findViewById(R.id.userCharacter);
+                int landing;
                 if (getSpriteInt() == 0) {
                     character.setImageResource(R.drawable.blue_up1);
                     landing = R.drawable.blue_up;
@@ -132,7 +133,15 @@ public class GameFragment extends Fragment {
                 }
 
                 if (character.getY() > 300) {
-                    character.setY(character.getY() - 60);
+                    character.setY(character.getY() - 155);
+                    if (maxHeight > character.getY()) {
+                        maxHeight = character.getY();
+                        score += 10;
+                        TextView scoreValue = view.findViewById(R.id.score_value);
+                        String scoreString = String.valueOf(score);
+                        scoreValue.setText(scoreString);
+
+                    }
                 }
 
                 new Handler().postDelayed(new Runnable() {
@@ -153,6 +162,8 @@ public class GameFragment extends Fragment {
             public void onClick(View v) {
                 // Your code here
                 // This code will be executed when the ImageView is clicked
+                View rootView = view.getRootView();
+                int height = rootView.getHeight();
                 ImageView character = view.findViewById(R.id.userCharacter);
                 int landing;
                 if (getSpriteInt() == 0) {
@@ -166,8 +177,8 @@ public class GameFragment extends Fragment {
                     landing = R.drawable.yellow_down;
                 }
 
-                if (character.getY() < 2000) {
-                    character.setY(character.getY() + 60);
+                if (character.getY() < height - 300) {
+                    character.setY(character.getY() + 155);
                 }
 
                 new Handler().postDelayed(new Runnable() {
@@ -188,6 +199,8 @@ public class GameFragment extends Fragment {
             public void onClick(View v) {
                 // Your code here
                 // This code will be executed when the ImageView is clicked
+                View rootView = view.getRootView();
+                int width = rootView.getWidth();
                 ImageView character = view.findViewById(R.id.userCharacter);
                 int landing;
                 if (getSpriteInt() == 0) {
@@ -201,8 +214,8 @@ public class GameFragment extends Fragment {
                     landing = R.drawable.yellow_right;
                 }
 
-                if (character.getX() < 900) {
-                    character.setX(character.getX() + 60);
+                if (character.getX() < width - 120) {
+                    character.setX(character.getX() + 155);
                 }
 
                 new Handler().postDelayed(new Runnable() {
@@ -212,81 +225,9 @@ public class GameFragment extends Fragment {
                 }, 200);
             }
         });
-    }
-
-    private void setUpSprite(View view) {
-        // Image changes depdends on user character
-        ImageView imageView = view.findViewById(R.id.userCharacter);
-        assert getArguments() != null;
-        setSpriteInt(getArguments().getInt("spriteInt"));
-
-        // blue = 0, green = 1,yellow = 2;
-        int spriteType = getSpriteInt();
-        if (spriteInt == 0) {
-            imageView.setImageResource(R.drawable.blue_up);
-        } else if (spriteInt == 1) {
-            imageView.setImageResource(R.drawable.green_up);
-        } else {
-            imageView.setImageResource(R.drawable.yellow_up);
-        }
-    }
 
 
 
-    public double getScore() {
-        return score;
-    }
-
-    public int getLives() {
-        return lives;
-    }
-
-    public int getSpriteInt() {
-        return spriteInt;
-    }
-
-    public String getDifficulty() {
-        return difficulty;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getSprite() {
-        return sprite;
-    }
-
-    @Nullable
-    @Override
-    public Context getContext() {
-        return super.getContext();
-    }
-
-    public void setDifficulty(String difficulty) {
-        this.difficulty = difficulty;
-    }
-
-    public void setLives(int lives) {
-        this.lives = lives;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setScore(double score) {
-        this.score = score;
-    }
-
-    public void setSprite(String sprite) {
-        this.sprite = sprite;
-    }
-
-
-
-    public void setSpriteInt(int spriteInt) {
-        this.spriteInt = spriteInt;
     }
 
     private void setUpLeftButton(@NonNull View view) {
@@ -311,7 +252,7 @@ public class GameFragment extends Fragment {
                 }
 
                 if (character.getX() > 100) {
-                    character.setX(character.getX() - 60);
+                    character.setX(character.getX() - 155);
                 }
 
                 new Handler().postDelayed(new Runnable() {
