@@ -23,6 +23,8 @@ public class GameFragment extends Fragment {
     private int spriteInt;
     private double maxHeight = Double.POSITIVE_INFINITY;
     private int[] points = {5, 10, 15, 20};
+    private int count = 0;
+
 
 
 
@@ -122,6 +124,18 @@ public class GameFragment extends Fragment {
                 // This code will be executed when the ImageView is clicked
 
                 ImageView character = view.findViewById(R.id.userCharacter);
+                ImageView goal1 = view.findViewById(R.id.goal_1);
+                ImageView goal2 = view.findViewById(R.id.goal_2);
+                ImageView goal3 = view.findViewById(R.id.goal_3);
+                ImageView goal4 = view.findViewById(R.id.goal_4);
+                ImageView goal5 = view.findViewById(R.id.goal_5);
+                int goalWidth = goal1.getWidth();
+                int goalHeight = goal1.getHeight();
+                ImageView goalFrog = new ImageView(getContext());
+                goalFrog.setImageResource(R.drawable.catched_frog);
+                goalFrog.setLayoutParams(new ViewGroup.LayoutParams(
+                        goalWidth, goalHeight
+                ));
                 int landing;
                 if (getSpriteInt() == 0) {
                     character.setImageResource(R.drawable.blue_up1);
@@ -135,22 +149,55 @@ public class GameFragment extends Fragment {
                 }
 
                 if (character.getY() > 300) {
-                    character.setY(character.getY() - 155);
                     if (maxHeight > character.getY()) {
                         maxHeight = character.getY();
                         score += points[(int) maxHeight % 4];
                         TextView scoreValue = view.findViewById(R.id.score_value);
                         String scoreString = String.valueOf(score);
                         scoreValue.setText(scoreString);
+                    }
+                    character.setY(character.getY() - 155);
+                    new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            character.setImageResource(landing);
+                            if (character.getY() < 300) {
+                                ImageView reset = view.findViewById(R.id.startCharacter);
+                                character.setX(reset.getX());
+                                character.setY(reset.getY());
+                                maxHeight = Double.POSITIVE_INFINITY;
+                            }
+                        }
+                    }, 200);
+                    if (character.getY() < 300) {
+                        if (character.getX() >= goal1.getX() &&
+                                character.getX() + character.getWidth() <= goal1.getX() + goalWidth) {
+                            goal1.setImageResource(R.drawable.catched_frog);
+                        } else if (character.getX() >= goal2.getX() &&
+                                character.getX() + character.getWidth() <= goal2.getX() + goalWidth) {
+                            goal2.setImageResource(R.drawable.catched_frog);
+                        } else if (character.getX() >= goal3.getX() &&
+                                character.getX() + character.getWidth() <= goal3.getX() + goalWidth) {
+                            goal3.setImageResource(R.drawable.catched_frog);
+                        } else if (character.getX() >= goal4.getX() &&
+                                character.getX() + character.getWidth() <= goal4.getX() + goalWidth) {
+                            goal4.setImageResource(R.drawable.catched_frog);
+                        } else if (character.getX() >= goal5.getX() &&
+                                character.getX() + character.getWidth() <= goal5.getX() + goalWidth) {
+                            goal5.setImageResource(R.drawable.catched_frog);
+                        } else {
+                            TextView livesValue = view.findViewById(R.id.lives_value);
+                            setLives(getArguments().getInt("lives") - (++count));
+                            String livesString = String.valueOf(getLives());
+                            livesValue.setText(livesString);
 
+                        }
                     }
                 }
 
-                new Handler().postDelayed(new Runnable() {
-                    public void run() {
-                        character.setImageResource(landing);
-                    }
-                }, 200);
+
+
+
+
             }
         });
 
@@ -216,7 +263,7 @@ public class GameFragment extends Fragment {
                     landing = R.drawable.yellow_right;
                 }
 
-                if (character.getX() < width - 120) {
+                if (character.getX() < width - 200) {
                     character.setX(character.getX() + 155);
                 }
 
