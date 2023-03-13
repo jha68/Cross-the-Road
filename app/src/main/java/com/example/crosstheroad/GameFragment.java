@@ -212,7 +212,8 @@ public class GameFragment extends Fragment {
                 // Your code here
                 // This code will be executed when the ImageView is clicked
                 View rootView = view.getRootView();
-                int height = rootView.getHeight();
+                ImageView startCharacter = view.findViewById(R.id.startCharacter);
+                int startPoint = (int) startCharacter.getY();
                 ImageView character = view.findViewById(R.id.userCharacter);
                 int landing;
                 if (getSpriteInt() == 0) {
@@ -226,7 +227,7 @@ public class GameFragment extends Fragment {
                     landing = R.drawable.yellow_down;
                 }
 
-                if (character.getY() < height - 300) {
+                if (character.getY() < startPoint) {
                     character.setY(character.getY() + 155);
                 }
 
