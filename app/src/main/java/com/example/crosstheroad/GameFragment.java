@@ -31,13 +31,6 @@ public class GameFragment extends Fragment {
     private int count = 0;
 
     //variables  for vehicles
-    private float car1_1X = 600;
-    private float car2_1X = 700;
-    private float car3_1X = 400;
-    private float car3_2X = 800;
-    private float car4_1X = 500;
-    private float car5_1X = 800;
-
     int screenHeight;
     int screenWidth;
 
@@ -131,65 +124,58 @@ public class GameFragment extends Fragment {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        changePos(9, 6,8, 12, 10);
+                        changePos(15, 12, 16, 20, 22);
                     }
                 });
             }
-        },0, 50);
+        },0, 40);
     }
     // helper function to change the vehicle's position
     private void changePos(int speed1, int speed2, int speed3, int speed4, int speed5) {
-        car1_1X += speed1;
-        car2_1X += speed2;
-        car3_1X += speed3;
-        car3_2X += speed3;
-        car4_1X += speed4;
-        car5_1X += speed5;
-
-        if (car1.getX() > screenWidth ) {
-            car1.setX(-100.0f);
+        if (car1.getX() > screenWidth) {
+            car1.setX(-car1.getWidth());
         }
-        if (car1_1.getX() > screenWidth ) {
-            car1_1X = -100.0f;
+        if (car1_1.getX() > screenWidth) {
+            car1_1.setX(-car1.getWidth());
         }
         if (car2.getX() > screenWidth) {
-            car2.setX(-100.0f);
+            car2.setX(-car2.getWidth());
         }
-        if (car2_1.getX() > screenWidth ) {
-            car2_1X = -100.0f;
+        if (car2_1.getX() > screenWidth) {
+            car2_1.setX(-car2.getWidth());
         }
         if (car3.getX() > screenWidth) {
-            car3.setX(-100.0f);
+            car3.setX(-car3.getWidth());
         }
-        if (car3_1.getX() > screenWidth ) {
-            car3_1X = -100.0f;
+        if (car3_1.getX() > screenWidth) {
+            car3_1.setX(-car3.getWidth());
         }
-        if (car3_2.getX() > screenWidth ) {
-            car3_2X = -100.0f;
+        if (car3_2.getX() > screenWidth) {
+            car3_2.setX(-car3.getWidth());
         }
         if (car4.getX() > screenWidth) {
-            car4.setX(-100.0f);
+            car4.setX(-car4.getWidth());
         }
-        if (car4_1.getX() > screenWidth ) {
-            car4_1X = -100.0f;
+        if (car4_1.getX() > screenWidth) {
+            car4_1.setX(-car4.getWidth());
         }
         if (car5.getX() > screenWidth) {
-            car5.setX(-100.0f);
+            car5.setX(-car5.getWidth());
         }
-        if (car5_1.getX() > screenWidth ) {
-            car5_1X = -100.0f;
+        if (car5_1.getX() > screenWidth) {
+            car5_1.setX(-car5.getWidth());
         }
         car1.setX(car1.getX() + speed1);
-        car1_1.setX(car1_1X);
+        car1_1.setX(car1_1.getX() + speed1);
         car2.setX(car2.getX() + speed2);
-        car2_1.setX(car2_1X);
+        car2_1.setX(car2_1.getX() + speed2);
         car3.setX(car3.getX() + speed3);
-        car3_1.setX(car3_1X);
-        car3_2.setX(car3_2X);
+        car3_1.setX(car3_1.getX() + speed3);
+        car3_2.setX(car3_2.getX() + speed3);
         car4.setX(car4.getX() + speed4);
-        car4_1.setX(car4_1X);
+        car4_1.setX(car4_1.getX() + speed4);
         car5.setX(car5.getX() + speed5);
-        car5_1.setX(car5_1X);
+        car5_1.setX(car5_1.getX() + speed5);
 
     }
 
