@@ -16,6 +16,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 
+import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -133,48 +134,6 @@ public class GameScreenVehicleTest {
                         withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
                         isDisplayed()));
         imageView2.check(matches(isDisplayed()));
-
-        ViewInteraction imageView5 = onView(
-                allOf(withId(R.id.car3_1),
-                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
-                        isDisplayed()));
-        imageView5.check(matches(isDisplayed()));
-
-        ViewInteraction imageView6 = onView(
-                allOf(withId(R.id.car3_2),
-                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
-                        isDisplayed()));
-        imageView6.check(matches(isDisplayed()));
-
-        ViewInteraction imageView7 = onView(
-                allOf(withId(R.id.car3),
-                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
-                        isDisplayed()));
-        imageView7.check(matches(isDisplayed()));
-
-        ViewInteraction imageView8 = onView(
-                allOf(withId(R.id.car4),
-                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
-                        isDisplayed()));
-        imageView8.check(matches(isDisplayed()));
-
-        ViewInteraction imageView9 = onView(
-                allOf(withId(R.id.car4_1),
-                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
-                        isDisplayed()));
-        imageView9.check(matches(isDisplayed()));
-
-        ViewInteraction imageView10 = onView(
-                allOf(withId(R.id.car5),
-                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
-                        isDisplayed()));
-        imageView10.check(matches(isDisplayed()));
-
-        ViewInteraction imageView11 = onView(
-                allOf(withId(R.id.car5_1),
-                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
-                        isDisplayed()));
-        imageView11.check(matches(isDisplayed()));
     }
 
     @Test
@@ -485,5 +444,360 @@ public class GameScreenVehicleTest {
                         withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
                         isDisplayed()));
         imageView2.check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void gameScreenVehicle1MovementTest() {
+        ViewInteraction materialButton = onView(
+                allOf(withId(R.id.button_start), withText("Start"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                1),
+                        isDisplayed()));
+        materialButton.perform(click());
+
+        ViewInteraction appCompatImageButton = onView(
+                allOf(withId(R.id.blue_frog), withContentDescription("TODO"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                5),
+                        isDisplayed()));
+        appCompatImageButton.perform(click());
+
+        ViewInteraction materialRadioButton = onView(
+                allOf(withId(R.id.button_easy), withText("EASY"),
+                        childAtPosition(
+                                allOf(withId(R.id.radioButton),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                8)),
+                                0),
+                        isDisplayed()));
+        materialRadioButton.perform(click());
+
+        ViewInteraction appCompatEditText = onView(
+                allOf(withId(R.id.Name),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText.perform(replaceText("asf"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.Name), withText("asf"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText2.perform(pressImeActionButton());
+
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(R.id.button_select), withText("Select"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                0),
+                        isDisplayed()));
+        materialButton2.perform(click());
+
+        ViewInteraction imageView = onView(
+                allOf(withId(R.id.car1),
+                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
+                        isDisplayed()));
+        SystemClock.sleep(5000);
+        imageView.check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void gameScreenVehicle2MovementTest() {
+        ViewInteraction materialButton = onView(
+                allOf(withId(R.id.button_start), withText("Start"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                1),
+                        isDisplayed()));
+        materialButton.perform(click());
+
+        ViewInteraction appCompatImageButton = onView(
+                allOf(withId(R.id.blue_frog), withContentDescription("TODO"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                5),
+                        isDisplayed()));
+        appCompatImageButton.perform(click());
+
+        ViewInteraction materialRadioButton = onView(
+                allOf(withId(R.id.button_easy), withText("EASY"),
+                        childAtPosition(
+                                allOf(withId(R.id.radioButton),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                8)),
+                                0),
+                        isDisplayed()));
+        materialRadioButton.perform(click());
+
+        ViewInteraction appCompatEditText = onView(
+                allOf(withId(R.id.Name),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText.perform(replaceText("asf"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.Name), withText("asf"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText2.perform(pressImeActionButton());
+
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(R.id.button_select), withText("Select"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                0),
+                        isDisplayed()));
+        materialButton2.perform(click());
+
+        ViewInteraction imageView = onView(
+                allOf(withId(R.id.car2),
+                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
+                        isDisplayed()));
+        SystemClock.sleep(5000);
+        imageView.check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void gameScreenVehicle3MovementTest() {
+        ViewInteraction materialButton = onView(
+                allOf(withId(R.id.button_start), withText("Start"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                1),
+                        isDisplayed()));
+        materialButton.perform(click());
+
+        ViewInteraction appCompatImageButton = onView(
+                allOf(withId(R.id.blue_frog), withContentDescription("TODO"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                5),
+                        isDisplayed()));
+        appCompatImageButton.perform(click());
+
+        ViewInteraction materialRadioButton = onView(
+                allOf(withId(R.id.button_easy), withText("EASY"),
+                        childAtPosition(
+                                allOf(withId(R.id.radioButton),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                8)),
+                                0),
+                        isDisplayed()));
+        materialRadioButton.perform(click());
+
+        ViewInteraction appCompatEditText = onView(
+                allOf(withId(R.id.Name),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText.perform(replaceText("asf"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.Name), withText("asf"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText2.perform(pressImeActionButton());
+
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(R.id.button_select), withText("Select"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                0),
+                        isDisplayed()));
+        materialButton2.perform(click());
+
+        ViewInteraction imageView = onView(
+                allOf(withId(R.id.car3),
+                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
+                        isDisplayed()));
+        SystemClock.sleep(5000);
+        imageView.check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void gameScreenVehicle4MovementTest() {
+        ViewInteraction materialButton = onView(
+                allOf(withId(R.id.button_start), withText("Start"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                1),
+                        isDisplayed()));
+        materialButton.perform(click());
+
+        ViewInteraction appCompatImageButton = onView(
+                allOf(withId(R.id.blue_frog), withContentDescription("TODO"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                5),
+                        isDisplayed()));
+        appCompatImageButton.perform(click());
+
+        ViewInteraction materialRadioButton = onView(
+                allOf(withId(R.id.button_easy), withText("EASY"),
+                        childAtPosition(
+                                allOf(withId(R.id.radioButton),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                8)),
+                                0),
+                        isDisplayed()));
+        materialRadioButton.perform(click());
+
+        ViewInteraction appCompatEditText = onView(
+                allOf(withId(R.id.Name),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText.perform(replaceText("asf"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.Name), withText("asf"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText2.perform(pressImeActionButton());
+
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(R.id.button_select), withText("Select"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                0),
+                        isDisplayed()));
+        materialButton2.perform(click());
+
+        ViewInteraction imageView = onView(
+                allOf(withId(R.id.car4),
+                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
+                        isDisplayed()));
+        SystemClock.sleep(5000);
+        imageView.check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void gameScreenVehicle5MovementTest() {
+        ViewInteraction materialButton = onView(
+                allOf(withId(R.id.button_start), withText("Start"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                1),
+                        isDisplayed()));
+        materialButton.perform(click());
+
+        ViewInteraction appCompatImageButton = onView(
+                allOf(withId(R.id.blue_frog), withContentDescription("TODO"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                5),
+                        isDisplayed()));
+        appCompatImageButton.perform(click());
+
+        ViewInteraction materialRadioButton = onView(
+                allOf(withId(R.id.button_easy), withText("EASY"),
+                        childAtPosition(
+                                allOf(withId(R.id.radioButton),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                8)),
+                                0),
+                        isDisplayed()));
+        materialRadioButton.perform(click());
+
+        ViewInteraction appCompatEditText = onView(
+                allOf(withId(R.id.Name),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText.perform(replaceText("asf"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.Name), withText("asf"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText2.perform(pressImeActionButton());
+
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(R.id.button_select), withText("Select"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment_content_main),
+                                        0),
+                                0),
+                        isDisplayed()));
+        materialButton2.perform(click());
+
+        ViewInteraction imageView = onView(
+                allOf(withId(R.id.car5),
+                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
+                        isDisplayed()));
+        SystemClock.sleep(5000);
+        imageView.check(matches(isDisplayed()));
     }
 }
