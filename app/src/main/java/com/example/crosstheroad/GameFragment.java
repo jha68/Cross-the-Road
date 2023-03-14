@@ -1,11 +1,14 @@
 package com.example.crosstheroad;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,8 +16,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class GameFragment extends Fragment {
+import java.util.Timer;
+import java.util.TimerTask;
 
+public class GameFragment extends Fragment {
     private double score;
     private int lives;
     private String name;
@@ -25,8 +30,28 @@ public class GameFragment extends Fragment {
     private int[] points = {5, 10, 15, 20};
     private int count = 0;
 
+    //variables  for vehicles
+    private float car1_1X = 600;
+    private float car2_1X = 700;
+    private float car3_1X = 400;
+    private float car3_2X = 800;
+    private float car4_1X = 500;
+    private float car5_1X = 800;
 
+    int screenHeight;
+    int screenWidth;
 
+    private ImageView car1;
+    private ImageView car1_1;
+    private ImageView car2;
+    private ImageView car2_1;
+    private ImageView car3;
+    private ImageView car3_1;
+    private ImageView car3_2;
+    private ImageView car4;
+    private ImageView car4_1;
+    private ImageView car5;
+    private ImageView car5_1;
 
     public GameFragment() {
         // Required empty public constructor
@@ -76,7 +101,98 @@ public class GameFragment extends Fragment {
         setUpSprite(view);
         setUpArrowButtons(view);
 
+        //moving vehicles initial setting
+        Timer timer = new Timer();
+        Handler handler = new Handler();
+
+        car1 = view.findViewById(R.id.car1);
+        car1_1 = view.findViewById(R.id.car1_1);
+        car2 = view.findViewById(R.id.car2);
+        car2_1 = view.findViewById(R.id.car2_1);
+        car3 = view.findViewById(R.id.car3);
+        car3_1 = view.findViewById(R.id.car3_1);
+        car3_2 = view.findViewById(R.id.car3_2);
+        car4 = view.findViewById(R.id.car4);
+        car4_1 = view.findViewById(R.id.car4_1);
+        car5 = view.findViewById(R.id.car5);
+        car5_1 = view.findViewById(R.id.car5_1);
+
+        WindowManager wm = getActivity().getWindowManager();
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        screenWidth = size.x;
+        screenHeight = size.y;
+
+        //event handler (moving vehicles)
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        changePos(9, 6,8, 12, 10);
+                    }
+                });
+            }
+        },0, 50);
     }
+    // helper function to change the vehicle's position
+    private void changePos(int speed1, int speed2, int speed3, int speed4, int speed5) {
+        car1_1X += speed1;
+        car2_1X += speed2;
+        car3_1X += speed3;
+        car3_2X += speed3;
+        car4_1X += speed4;
+        car5_1X += speed5;
+
+        if (car1.getX() > screenWidth ) {
+            car1.setX(-100.0f);
+        }
+        if (car1_1.getX() > screenWidth ) {
+            car1_1X = -100.0f;
+        }
+        if (car2.getX() > screenWidth) {
+            car2.setX(-100.0f);
+        }
+        if (car2_1.getX() > screenWidth ) {
+            car2_1X = -100.0f;
+        }
+        if (car3.getX() > screenWidth) {
+            car3.setX(-100.0f);
+        }
+        if (car3_1.getX() > screenWidth ) {
+            car3_1X = -100.0f;
+        }
+        if (car3_2.getX() > screenWidth ) {
+            car3_2X = -100.0f;
+        }
+        if (car4.getX() > screenWidth) {
+            car4.setX(-100.0f);
+        }
+        if (car4_1.getX() > screenWidth ) {
+            car4_1X = -100.0f;
+        }
+        if (car5.getX() > screenWidth) {
+            car5.setX(-100.0f);
+        }
+        if (car5_1.getX() > screenWidth ) {
+            car5_1X = -100.0f;
+        }
+        car1.setX(car1.getX() + speed1);
+        car1_1.setX(car1_1X);
+        car2.setX(car2.getX() + speed2);
+        car2_1.setX(car2_1X);
+        car3.setX(car3.getX() + speed3);
+        car3_1.setX(car3_1X);
+        car3_2.setX(car3_2X);
+        car4.setX(car4.getX() + speed4);
+        car4_1.setX(car4_1X);
+        car5.setX(car5.getX() + speed5);
+        car5_1.setX(car5_1X);
+
+    }
+
 
 
     private void setUpScoreValue(@NonNull View view) {
@@ -330,6 +446,10 @@ public class GameFragment extends Fragment {
             imageView.setImageResource(R.drawable.yellow_up);
         }
     }
+
+
+
+
 
 
 
