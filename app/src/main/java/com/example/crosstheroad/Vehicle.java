@@ -5,11 +5,11 @@
 //import android.graphics.Rect;
 //
 //public class Vehicle {
-//    private int speed;
-//    private int size;
-//    private int xPosition;
-//    private int yPosition;
-//    private Bitmap sprite;
+//    protected int speed;
+//    protected int size;
+//    protected int xPosition;
+//    protected int yPosition;
+//    protected Bitmap sprite;
 //
 //    // Constructor
 //    public Vehicle(int speed, int size, int xPosition, int yPosition, Bitmap sprite) {
