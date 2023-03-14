@@ -109,9 +109,120 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.93"
+        app:layout_constraintVertical_bias="0.93" />
+    <ImageView
+        android:id="@+id/car1"
+        android:layout_width="60dp"
+        android:layout_height="62dp"
+        android:elevation="50dp"
+        android:src="@drawable/car1"
+        app:layout_constraintBottom_toTopOf="@id/start_point"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/road4"
+        app:layout_constraintVertical_bias="0.93" />
+    <ImageView
+        android:id="@+id/car1_1"
+        android:layout_width="60dp"
+        android:layout_height="62dp"
+        android:elevation="50dp"
+        android:src="@drawable/car1"
+        app:layout_constraintBottom_toTopOf="@id/start_point"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/road4"
+        app:layout_constraintVertical_bias="0.93" />
+    <ImageView
+        android:id="@+id/car2"
+        android:layout_width="110dp"
+        android:layout_height="62dp"
+        android:elevation="50dp"
+        android:src="@drawable/car2"
+        app:layout_constraintBottom_toTopOf="@id/road5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/road3"
+        app:layout_constraintVertical_bias="0.93" />
+    <ImageView
+        android:id="@+id/car2_1"
+        android:layout_width="110dp"
+        android:layout_height="62dp"
+        android:elevation="50dp"
+        android:src="@drawable/car2"
+        app:layout_constraintBottom_toTopOf="@id/road5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/road3"
+        app:layout_constraintVertical_bias="0.93" />
+    <ImageView
+        android:id="@+id/car3"
+        android:layout_width="55dp"
+        android:layout_height="62dp"
+        android:elevation="50dp"
+        android:src="@drawable/car3"
+        app:layout_constraintBottom_toTopOf="@id/road4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/road2"
+        app:layout_constraintVertical_bias="0.93" />
+    <ImageView
+        android:id="@+id/car3_1"
+        android:layout_width="55dp"
+        android:layout_height="62dp"
+        android:elevation="50dp"
+        android:src="@drawable/car3"
+        app:layout_constraintBottom_toTopOf="@id/road4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/road2"
+        app:layout_constraintVertical_bias="0.93" />
+    <ImageView
+        android:id="@+id/car3_2"
+        android:layout_width="55dp"
+        android:layout_height="62dp"
+        android:elevation="50dp"
+        android:src="@drawable/car3"
+        app:layout_constraintBottom_toTopOf="@id/road4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/road2"
+        app:layout_constraintVertical_bias="0.93" />
 
-        />
+    <ImageView
+        android:id="@+id/car4"
+        android:layout_width="64dp"
+        android:layout_height="62dp"
+        android:elevation="50dp"
+        android:src="@drawable/car4"
+        app:layout_constraintBottom_toTopOf="@id/road3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/road1"
+        app:layout_constraintVertical_bias="0.93" />
+    <ImageView
+        android:id="@+id/car4_1"
+        android:layout_width="64dp"
+        android:layout_height="62dp"
+        android:elevation="50dp"
+        android:src="@drawable/car4"
+        app:layout_constraintBottom_toTopOf="@id/road3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/road1"
+        app:layout_constraintVertical_bias="0.93" />
+    <ImageView
+        android:id="@+id/car5"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:elevation="50dp"
+        android:src="@drawable/car5"
+        app:layout_constraintBottom_toTopOf="@id/road2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/safe_point"
+        app:layout_constraintVertical_bias="0.93" />
+    <ImageView
+        android:id="@+id/car5_1"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:elevation="50dp"
+        android:src="@drawable/car5"
+        app:layout_constraintBottom_toTopOf="@id/road2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/safe_point"
+        app:layout_constraintVertical_bias="0.93" />
+
 
     <ImageView
         android:id="@+id/up_arrow"
