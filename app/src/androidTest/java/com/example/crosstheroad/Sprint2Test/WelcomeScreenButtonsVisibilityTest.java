@@ -1,4 +1,4 @@
-package com.example.crosstheroad;
+package com.example.crosstheroad.Sprint2Test;
 
 
 import static androidx.test.espresso.Espresso.onView;
@@ -10,10 +10,15 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
+import com.example.crosstheroad.MainActivity;
+import com.example.crosstheroad.R;
+
+import org.hamcrest.Matchers;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +34,7 @@ public class WelcomeScreenButtonsVisibilityTest {
     @Test
     public void welcomeScreenButtonsVisibilityTest() {
         ViewInteraction button = onView(
-                allOf(withId(R.id.button_start), withText("START"),
+                Matchers.allOf(ViewMatchers.withId(R.id.button_start), withText("START"),
                         withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
                         isDisplayed()));
         button.check(matches(isDisplayed()));

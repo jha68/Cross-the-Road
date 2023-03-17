@@ -1,4 +1,4 @@
-package com.example.crosstheroad;
+package com.example.crosstheroad.Sprint2Test;
 
 
 import static androidx.test.espresso.Espresso.onView;
@@ -21,12 +21,17 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
+import com.example.crosstheroad.MainActivity;
+import com.example.crosstheroad.R;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
@@ -63,7 +68,7 @@ public class SelectScreenTest {
     @Test
     public void noneTest() {
         ViewInteraction materialButton = onView(
-                allOf(withId(R.id.button_start), withText("Start"),
+                Matchers.allOf(ViewMatchers.withId(R.id.button_start), withText("Start"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
