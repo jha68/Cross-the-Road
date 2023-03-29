@@ -252,6 +252,7 @@ public class GameFragment extends Fragment {
                     scoreValue.setText(scoreString);
                 }
                 character.setY(character.getY() - 155);
+                isWater(view);
                 new Handler().postDelayed(() -> {
                     character.setImageResource(landing);
                     if (character.getY() < 300) {
@@ -318,6 +319,7 @@ public class GameFragment extends Fragment {
 
             if (character.getY() < startPoint) {
                 character.setY(character.getY() + 155);
+                isWater(view);
             }
 
             new Handler().postDelayed(() -> character.setImageResource(landing), 200);
@@ -348,6 +350,7 @@ public class GameFragment extends Fragment {
 
             if (character.getX() < width - 200) {
                 character.setX(character.getX() + 155);
+                isWater(view);
             }
 
             new Handler().postDelayed(() -> character.setImageResource(landing), 200);
@@ -378,6 +381,7 @@ public class GameFragment extends Fragment {
 
             if (character.getX() > 100) {
                 character.setX(character.getX() - 155);
+                isWater(view);
             }
 
             new Handler().postDelayed(() -> character.setImageResource(landing), 200);
@@ -398,6 +402,25 @@ public class GameFragment extends Fragment {
             imageView.setImageResource(R.drawable.green_up);
         } else {
             imageView.setImageResource(R.drawable.yellow_up);
+        }
+    }
+    private void isWater(@NonNull View view) {
+        ImageView character = getView().findViewById(R.id.userCharacter);
+        ImageView startCharacter = getView().findViewById(R.id.startCharacter);
+        float characterX = character.getX();
+        float characterY = character.getY();
+        float startPointY = startCharacter.getY();
+
+        if ((0 < characterX && characterX < screenWidth) && (100 < characterY && characterY < startPointY / 2)) {
+            character.setX(startCharacter.getX());
+            character.setY(startCharacter.getY());
+            TextView livesValue = getView().findViewById(R.id.lives_value);
+            livesValue.setText(String.valueOf(--lives));
+            maxHeight = Double.POSITIVE_INFINITY;
+            score = 0;
+            TextView scoreValue = view.findViewById(R.id.score_value);
+            String scoreString = String.valueOf(score);
+            scoreValue.setText(scoreString);
         }
     }
 
