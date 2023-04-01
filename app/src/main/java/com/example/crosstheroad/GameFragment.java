@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -421,6 +422,11 @@ public class GameFragment extends Fragment {
             TextView scoreValue = view.findViewById(R.id.score_value);
             String scoreString = String.valueOf(score);
             scoreValue.setText(scoreString);
+            if (lives == 0) {
+                NavHostFragment.findNavController(GameFragment.this)
+                        .navigate(R.id.action_GameFragment_to_EndFragment);
+
+            }
         }
     }
 

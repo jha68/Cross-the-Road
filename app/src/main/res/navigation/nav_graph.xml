@@ -27,5 +27,14 @@
         android:id="@+id/gameFragment"
         android:name="com.example.crosstheroad.GameFragment"
         android:label="fragment_game"
-        tools:layout="@layout/fragment_game" />
+        tools:layout="@layout/fragment_game">
+        <action
+            android:id="@+id/action_GameFragment_to_EndFragment"
+            app:destination="@id/endFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/endFragment"
+        android:name="com.example.crosstheroad.EndFragment"
+        android:label="fragment_end"
+        tools:layout="@layout/fragment_end"/>
 </navigation>
