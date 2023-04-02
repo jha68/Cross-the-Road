@@ -119,37 +119,38 @@ public class GameFragment extends Fragment {
         display.getSize(size);
         screenWidth = size.x;
         screenHeight = size.y;
+        character = view.findViewById(R.id.userCharacter);
 
         //event handler (moving vehicles)
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                handler.post(() -> changePos(10, 6, 8, 20, 11, view));
+                handler.post(() -> changePos(10, -6, -8, 13, -8, character, view));
             }
         }, 0, 40);
     }
     // helper function to change the vehicle's position
-    private void changePos(int speed1, int speed2, int speed3, int speed4, int speed5, @NonNull View view) {
+    private void changePos(int speed1, int speed2, int speed3, int speed4, int speed5, ImageView character, @NonNull View view) {
         if (car1 != null && car1.getX() > screenWidth) {
             car1.setX(-car1.getWidth());
         }
         if (car11 != null && car11.getX() > screenWidth) {
             car11.setX(-car1.getWidth());
         }
-        if (car2 != null && car2.getX() > screenWidth) {
-            car2.setX(-car2.getWidth());
+        if (car2 != null && car2.getX() + car2.getWidth() < 0) {
+            car2.setX(screenWidth + car2.getWidth());
         }
-        if (car21 != null && car21.getX() > screenWidth) {
-            car21.setX(-car2.getWidth());
+        if (car21 != null && car21.getX() + car21.getWidth() < 0) {
+            car21.setX(screenWidth + car21.getWidth());
         }
-        if (car3 != null && car3.getX() > screenWidth) {
-            car3.setX(-car3.getWidth());
+        if (car3 != null && car3.getX() + car3.getWidth() < 0) {
+            car3.setX(screenWidth + car3.getWidth());
         }
-        if (car31 != null && car31.getX() > screenWidth) {
-            car31.setX(-car3.getWidth());
+        if (car31 != null && car31.getX() + car31.getWidth() < 0) {
+            car31.setX(screenWidth + car3.getWidth());
         }
-        if (car32 != null && car32.getX() > screenWidth) {
-            car32.setX(-car3.getWidth());
+        if (car32 != null && car32.getX() + car32.getWidth() < 0) {
+            car32.setX(screenWidth + car3.getWidth());
         }
         if (car4 != null && car4.getX() > screenWidth) {
             car4.setX(-car4.getWidth());
@@ -157,11 +158,11 @@ public class GameFragment extends Fragment {
         if (car41 != null && car41.getX() > screenWidth) {
             car41.setX(-car4.getWidth());
         }
-        if (car5 != null && car5.getX() > screenWidth) {
-            car5.setX(-car5.getWidth());
+        if (car5 != null && car5.getX() + car5.getWidth() < 0) {
+            car5.setX(screenWidth + car5.getWidth());
         }
-        if (car51 != null && car51.getX() > screenWidth) {
-            car51.setX(-car5.getWidth());
+        if (car51 != null && car51.getX() + car51.getWidth() < 0) {
+            car51.setX(screenWidth + car51.getWidth());
         }
         car1.setX(car1.getX() + speed1);
         car11.setX(car11.getX() + speed1);
@@ -174,14 +175,7 @@ public class GameFragment extends Fragment {
         car41.setX(car41.getX() + speed4);
         car5.setX(car5.getX() + speed5);
         car51.setX(car51.getX() + speed5);
-        character = view.findViewById(R.id.userCharacter);
-        if (getSpriteInt() == 0) {
-            character.setImageResource(R.drawable.blue_up1);
-        } else if (getSpriteInt() == 1) {
-            character.setImageResource(R.drawable.green_up1);
-        } else {
-            character.setImageResource(R.drawable.yellow_up1);
-        }
+
 
         if (isCollidingWithCars(character, car1) ||
                 isCollidingWithCars(character, car11) ||
@@ -209,6 +203,13 @@ public class GameFragment extends Fragment {
 
                 // Respawn the character at the starting position
                 ImageView reset = view.findViewById(R.id.startCharacter);
+                if (getSpriteInt() == 0) {
+                    character.setImageResource(R.drawable.blue_up);
+                } else if (getSpriteInt() == 1) {
+                    character.setImageResource(R.drawable.green_up);
+                } else {
+                    character.setImageResource(R.drawable.yellow_up);
+                }
                 character.setX(reset.getX());
                 character.setY(reset.getY());
             }
@@ -310,7 +311,7 @@ public class GameFragment extends Fragment {
                     String scoreString = String.valueOf(score);
                     scoreValue.setText(scoreString);
                 }
-                character.setY(character.getY() - 155);
+                character.setY(character.getY() - 160);
                 isWater(view);
                 new Handler().postDelayed(() -> {
                     character.setImageResource(landing);
@@ -377,7 +378,7 @@ public class GameFragment extends Fragment {
             }
 
             if (character.getY() < startPoint) {
-                character.setY(character.getY() + 155);
+                character.setY(character.getY() + 160);
                 isWater(view);
             }
 
@@ -408,7 +409,7 @@ public class GameFragment extends Fragment {
             }
 
             if (character.getX() < width - 200) {
-                character.setX(character.getX() + 155);
+                character.setX(character.getX() + 100);
                 isWater(view);
             }
 
@@ -439,7 +440,7 @@ public class GameFragment extends Fragment {
             }
 
             if (character.getX() > 100) {
-                character.setX(character.getX() - 155);
+                character.setX(character.getX() - 100);
                 isWater(view);
             }
 
@@ -548,4 +549,11 @@ public class GameFragment extends Fragment {
         this.spriteInt = spriteInt;
     }
 
+    public void setCharacter(ImageView character) {
+        this.character = character;
+    }
+
+    public ImageView getCharacter() {
+        return character;
+    }
 }
