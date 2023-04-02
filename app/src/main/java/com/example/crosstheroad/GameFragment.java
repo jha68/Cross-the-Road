@@ -2,6 +2,7 @@ package com.example.crosstheroad;
 
 import android.content.Context;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Display;
@@ -21,6 +22,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class GameFragment extends Fragment {
+    private ImageView character;
     private double score;
     private int lives;
     private String name;
@@ -122,43 +124,43 @@ public class GameFragment extends Fragment {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                handler.post(() -> changePos(15, 12, 16, 20, 22));
+                handler.post(() -> changePos(10, 6, 8, 20, 11, view));
             }
         }, 0, 40);
     }
     // helper function to change the vehicle's position
-    private void changePos(int speed1, int speed2, int speed3, int speed4, int speed5) {
-        if (car1.getX() > screenWidth) {
+    private void changePos(int speed1, int speed2, int speed3, int speed4, int speed5, @NonNull View view) {
+        if (car1 != null && car1.getX() > screenWidth) {
             car1.setX(-car1.getWidth());
         }
-        if (car11.getX() > screenWidth) {
+        if (car11 != null && car11.getX() > screenWidth) {
             car11.setX(-car1.getWidth());
         }
-        if (car2.getX() > screenWidth) {
+        if (car2 != null && car2.getX() > screenWidth) {
             car2.setX(-car2.getWidth());
         }
-        if (car21.getX() > screenWidth) {
+        if (car21 != null && car21.getX() > screenWidth) {
             car21.setX(-car2.getWidth());
         }
-        if (car3.getX() > screenWidth) {
+        if (car3 != null && car3.getX() > screenWidth) {
             car3.setX(-car3.getWidth());
         }
-        if (car31.getX() > screenWidth) {
+        if (car31 != null && car31.getX() > screenWidth) {
             car31.setX(-car3.getWidth());
         }
-        if (car32.getX() > screenWidth) {
+        if (car32 != null && car32.getX() > screenWidth) {
             car32.setX(-car3.getWidth());
         }
-        if (car4.getX() > screenWidth) {
+        if (car4 != null && car4.getX() > screenWidth) {
             car4.setX(-car4.getWidth());
         }
-        if (car41.getX() > screenWidth) {
+        if (car41 != null && car41.getX() > screenWidth) {
             car41.setX(-car4.getWidth());
         }
-        if (car5.getX() > screenWidth) {
+        if (car5 != null && car5.getX() > screenWidth) {
             car5.setX(-car5.getWidth());
         }
-        if (car51.getX() > screenWidth) {
+        if (car51 != null && car51.getX() > screenWidth) {
             car51.setX(-car5.getWidth());
         }
         car1.setX(car1.getX() + speed1);
@@ -172,8 +174,62 @@ public class GameFragment extends Fragment {
         car41.setX(car41.getX() + speed4);
         car5.setX(car5.getX() + speed5);
         car51.setX(car51.getX() + speed5);
+        character = view.findViewById(R.id.userCharacter);
+        if (getSpriteInt() == 0) {
+            character.setImageResource(R.drawable.blue_up1);
+        } else if (getSpriteInt() == 1) {
+            character.setImageResource(R.drawable.green_up1);
+        } else {
+            character.setImageResource(R.drawable.yellow_up1);
+        }
+
+        if (isCollidingWithCars(character, car1) ||
+                isCollidingWithCars(character, car11) ||
+                isCollidingWithCars(character, car2) ||
+                isCollidingWithCars(character, car21) ||
+                isCollidingWithCars(character, car3) ||
+                isCollidingWithCars(character, car31) ||
+                isCollidingWithCars(character, car32) ||
+                isCollidingWithCars(character, car4) ||
+                isCollidingWithCars(character, car41) ||
+                isCollidingWithCars(character, car5) ||
+                isCollidingWithCars(character, car51)) {
+            // Decrement player lives and reset score and position
+
+            TextView livesValue = view.findViewById(R.id.lives_value);
+            if (getLives() == 1) {
+                NavHostFragment.findNavController(GameFragment.this)
+                        .navigate(R.id.action_GameFragment_to_EndFragment);
+            } else {
+                setLives(getArguments().getInt("lives") - (++count));
+                String livesString = String.valueOf(getLives());
+                livesValue.setText(livesString);
+                setScore(0);
+                maxHeight = Double.POSITIVE_INFINITY;
+
+                // Respawn the character at the starting position
+                ImageView reset = view.findViewById(R.id.startCharacter);
+                character.setX(reset.getX());
+                character.setY(reset.getY());
+            }
+
+        }
+
+
+
 
     }
+
+    private boolean isCollidingWithCars(ImageView character, ImageView car) {
+        Rect characterRect = new Rect();
+        character.getHitRect(characterRect);
+
+        Rect carRect = new Rect();
+        car.getHitRect(carRect);
+
+        return characterRect.intersect(carRect);
+    }
+
 
 
 
@@ -213,13 +269,15 @@ public class GameFragment extends Fragment {
         setUpLeftButton(view);
     }
 
+
+
     private void setUpUpButton(@NonNull View view) {
         ImageView upArrowButton = view.findViewById(R.id.up_arrow);
         upArrowButton.setOnClickListener(v -> {
             // Your code here
             // This code will be executed when the ImageView is clicked
 
-            ImageView character = view.findViewById(R.id.userCharacter);
+            character = view.findViewById(R.id.userCharacter);
             ImageView goal1 = view.findViewById(R.id.goal_1);
             ImageView goal2 = view.findViewById(R.id.goal_2);
             ImageView goal3 = view.findViewById(R.id.goal_3);
@@ -305,7 +363,7 @@ public class GameFragment extends Fragment {
             View rootView = view.getRootView();
             ImageView startCharacter = view.findViewById(R.id.startCharacter);
             int startPoint = (int) startCharacter.getY();
-            ImageView character = view.findViewById(R.id.userCharacter);
+            character = view.findViewById(R.id.userCharacter);
             int landing;
             if (getSpriteInt() == 0) {
                 character.setImageResource(R.drawable.blue_down1);
@@ -336,7 +394,7 @@ public class GameFragment extends Fragment {
             // This code will be executed when the ImageView is clicked
             View rootView = view.getRootView();
             int width = rootView.getWidth();
-            ImageView character = view.findViewById(R.id.userCharacter);
+            character = view.findViewById(R.id.userCharacter);
             int landing;
             if (getSpriteInt() == 0) {
                 character.setImageResource(R.drawable.blue_right1);
@@ -367,7 +425,7 @@ public class GameFragment extends Fragment {
         leftArrowButton.setOnClickListener(v -> {
             // Your code here
             // This code will be executed when the ImageView is clicked
-            ImageView character = view.findViewById(R.id.userCharacter);
+            character = view.findViewById(R.id.userCharacter);
             int landing;
             if (getSpriteInt() == 0) {
                 character.setImageResource(R.drawable.blue_left1);
