@@ -36,5 +36,9 @@
         android:id="@+id/endFragment"
         android:name="com.example.crosstheroad.EndFragment"
         android:label="fragment_end"
-        tools:layout="@layout/fragment_end"/>
+        tools:layout="@layout/fragment_end">
+        <action
+            android:id="@+id/action_endFragment_to_SelectFragment"
+            app:destination="@id/SelectFragment" />
+    </fragment>
 </navigation>
