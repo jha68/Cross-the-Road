@@ -191,19 +191,10 @@ public class GameFragment extends Fragment {
             // Decrement player lives and reset score and position
 
             TextView livesValue = view.findViewById(R.id.lives_value);
-            if (getLives() == 1) {
+            if (lives == 0) {
                 NavHostFragment.findNavController(GameFragment.this)
                         .navigate(R.id.action_GameFragment_to_EndFragment);
             } else {
-                setLives(getArguments().getInt("lives") - (++count));
-                String livesString = String.valueOf(getLives());
-                livesValue.setText(livesString);
-                score = 0;
-                TextView scoreValue = view.findViewById(R.id.score_value);
-                String scoreString = String.valueOf(score);
-                scoreValue.setText(scoreString);
-                maxHeight = Double.POSITIVE_INFINITY;
-
                 // Respawn the character at the starting position
                 ImageView reset = view.findViewById(R.id.startCharacter);
                 if (getSpriteInt() == 0) {
@@ -215,6 +206,14 @@ public class GameFragment extends Fragment {
                 }
                 character.setX(reset.getX());
                 character.setY(reset.getY());
+                setLives(getLives() - 1);
+                String livesString = String.valueOf(getLives());
+                livesValue.setText(livesString);
+                score = 0;
+                TextView scoreValue = view.findViewById(R.id.score_value);
+                String scoreString = String.valueOf(score);
+                scoreValue.setText(scoreString);
+                maxHeight = Double.POSITIVE_INFINITY;
             }
 
         }
@@ -340,11 +339,11 @@ public class GameFragment extends Fragment {
                         goal3.setImageResource(R.drawable.catched_frog);
                     } else if (character.getX() >= goal4.getX()
                             && character.getX() + character.getWidth()
-                                    <= goal4.getX() + goalWidth) {
+                            <= goal4.getX() + goalWidth) {
                         goal4.setImageResource(R.drawable.catched_frog);
                     } else if (character.getX() >= goal5.getX()
                             && character.getX() + character.getWidth()
-                                    <= goal5.getX() + goalWidth) {
+                            <= goal5.getX() + goalWidth) {
                         goal5.setImageResource(R.drawable.catched_frog);
                     } else {
                         TextView livesValue = view.findViewById(R.id.lives_value);
