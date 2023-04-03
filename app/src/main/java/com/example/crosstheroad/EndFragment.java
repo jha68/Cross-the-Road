@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -15,6 +16,8 @@ public class EndFragment extends Fragment {
 
     private FragmentEndBinding binding;
 
+    private double finalScore;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -25,6 +28,12 @@ public class EndFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        TextView scoreDisplay = view.findViewById(R.id.finalScore);
+        setScore(getArguments().getDouble("user_endscore"));
+        String scoreString = String.valueOf(getScore());
+        scoreDisplay.setText(scoreString);
+
 
         // Set up OnClickListener for the restart button
         binding.button.setOnClickListener(new View.OnClickListener() {
@@ -51,4 +60,8 @@ public class EndFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    public double getScore() { return finalScore; }
+
+    public void setScore(double finalScore) { this.finalScore = finalScore; }
 }
