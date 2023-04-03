@@ -198,7 +198,10 @@ public class GameFragment extends Fragment {
                 setLives(getArguments().getInt("lives") - (++count));
                 String livesString = String.valueOf(getLives());
                 livesValue.setText(livesString);
-                setScore(0);
+                score = 0;
+                TextView scoreValue = view.findViewById(R.id.score_value);
+                String scoreString = String.valueOf(score);
+                scoreValue.setText(scoreString);
                 maxHeight = Double.POSITIVE_INFINITY;
 
                 // Respawn the character at the starting position
