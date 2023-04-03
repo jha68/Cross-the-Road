@@ -142,4 +142,8 @@ public class GameFragmentTest {
         Assert.assertTrue("The character does not go over" +
                 "the screen", gameFragment.onCreateView().character.getX() == 600);
     }
+    @Test
+    public void vehicleCheck() {
+        Assert.assertFalse("The vehicle exists", );
+    }
 }
