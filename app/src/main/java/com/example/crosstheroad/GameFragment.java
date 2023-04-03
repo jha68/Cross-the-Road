@@ -337,11 +337,11 @@ public class GameFragment extends Fragment {
                         goal3.setImageResource(R.drawable.catched_frog);
                     } else if (character.getX() >= goal4.getX()
                             && character.getX() + character.getWidth()
-                                    <= goal4.getX() + goalWidth) {
+                            <= goal4.getX() + goalWidth) {
                         goal4.setImageResource(R.drawable.catched_frog);
                     } else if (character.getX() >= goal5.getX()
                             && character.getX() + character.getWidth()
-                                    <= goal5.getX() + goalWidth) {
+                            <= goal5.getX() + goalWidth) {
                         goal5.setImageResource(R.drawable.catched_frog);
                     } else {
                         TextView livesValue = view.findViewById(R.id.lives_value);
