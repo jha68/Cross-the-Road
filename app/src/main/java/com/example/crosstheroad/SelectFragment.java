@@ -24,8 +24,8 @@ public class SelectFragment extends Fragment {
 
     // frog = 0, dog = 1,cat = 2;
 
-
     private Fragment fragment = new Fragment();
+
 
     @Override
     public View onCreateView(

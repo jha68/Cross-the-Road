@@ -18,6 +18,12 @@ public class EndFragment extends Fragment {
 
     private double finalScore;
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        finalScore = 0;
+    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -29,10 +35,13 @@ public class EndFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView scoreDisplay = view.findViewById(R.id.finalScore);
+        //Display final score
+       /*  TextView scoreDisplay = view.findViewById(R.id.finalScore);
         setScore(getArguments().getDouble("user_endscore"));
         String scoreString = String.valueOf(getScore());
-        scoreDisplay.setText(scoreString);
+        scoreDisplay.setText(scoreString); */
+
+       // setUpFinalScore(view);
 
 
         // Set up OnClickListener for the restart button
@@ -59,6 +68,13 @@ public class EndFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void setUpFinalScore(@NonNull View view){
+        TextView scoreDisplay = view.findViewById(R.id.finalScore);
+        setScore(getArguments().getDouble("user_endscore"));
+        String scoreString = String.valueOf(getScore());
+        scoreDisplay.setText(scoreString);
     }
 
     public double getScore() { return finalScore; }

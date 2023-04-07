@@ -49,6 +49,8 @@ public class GameFragment extends Fragment {
     private ImageView car5;
     private ImageView car51;
 
+    Bundle bundle = new Bundle();
+
     public GameFragment() {
         // Required empty public constructor
     }
@@ -72,7 +74,6 @@ public class GameFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
         // Displaying the number of life
         TextView livesValue = view.findViewById(R.id.lives_value);
@@ -176,7 +177,6 @@ public class GameFragment extends Fragment {
         car5.setX(car5.getX() + speed5);
         car51.setX(car51.getX() + speed5);
 
-
         if (isCollidingWithCars(character, car1) ||
                 isCollidingWithCars(character, car11) ||
                 isCollidingWithCars(character, car2) ||
@@ -215,12 +215,7 @@ public class GameFragment extends Fragment {
                 scoreValue.setText(scoreString);
                 maxHeight = Double.POSITIVE_INFINITY;
             }
-
         }
-
-
-
-
     }
 
     private boolean isCollidingWithCars(ImageView character, ImageView car) {
@@ -232,9 +227,6 @@ public class GameFragment extends Fragment {
 
         return characterRect.intersect(carRect);
     }
-
-
-
 
     private void setUpScoreValue(@NonNull View view) {
         // Default score
@@ -271,8 +263,6 @@ public class GameFragment extends Fragment {
         setUpRightButton(view);
         setUpLeftButton(view);
     }
-
-
 
     private void setUpUpButton(@NonNull View view) {
         ImageView upArrowButton = view.findViewById(R.id.up_arrow);
@@ -390,7 +380,6 @@ public class GameFragment extends Fragment {
     }
 
     private void setUpRightButton(@NonNull View view) {
-
         ImageView rightArrowButton = view.findViewById(R.id.right_arrow);
         rightArrowButton.setOnClickListener(v -> {
             // Your code here
@@ -417,13 +406,9 @@ public class GameFragment extends Fragment {
 
             new Handler().postDelayed(() -> character.setImageResource(landing), 200);
         });
-
-
-
     }
 
     private void setUpLeftButton(@NonNull View view) {
-
         ImageView leftArrowButton = view.findViewById(R.id.left_arrow);
         leftArrowButton.setOnClickListener(v -> {
             // Your code here
@@ -487,15 +472,11 @@ public class GameFragment extends Fragment {
                 NavHostFragment.findNavController(GameFragment.this)
                         .navigate(R.id.action_GameFragment_to_EndFragment);
 
+                // Pass score to the EndFragment
+                bundle.putDouble("user_endscore", score);
             }
         }
     }
-
-
-
-
-
-
 
     public double getScore() {
         return score;
