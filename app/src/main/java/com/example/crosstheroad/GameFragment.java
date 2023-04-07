@@ -49,7 +49,7 @@ public class GameFragment extends Fragment {
     private ImageView car5;
     private ImageView car51;
 
-    Bundle bundle = new Bundle();
+    private Bundle bundle = new Bundle();
 
     public GameFragment() {
         // Required empty public constructor
@@ -131,7 +131,8 @@ public class GameFragment extends Fragment {
         }, 0, 40);
     }
     // helper function to change the vehicle's position
-    private void changePos(int speed1, int speed2, int speed3, int speed4, int speed5, ImageView character, @NonNull View view) {
+    private void changePos(int speed1, int speed2, int speed3, int speed4,
+                           int speed5, ImageView character, @NonNull View view) {
         if (car1 != null && car1.getX() > screenWidth) {
             car1.setX(-car1.getWidth());
         }
@@ -177,16 +178,26 @@ public class GameFragment extends Fragment {
         car5.setX(car5.getX() + speed5);
         car51.setX(car51.getX() + speed5);
 
-        if (isCollidingWithCars(character, car1) ||
-                isCollidingWithCars(character, car11) ||
-                isCollidingWithCars(character, car2) ||
-                isCollidingWithCars(character, car21) ||
-                isCollidingWithCars(character, car3) ||
-                isCollidingWithCars(character, car31) ||
-                isCollidingWithCars(character, car32) ||
-                isCollidingWithCars(character, car4) ||
-                isCollidingWithCars(character, car41) ||
-                isCollidingWithCars(character, car5) ||
+        if (isCollidingWithCars(character, car1)
+                ||
+                isCollidingWithCars(character, car11)
+                ||
+                isCollidingWithCars(character, car2)
+                ||
+                isCollidingWithCars(character, car21)
+                ||
+                isCollidingWithCars(character, car3)
+                ||
+                isCollidingWithCars(character, car31)
+                ||
+                isCollidingWithCars(character, car32)
+                ||
+                isCollidingWithCars(character, car4)
+                ||
+                isCollidingWithCars(character, car41)
+                ||
+                isCollidingWithCars(character, car5)
+                ||
                 isCollidingWithCars(character, car51)) {
             // Decrement player lives and reset score and position
 
@@ -458,7 +469,8 @@ public class GameFragment extends Fragment {
         float characterY = character.getY();
         float startPointY = startCharacter.getY();
 
-        if ((0 < characterX && characterX < screenWidth) && (100 < characterY && characterY < startPointY / 2)) {
+        if ((0 < characterX && characterX < screenWidth)
+                && (100 < characterY && characterY < startPointY / 2)) {
             character.setX(startCharacter.getX());
             character.setY(startCharacter.getY());
             TextView livesValue = getView().findViewById(R.id.lives_value);

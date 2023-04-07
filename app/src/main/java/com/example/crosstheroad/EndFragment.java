@@ -36,12 +36,12 @@ public class EndFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //Display final score
-       /*  TextView scoreDisplay = view.findViewById(R.id.finalScore);
+        /*  TextView scoreDisplay = view.findViewById(R.id.finalScore);
         setScore(getArguments().getDouble("user_endscore"));
         String scoreString = String.valueOf(getScore());
         scoreDisplay.setText(scoreString); */
 
-       // setUpFinalScore(view); Activated needed after game complete
+        // setUpFinalScore(view); Activated needed after game complete
 
 
         // Set up OnClickListener for the restart button
@@ -70,14 +70,16 @@ public class EndFragment extends Fragment {
         binding = null;
     }
 
-    private void setUpFinalScore(@NonNull View view){
+    private void setUpFinalScore(@NonNull View view) {
         TextView scoreDisplay = view.findViewById(R.id.finalScore);
         setScore(getArguments().getDouble("user_endscore"));
         String scoreString = String.valueOf(getScore());
         scoreDisplay.setText(scoreString);
     }
 
-    public double getScore() { return finalScore; }
+    public double getScore() {
+        return finalScore; }
 
-    public void setScore(double finalScore) { this.finalScore = finalScore; }
+    public void setScore(double finalScore) {
+        this.finalScore = finalScore; }
 }
