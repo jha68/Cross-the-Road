@@ -41,7 +41,7 @@ public class EndFragment extends Fragment {
         String scoreString = String.valueOf(getScore());
         scoreDisplay.setText(scoreString); */
 
-       // setUpFinalScore(view); Activated needed
+       // setUpFinalScore(view); Activated needed after game completed
 
 
         // Set up OnClickListener for the restart button
