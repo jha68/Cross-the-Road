@@ -1,6 +1,5 @@
 package com.example.crosstheroad.Sprint4Test;
 
-
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
@@ -22,7 +21,6 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
@@ -32,16 +30,14 @@ import com.example.crosstheroad.R;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
-import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class VehicleCollisionTest {
+public class WaterCollisionTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
@@ -67,9 +63,9 @@ public class VehicleCollisionTest {
     }
 
     @Test
-    public void vehicleEasyCollisionTest() {
+    public void waterEasyCollisionTest() {
         ViewInteraction materialButton = onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.button_start), withText("Start"),
+                allOf(withId(R.id.button_start), withText("Start"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
@@ -129,6 +125,8 @@ public class VehicleCollisionTest {
                         isDisplayed()));
         materialButton2.perform(click());
 
+        SystemClock.sleep(2300);
+
         ViewInteraction appCompatImageView = onView(
                 allOf(withId(R.id.up_arrow),
                         childAtPosition(
@@ -139,92 +137,50 @@ public class VehicleCollisionTest {
                         isDisplayed()));
         appCompatImageView.perform(click());
 
-        SystemClock.sleep(5000);
+        appCompatImageView.perform(click());
+
+        appCompatImageView.perform(click());
 
         ViewInteraction appCompatImageView2 = onView(
-                allOf(withId(R.id.up_arrow),
+                allOf(withId(R.id.left_arrow),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
                                         0),
-                                21),
+                                24),
                         isDisplayed()));
         appCompatImageView2.perform(click());
-
-        SystemClock.sleep(5000);
+        appCompatImageView2.perform(click());
+        appCompatImageView2.perform(click());
+        SystemClock.sleep(1000);
+        appCompatImageView.perform(click());
 
         ViewInteraction appCompatImageView3 = onView(
-                allOf(withId(R.id.up_arrow),
+                allOf(withId(R.id.right_arrow),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
                                         0),
-                                21),
+                                23),
                         isDisplayed()));
         appCompatImageView3.perform(click());
+        appCompatImageView3.perform(click());
+        appCompatImageView.perform(click());
+        appCompatImageView.perform(click());
+        appCompatImageView.perform(click());
 
-        SystemClock.sleep(5000);
-
-        ViewInteraction appCompatImageView4 = onView(
-                allOf(withId(R.id.up_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                21),
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.lives_value), withText("6"),
+                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
                         isDisplayed()));
-        appCompatImageView4.perform(click());
+        textView.check(matches(withText("6")));
 
-        SystemClock.sleep(5000);
-
-        ViewInteraction appCompatImageView5 = onView(
-                allOf(withId(R.id.up_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                21),
-                        isDisplayed()));
-        appCompatImageView5.perform(click());
-
-        SystemClock.sleep(5000);
-
-        ViewInteraction appCompatImageView6 = onView(
-                allOf(withId(R.id.up_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                21),
-                        isDisplayed()));
-        appCompatImageView6.perform(click());
-
-        SystemClock.sleep(5000);
-
-        ViewInteraction appCompatImageView7 = onView(
-                allOf(withId(R.id.up_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                21),
-                        isDisplayed()));
-        appCompatImageView7.perform(click());
-
-        SystemClock.sleep(5000);
-
-        ViewInteraction viewGroup = onView(
-                allOf(withParent(allOf(withId(R.id.nav_host_fragment_content_main),
-                                withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class)))),
-                        isDisplayed()));
-        viewGroup.check(matches(isDisplayed()));
     }
 
-    // Left or Right does not cause collision
     @Test
-    public void vehicleEasyCollisionTest2() {
+    public void waterEasyCollisionTest2() {
         ViewInteraction materialButton = onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.button_start), withText("Start"),
+                allOf(withId(R.id.button_start), withText("Start"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
@@ -284,6 +240,8 @@ public class VehicleCollisionTest {
                         isDisplayed()));
         materialButton2.perform(click());
 
+        SystemClock.sleep(2300);
+
         ViewInteraction appCompatImageView = onView(
                 allOf(withId(R.id.up_arrow),
                         childAtPosition(
@@ -294,28 +252,11 @@ public class VehicleCollisionTest {
                         isDisplayed()));
         appCompatImageView.perform(click());
 
-        ViewInteraction appCompatImageView8 = onView(
-                allOf(withId(R.id.right_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                23),
-                        isDisplayed()));
-        appCompatImageView8.perform(click());
+        appCompatImageView.perform(click());
 
-        ViewInteraction appCompatImageView10 = onView(
-                allOf(withId(R.id.right_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                23),
-                        isDisplayed()));
-        appCompatImageView10.perform(click());
+        appCompatImageView.perform(click());
 
-
-        ViewInteraction appCompatImageView9 = onView(
+        ViewInteraction appCompatImageView2 = onView(
                 allOf(withId(R.id.left_arrow),
                         childAtPosition(
                                 childAtPosition(
@@ -323,91 +264,40 @@ public class VehicleCollisionTest {
                                         0),
                                 24),
                         isDisplayed()));
-        appCompatImageView9.perform(click());
-
-        ViewInteraction appCompatImageView2 = onView(
-                allOf(withId(R.id.up_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                21),
-                        isDisplayed()));
         appCompatImageView2.perform(click());
-
-        SystemClock.sleep(5000);
+        appCompatImageView2.perform(click());
+        appCompatImageView2.perform(click());
+        SystemClock.sleep(1000);
+        appCompatImageView.perform(click());
 
         ViewInteraction appCompatImageView3 = onView(
-                allOf(withId(R.id.up_arrow),
+                allOf(withId(R.id.right_arrow),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
                                         0),
-                                21),
+                                23),
                         isDisplayed()));
         appCompatImageView3.perform(click());
+        appCompatImageView3.perform(click());
+        appCompatImageView.perform(click());
+        appCompatImageView.perform(click());
+        appCompatImageView3.perform(click());
+        appCompatImageView3.perform(click());
+        appCompatImageView.perform(click());
 
-        SystemClock.sleep(5000);
-
-        ViewInteraction appCompatImageView4 = onView(
-                allOf(withId(R.id.up_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                21),
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.lives_value), withText("6"),
+                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
                         isDisplayed()));
-        appCompatImageView4.perform(click());
+        textView.check(matches(withText("6")));
 
-        SystemClock.sleep(5000);
-
-        ViewInteraction appCompatImageView5 = onView(
-                allOf(withId(R.id.up_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                21),
-                        isDisplayed()));
-        appCompatImageView5.perform(click());
-
-        SystemClock.sleep(5000);
-
-        ViewInteraction appCompatImageView6 = onView(
-                allOf(withId(R.id.up_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                21),
-                        isDisplayed()));
-        appCompatImageView6.perform(click());
-
-        SystemClock.sleep(5000);
-
-        ViewInteraction appCompatImageView7 = onView(
-                allOf(withId(R.id.up_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                21),
-                        isDisplayed()));
-        appCompatImageView7.perform(click());
-
-        SystemClock.sleep(5000);
-
-        ViewInteraction viewGroup = onView(
-                allOf(withParent(allOf(withId(R.id.nav_host_fragment_content_main),
-                                withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class)))),
-                        isDisplayed()));
-        viewGroup.check(matches(isDisplayed()));
     }
 
     @Test
-    public void vehicleNormalCollisionTest() {
+    public void waterNormalCollisionTest() {
         ViewInteraction materialButton = onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.button_start), withText("Start"),
+                allOf(withId(R.id.button_start), withText("Start"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
@@ -467,6 +357,8 @@ public class VehicleCollisionTest {
                         isDisplayed()));
         materialButton2.perform(click());
 
+        SystemClock.sleep(2300);
+
         ViewInteraction appCompatImageView = onView(
                 allOf(withId(R.id.up_arrow),
                         childAtPosition(
@@ -477,68 +369,50 @@ public class VehicleCollisionTest {
                         isDisplayed()));
         appCompatImageView.perform(click());
 
-        SystemClock.sleep(5000);
+        appCompatImageView.perform(click());
+
+        appCompatImageView.perform(click());
 
         ViewInteraction appCompatImageView2 = onView(
-                allOf(withId(R.id.up_arrow),
+                allOf(withId(R.id.left_arrow),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
                                         0),
-                                21),
+                                24),
                         isDisplayed()));
         appCompatImageView2.perform(click());
-
-        SystemClock.sleep(5000);
+        appCompatImageView2.perform(click());
+        appCompatImageView2.perform(click());
+        SystemClock.sleep(1000);
+        appCompatImageView.perform(click());
 
         ViewInteraction appCompatImageView3 = onView(
-                allOf(withId(R.id.up_arrow),
+                allOf(withId(R.id.right_arrow),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
                                         0),
-                                21),
+                                23),
                         isDisplayed()));
         appCompatImageView3.perform(click());
+        appCompatImageView3.perform(click());
+        appCompatImageView.perform(click());
+        appCompatImageView.perform(click());
+        appCompatImageView.perform(click());
 
-        SystemClock.sleep(5000);
-
-        ViewInteraction appCompatImageView4 = onView(
-                allOf(withId(R.id.up_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                21),
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.lives_value), withText("4"),
+                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
                         isDisplayed()));
-        appCompatImageView4.perform(click());
+        textView.check(matches(withText("4")));
 
-        SystemClock.sleep(5000);
-
-        ViewInteraction appCompatImageView5 = onView(
-                allOf(withId(R.id.up_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                21),
-                        isDisplayed()));
-        appCompatImageView5.perform(click());
-
-        SystemClock.sleep(5000);
-
-        ViewInteraction viewGroup = onView(
-                allOf(withParent(allOf(withId(R.id.nav_host_fragment_content_main),
-                                withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class)))),
-                        isDisplayed()));
-        viewGroup.check(matches(isDisplayed()));
     }
 
-    // Left or Right does not cause collision
     @Test
-    public void vehicleNormalCollisionTest2() {
+    public void waterNormalCollisionTest2() {
         ViewInteraction materialButton = onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.button_start), withText("Start"),
+                allOf(withId(R.id.button_start), withText("Start"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
@@ -598,36 +472,7 @@ public class VehicleCollisionTest {
                         isDisplayed()));
         materialButton2.perform(click());
 
-        ViewInteraction appCompatImageView8 = onView(
-                allOf(withId(R.id.right_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                23),
-                        isDisplayed()));
-        appCompatImageView8.perform(click());
-
-        ViewInteraction appCompatImageView10 = onView(
-                allOf(withId(R.id.right_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                23),
-                        isDisplayed()));
-        appCompatImageView10.perform(click());
-
-
-        ViewInteraction appCompatImageView9 = onView(
-                allOf(withId(R.id.left_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                24),
-                        isDisplayed()));
-        appCompatImageView9.perform(click());
+        SystemClock.sleep(2300);
 
         ViewInteraction appCompatImageView = onView(
                 allOf(withId(R.id.up_arrow),
@@ -639,67 +484,52 @@ public class VehicleCollisionTest {
                         isDisplayed()));
         appCompatImageView.perform(click());
 
-        SystemClock.sleep(5000);
+        appCompatImageView.perform(click());
+
+        appCompatImageView.perform(click());
 
         ViewInteraction appCompatImageView2 = onView(
-                allOf(withId(R.id.up_arrow),
+                allOf(withId(R.id.left_arrow),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
                                         0),
-                                21),
+                                24),
                         isDisplayed()));
         appCompatImageView2.perform(click());
-
-        SystemClock.sleep(5000);
+        appCompatImageView2.perform(click());
+        appCompatImageView2.perform(click());
+        SystemClock.sleep(1000);
+        appCompatImageView.perform(click());
 
         ViewInteraction appCompatImageView3 = onView(
-                allOf(withId(R.id.up_arrow),
+                allOf(withId(R.id.right_arrow),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
                                         0),
-                                21),
+                                23),
                         isDisplayed()));
         appCompatImageView3.perform(click());
+        appCompatImageView3.perform(click());
+        appCompatImageView.perform(click());
+        appCompatImageView.perform(click());
+        appCompatImageView3.perform(click());
+        appCompatImageView3.perform(click());
+        appCompatImageView.perform(click());
 
-        SystemClock.sleep(5000);
-
-        ViewInteraction appCompatImageView4 = onView(
-                allOf(withId(R.id.up_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                21),
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.lives_value), withText("4"),
+                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
                         isDisplayed()));
-        appCompatImageView4.perform(click());
+        textView.check(matches(withText("4")));
 
-        SystemClock.sleep(5000);
-
-        ViewInteraction appCompatImageView5 = onView(
-                allOf(withId(R.id.up_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                21),
-                        isDisplayed()));
-        appCompatImageView5.perform(click());
-
-        SystemClock.sleep(5000);
-
-        ViewInteraction viewGroup = onView(
-                allOf(withParent(allOf(withId(R.id.nav_host_fragment_content_main),
-                                withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class)))),
-                        isDisplayed()));
-        viewGroup.check(matches(isDisplayed()));
     }
 
     @Test
-    public void vehicleHardCollisionTest() {
+    public void waterHardCollisionTest() {
         ViewInteraction materialButton = onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.button_start), withText("Start"),
+                allOf(withId(R.id.button_start), withText("Start"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
@@ -759,6 +589,8 @@ public class VehicleCollisionTest {
                         isDisplayed()));
         materialButton2.perform(click());
 
+        SystemClock.sleep(2300);
+
         ViewInteraction appCompatImageView = onView(
                 allOf(withId(R.id.up_arrow),
                         childAtPosition(
@@ -769,44 +601,50 @@ public class VehicleCollisionTest {
                         isDisplayed()));
         appCompatImageView.perform(click());
 
-        SystemClock.sleep(5000);
+        appCompatImageView.perform(click());
+
+        appCompatImageView.perform(click());
 
         ViewInteraction appCompatImageView2 = onView(
-                allOf(withId(R.id.up_arrow),
+                allOf(withId(R.id.left_arrow),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
                                         0),
-                                21),
+                                24),
                         isDisplayed()));
         appCompatImageView2.perform(click());
-
-        SystemClock.sleep(5000);
+        appCompatImageView2.perform(click());
+        appCompatImageView2.perform(click());
+        SystemClock.sleep(1000);
+        appCompatImageView.perform(click());
 
         ViewInteraction appCompatImageView3 = onView(
-                allOf(withId(R.id.up_arrow),
+                allOf(withId(R.id.right_arrow),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
                                         0),
-                                21),
+                                23),
                         isDisplayed()));
         appCompatImageView3.perform(click());
+        appCompatImageView3.perform(click());
+        appCompatImageView.perform(click());
+        appCompatImageView.perform(click());
+        appCompatImageView.perform(click());
 
-        SystemClock.sleep(5000);
-
-        ViewInteraction viewGroup = onView(
-                allOf(withParent(allOf(withId(R.id.nav_host_fragment_content_main),
-                                withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class)))),
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.lives_value), withText("2"),
+                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
                         isDisplayed()));
-        viewGroup.check(matches(isDisplayed()));
+        textView.check(matches(withText("2")));
+
     }
 
-    // Left or Right does not cause collision
     @Test
-    public void vehicleHardCollisionTest2() {
+    public void waterHardCollisionTest2() {
         ViewInteraction materialButton = onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.button_start), withText("Start"),
+                allOf(withId(R.id.button_start), withText("Start"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
@@ -866,36 +704,7 @@ public class VehicleCollisionTest {
                         isDisplayed()));
         materialButton2.perform(click());
 
-        ViewInteraction appCompatImageView8 = onView(
-                allOf(withId(R.id.right_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                23),
-                        isDisplayed()));
-        appCompatImageView8.perform(click());
-
-        ViewInteraction appCompatImageView10 = onView(
-                allOf(withId(R.id.right_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                23),
-                        isDisplayed()));
-        appCompatImageView10.perform(click());
-
-
-        ViewInteraction appCompatImageView9 = onView(
-                allOf(withId(R.id.left_arrow),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                24),
-                        isDisplayed()));
-        appCompatImageView9.perform(click());
+        SystemClock.sleep(2300);
 
         ViewInteraction appCompatImageView = onView(
                 allOf(withId(R.id.up_arrow),
@@ -907,37 +716,45 @@ public class VehicleCollisionTest {
                         isDisplayed()));
         appCompatImageView.perform(click());
 
-        SystemClock.sleep(5000);
+        appCompatImageView.perform(click());
+
+        appCompatImageView.perform(click());
 
         ViewInteraction appCompatImageView2 = onView(
-                allOf(withId(R.id.up_arrow),
+                allOf(withId(R.id.left_arrow),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
                                         0),
-                                21),
+                                24),
                         isDisplayed()));
         appCompatImageView2.perform(click());
-
-        SystemClock.sleep(5000);
+        appCompatImageView2.perform(click());
+        appCompatImageView2.perform(click());
+        SystemClock.sleep(1000);
+        appCompatImageView.perform(click());
 
         ViewInteraction appCompatImageView3 = onView(
-                allOf(withId(R.id.up_arrow),
+                allOf(withId(R.id.right_arrow),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment_content_main),
                                         0),
-                                21),
+                                23),
                         isDisplayed()));
         appCompatImageView3.perform(click());
+        appCompatImageView3.perform(click());
+        appCompatImageView.perform(click());
+        appCompatImageView.perform(click());
+        appCompatImageView3.perform(click());
+        appCompatImageView3.perform(click());
+        appCompatImageView.perform(click());
 
-        SystemClock.sleep(5000);
-
-        ViewInteraction viewGroup = onView(
-                allOf(withParent(allOf(withId(R.id.nav_host_fragment_content_main),
-                                withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class)))),
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.lives_value), withText("2"),
+                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
                         isDisplayed()));
-        viewGroup.check(matches(isDisplayed()));
-    }
+        textView.check(matches(withText("2")));
 
+    }
 }
