@@ -48,6 +48,9 @@ public class GameFragment extends Fragment {
     private ImageView car41;
     private ImageView car5;
     private ImageView car51;
+    private ImageView log1;
+    private ImageView log2;
+    private ImageView log3;
 
     private Bundle bundle = new Bundle();
 
@@ -113,6 +116,9 @@ public class GameFragment extends Fragment {
         car41 = view.findViewById(R.id.car4_1);
         car5 = view.findViewById(R.id.car5);
         car51 = view.findViewById(R.id.car5_1);
+        log1 = view.findViewById(R.id.log1);
+        log2 = view.findViewById(R.id.log2);
+        log3 = view.findViewById(R.id.log3);
 
         WindowManager wm = getActivity().getWindowManager();
         Display display = wm.getDefaultDisplay();
@@ -129,6 +135,26 @@ public class GameFragment extends Fragment {
                 handler.post(() -> changePos(10, -6, -8, 13, -8, character, view));
             }
         }, 0, 40);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(() -> logs(10, -6, -8, character, view));
+            }
+        }, 0, 40);
+    }
+    private void logs(int speed1, int speed2, int speed3, ImageView character, @NonNull View view) {
+        if (log1 != null && log1.getX() > screenWidth) {
+            log1.setX(-log1.getWidth());
+        }
+        if (log2 != null && log2.getX() > screenWidth) {
+            log2.setX(-log2.getWidth());
+        }
+        if (log3 != null && log3.getX() + log3.getWidth() < 0) {
+            log3.setX(screenWidth + log3.getWidth());
+        }
+        log1.setX(log1.getX() + speed1);
+        log2.setX(log2.getX() + speed2);
+        log3.setX(log3.getX() + speed3);
     }
     // helper function to change the vehicle's position
     private void changePos(int speed1, int speed2, int speed3, int speed4,
@@ -314,7 +340,7 @@ public class GameFragment extends Fragment {
                     String scoreString = String.valueOf(score);
                     scoreValue.setText(scoreString);
                 }
-                character.setY(character.getY() - 160);
+                character.setY(character.getY() - 170);
                 isWater(view);
                 new Handler().postDelayed(() -> {
                     character.setImageResource(landing);
@@ -381,7 +407,7 @@ public class GameFragment extends Fragment {
             }
 
             if (character.getY() < startPoint) {
-                character.setY(character.getY() + 160);
+                character.setY(character.getY() + 170);
                 isWater(view);
             }
 
