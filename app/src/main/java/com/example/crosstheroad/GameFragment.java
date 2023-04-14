@@ -271,8 +271,7 @@ public class GameFragment extends Fragment {
 
             TextView livesValue = view.findViewById(R.id.lives_value);
             if (lives <= 0) {
-                NavHostFragment.findNavController(GameFragment.this)
-                        .navigate(R.id.action_GameFragment_to_EndFragment);
+                gameDone();
             } else {
                 // Respawn the character at the starting position
                 ImageView reset = view.findViewById(R.id.startCharacter);
@@ -372,11 +371,7 @@ public class GameFragment extends Fragment {
             String scoreString = String.valueOf(score);
             scoreValue.setText(scoreString);
             if (lives <= 0) {
-                NavHostFragment.findNavController(GameFragment.this)
-                        .navigate(R.id.action_GameFragment_to_EndFragment);
-
-                // Pass score to the EndFragment
-                bundle.putDouble("user_endscore", score);
+                gameDone();
             }
         }
     }
@@ -481,11 +476,7 @@ public class GameFragment extends Fragment {
                         String scoreString = String.valueOf(score);
                         scoreValue.setText(scoreString);
                         if (goalCount >= 5) {
-                            NavHostFragment.findNavController(GameFragment.this)
-                                    .navigate(R.id.action_GameFragment_to_EndFragment);
-
-                            // Pass score to the EndFragment
-                            bundle.putDouble("user_endscore", score);
+                            gameDone();
                         }
                     } else if (character.getX() >= goal2.getX()
                             && character.getX() + character.getWidth()
@@ -497,11 +488,7 @@ public class GameFragment extends Fragment {
                         String scoreString = String.valueOf(score);
                         scoreValue.setText(scoreString);
                         if (goalCount >= 5) {
-                            NavHostFragment.findNavController(GameFragment.this)
-                                    .navigate(R.id.action_GameFragment_to_EndFragment);
-
-                            // Pass score to the EndFragment
-                            bundle.putDouble("user_endscore", score);
+                            gameDone();
                         }
                     } else if (character.getX() >= goal3.getX()
                             && character.getX() + character.getWidth()
@@ -513,11 +500,7 @@ public class GameFragment extends Fragment {
                         String scoreString = String.valueOf(score);
                         scoreValue.setText(scoreString);
                         if (goalCount >= 5) {
-                            NavHostFragment.findNavController(GameFragment.this)
-                                    .navigate(R.id.action_GameFragment_to_EndFragment);
-
-                            // Pass score to the EndFragment
-                            bundle.putDouble("user_endscore", score);
+                            gameDone();
                         }
                     } else if (character.getX() >= goal4.getX()
                             && character.getX() + character.getWidth()
@@ -529,11 +512,7 @@ public class GameFragment extends Fragment {
                         String scoreString = String.valueOf(score);
                         scoreValue.setText(scoreString);
                         if (goalCount >= 5) {
-                            NavHostFragment.findNavController(GameFragment.this)
-                                    .navigate(R.id.action_GameFragment_to_EndFragment);
-
-                            // Pass score to the EndFragment
-                            bundle.putDouble("user_endscore", score);
+                            gameDone();
                         }
                     } else if (character.getX() >= goal5.getX()
                             && character.getX() + character.getWidth()
@@ -545,19 +524,11 @@ public class GameFragment extends Fragment {
                         String scoreString = String.valueOf(score);
                         scoreValue.setText(scoreString);
                         if (goalCount >= 5) {
-                            NavHostFragment.findNavController(GameFragment.this)
-                                    .navigate(R.id.action_GameFragment_to_EndFragment);
-
-                            // Pass score to the EndFragment
-                            bundle.putDouble("user_endscore", score);
+                            gameDone();
                         }
                     } else {
                         if (lives <= 0) {
-                            NavHostFragment.findNavController(GameFragment.this)
-                                    .navigate(R.id.action_GameFragment_to_EndFragment);
-
-                            // Pass score to the EndFragment
-                            bundle.putDouble("user_endscore", score);
+                            gameDone();
                         } else {
                             // Respawn the character at the starting position
                             ImageView startCharacter = getView().findViewById(R.id.startCharacter);
@@ -577,11 +548,7 @@ public class GameFragment extends Fragment {
                             String scoreString = String.valueOf(score);
                             scoreValue.setText(scoreString);
                             if (lives <= 0) {
-                                NavHostFragment.findNavController(GameFragment.this)
-                                        .navigate(R.id.action_GameFragment_to_EndFragment);
-
-                                // Pass score to the EndFragment
-                                bundle.putDouble("user_endscore", score);
+                                gameDone();
                             }
                         }
 
@@ -701,7 +668,13 @@ public class GameFragment extends Fragment {
         return landing;
     }
 
+    private void gameDone() {
+        NavHostFragment.findNavController(GameFragment.this)
+                .navigate(R.id.action_GameFragment_to_EndFragment);
 
+        // Pass score to the EndFragment
+        bundle.putDouble("user_endscore", score);
+    }
 
 
     private void setUpSprite(View view) {
