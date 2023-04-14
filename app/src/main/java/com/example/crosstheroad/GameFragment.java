@@ -317,54 +317,49 @@ public class GameFragment extends Fragment {
     private void isWater(@NonNull View view) {
         ImageView character = getView().findViewById(R.id.userCharacter);
         ImageView startCharacter = getView().findViewById(R.id.startCharacter);
-        ImageView liver5 = getView().findViewById(R.id.river5);
-        ImageView liver4 = getView().findViewById(R.id.river4);
-        ImageView liver3 = getView().findViewById(R.id.river3);
-        ImageView liver2 = getView().findViewById(R.id.river2);
-        ImageView liver1 = getView().findViewById(R.id.river1);
-        Rect characterRect = new Rect();
-        character.getHitRect(characterRect);
-        Rect liver5Rect = new Rect();
-        liver5.getHitRect(liver5Rect);
+        List<ImageView> rivers = Arrays.asList(
+                getView().findViewById(R.id.river5),
+                getView().findViewById(R.id.river4),
+                getView().findViewById(R.id.river3),
+                getView().findViewById(R.id.river2),
+                getView().findViewById(R.id.river1)
+        );
+        List<ImageView> logs = Arrays.asList(log1, log2, log3, log4, log5);
 
-        Rect liver4Rect = new Rect();
-        liver4.getHitRect(liver4Rect);
-
-        Rect liver3Rect = new Rect();
-        liver3.getHitRect(liver3Rect);
-
-        Rect liver2Rect = new Rect();
-        liver2.getHitRect(liver2Rect);
-
-        Rect liver1Rect = new Rect();
-        liver1.getHitRect(liver1Rect);
         View rootView = view.getRootView();
         int width = rootView.getWidth();
 
-        if ((characterRect.intersect(liver5Rect) && !isIntersectWithLogs(character, log1, liver5))
-                || (characterRect.intersect(liver4Rect) && !isIntersectWithLogs(character, log2, liver4))
-                || (characterRect.intersect(liver3Rect) && !isIntersectWithLogs(character, log3, liver3))
-                || (characterRect.intersect(liver2Rect) && !isIntersectWithLogs(character, log4, liver2))
-                || (characterRect.intersect(liver1Rect) && !isIntersectWithLogs(character, log5, liver1))
-                || character.getX() <= 0
-                || character.getX() + character.getWidth() >= width) {
-            character.setX(startCharacter.getX());
-            character.setY(startCharacter.getY());
-            TextView livesValue = getView().findViewById(R.id.lives_value);
-            livesValue.setText(String.valueOf(--lives));
-            maxHeight = Double.POSITIVE_INFINITY;
-            score = 0;
-            TextView scoreValue = view.findViewById(R.id.score_value);
-            String scoreString = String.valueOf(score);
-            scoreValue.setText(scoreString);
-            if (lives <= 0) {
-                NavHostFragment.findNavController(GameFragment.this)
-                        .navigate(R.id.action_GameFragment_to_EndFragment);
+        for (int i = 0; i < rivers.size(); i++) {
+            if (isIntersectWithRiver(character, rivers.get(i)) && !isIntersectWithLogs(character, logs.get(i), rivers.get(i))) {
+                character.setX(startCharacter.getX());
+                character.setY(startCharacter.getY());
+                TextView livesValue = getView().findViewById(R.id.lives_value);
+                livesValue.setText(String.valueOf(--lives));
+                maxHeight = Double.POSITIVE_INFINITY;
+                score = 0;
+                TextView scoreValue = view.findViewById(R.id.score_value);
+                String scoreString = String.valueOf(score);
+                scoreValue.setText(scoreString);
+                if (lives <= 0) {
+                    NavHostFragment.findNavController(GameFragment.this)
+                            .navigate(R.id.action_GameFragment_to_EndFragment);
 
-                // Pass score to the EndFragment
-                bundle.putDouble("user_endscore", score);
+                    // Pass score to the EndFragment
+                    bundle.putDouble("user_endscore", score);
+                }
+                break;
             }
         }
+    }
+
+    private boolean isIntersectWithRiver(ImageView character, ImageView river) {
+        Rect characterRect = new Rect();
+        character.getHitRect(characterRect);
+
+        Rect riverRect = new Rect();
+        river.getHitRect(riverRect);
+
+        return characterRect.intersect(riverRect);
     }
 
     private void setUpScoreValue(@NonNull View view) {
