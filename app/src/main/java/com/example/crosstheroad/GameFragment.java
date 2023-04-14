@@ -493,6 +493,7 @@ public class GameFragment extends Fragment {
                         setLives(getArguments().getInt("lives") - (++count));
                         String livesString = String.valueOf(getLives());
                         livesValue.setText(livesString);
+
                     }
                 }
             }
@@ -500,17 +501,29 @@ public class GameFragment extends Fragment {
     }
 
     private void setUpDownButton(@NonNull View view) {
+
         ImageView bottomArrowButton = view.findViewById(R.id.bottom_arrow);
         Point screenSize = getScreenSize();
         screenWidth = screenSize.x;
         screenHeight = screenSize.y;
-
         bottomArrowButton.setOnClickListener(v -> {
-            character = view.findViewById(R.id.userCharacter);
-            int landing = updateCharacterSpriteForDown();
-
+            // Your code here
+            // This code will be executed when the ImageView is clicked
+            View rootView = view.getRootView();
             ImageView startCharacter = view.findViewById(R.id.startCharacter);
             int startPoint = (int) startCharacter.getY();
+            character = view.findViewById(R.id.userCharacter);
+            int landing;
+            if (getSpriteInt() == 0) {
+                character.setImageResource(R.drawable.blue_down1);
+                landing = R.drawable.blue_down;
+            } else if (getSpriteInt() == 1) {
+                character.setImageResource(R.drawable.green_down1);
+                landing = R.drawable.green_down;
+            } else {
+                character.setImageResource(R.drawable.yellow_down1);
+                landing = R.drawable.yellow_down;
+            }
 
             if (character.getY() < startPoint) {
                 character.setY(character.getY() + view.findViewById(R.id.road1).getHeight());
@@ -519,21 +532,7 @@ public class GameFragment extends Fragment {
 
             new Handler().postDelayed(() -> character.setImageResource(landing), 200);
         });
-    }
 
-    private int updateCharacterSpriteForDown() {
-        int landing;
-        if (getSpriteInt() == 0) {
-            character.setImageResource(R.drawable.blue_down1);
-            landing = R.drawable.blue_down;
-        } else if (getSpriteInt() == 1) {
-            character.setImageResource(R.drawable.green_down1);
-            landing = R.drawable.green_down;
-        } else {
-            character.setImageResource(R.drawable.yellow_down1);
-            landing = R.drawable.yellow_down;
-        }
-        return landing;
     }
 
     private void setUpRightButton(@NonNull View view) {
@@ -541,36 +540,31 @@ public class GameFragment extends Fragment {
         Point screenSize = getScreenSize();
         screenWidth = screenSize.x;
         screenHeight = screenSize.y;
-
         rightArrowButton.setOnClickListener(v -> {
+            // Your code here
+            // This code will be executed when the ImageView is clicked
+            View rootView = view.getRootView();
+            int width = rootView.getWidth();
             character = view.findViewById(R.id.userCharacter);
-            int landing = updateCharacterSpriteForRight();
+            int landing;
+            if (getSpriteInt() == 0) {
+                character.setImageResource(R.drawable.blue_right1);
+                landing = R.drawable.blue_right;
+            } else if (getSpriteInt() == 1) {
+                character.setImageResource(R.drawable.green_right1);
+                landing = R.drawable.green_right;
+            } else {
+                character.setImageResource(R.drawable.yellow_right1);
+                landing = R.drawable.yellow_right;
+            }
 
-            int rootViewWidth = view.getRootView().getWidth();
-            int moveThreshold = rootViewWidth - rootViewWidth / 5;
-
-            if (character.getX() < moveThreshold) {
-                character.setX(character.getX() + rootViewWidth / 10);
+            if (character.getX() < width - width / 5) {
+                character.setX(character.getX() + width / 10);
                 isWater(view);
             }
 
             new Handler().postDelayed(() -> character.setImageResource(landing), 200);
         });
-    }
-
-    private int updateCharacterSpriteForRight() {
-        int landing;
-        if (getSpriteInt() == 0) {
-            character.setImageResource(R.drawable.blue_right1);
-            landing = R.drawable.blue_right;
-        } else if (getSpriteInt() == 1) {
-            character.setImageResource(R.drawable.green_right1);
-            landing = R.drawable.green_right;
-        } else {
-            character.setImageResource(R.drawable.yellow_right1);
-            landing = R.drawable.yellow_right;
-        }
-        return landing;
     }
 
     private void setUpLeftButton(@NonNull View view) {
@@ -578,36 +572,31 @@ public class GameFragment extends Fragment {
         Point screenSize = getScreenSize();
         screenWidth = screenSize.x;
         screenHeight = screenSize.y;
-
         leftArrowButton.setOnClickListener(v -> {
+            // Your code here
+            // This code will be executed when the ImageView is clicked
             character = view.findViewById(R.id.userCharacter);
-            int landing = updateCharacterSpriteForLeft();
+            View rootView = view.getRootView();
+            int width = rootView.getWidth();
+            int landing;
+            if (getSpriteInt() == 0) {
+                character.setImageResource(R.drawable.blue_left1);
+                landing = R.drawable.blue_left;
+            } else if (getSpriteInt() == 1) {
+                character.setImageResource(R.drawable.green_left1);
+                landing = R.drawable.green_left;
+            } else {
+                character.setImageResource(R.drawable.yellow_left1);
+                landing = R.drawable.yellow_left;
+            }
 
-            int rootViewWidth = view.getRootView().getWidth();
-            int moveThreshold = 100;
-
-            if (character.getX() > moveThreshold) {
-                character.setX(character.getX() - rootViewWidth / 10);
+            if (character.getX() > 100) {
+                character.setX(character.getX() - width / 10);
                 isWater(view);
             }
 
             new Handler().postDelayed(() -> character.setImageResource(landing), 200);
         });
-    }
-
-    private int updateCharacterSpriteForLeft() {
-        int landing;
-        if (getSpriteInt() == 0) {
-            character.setImageResource(R.drawable.blue_left1);
-            landing = R.drawable.blue_left;
-        } else if (getSpriteInt() == 1) {
-            character.setImageResource(R.drawable.green_left1);
-            landing = R.drawable.green_left;
-        } else {
-            character.setImageResource(R.drawable.yellow_left1);
-            landing = R.drawable.yellow_left;
-        }
-        return landing;
     }
 
     private void setUpSprite(View view) {
