@@ -146,7 +146,8 @@ public class GameFragment extends Fragment {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                handler.post(() -> checkLogs(10, -6, -4, 4, character, view));
+                int[] speedList = new int[] {10, -6, -4, 4};
+                handler.post(() -> checkLogs(speedList, character, view));
             }
         }, 0, 40);
     }
@@ -159,7 +160,7 @@ public class GameFragment extends Fragment {
         return size;
     }
 
-    private void checkLogs(int speed1, int speed2, int speed4, int speed5, ImageView character, @NonNull View view) {
+    private void checkLogs(int[] speedList, ImageView character, @NonNull View view) {
         List<ImageView> logs = Arrays.asList(log1, log2, log3);
         if (log1 != null && log1.getX() > screenWidth) {
             log1.setX(-log1.getWidth());
@@ -176,10 +177,10 @@ public class GameFragment extends Fragment {
         if (log5 != null && log5.getX() > screenWidth) {
             log5.setX(-log5.getWidth());
         }
-        log1.setX(log1.getX() + speed1);
-        log2.setX(log2.getX() + speed2);
-        log4.setX(log4.getX() + speed4);
-        log5.setX(log5.getX() + speed5);
+        log1.setX(log1.getX() + speedList[0]);
+        log2.setX(log2.getX() + speedList[1]);
+        log4.setX(log4.getX() + speedList[2]);
+        log5.setX(log5.getX() + speedList[3]);
         ImageView liver5 = view.findViewById(R.id.river5);
         ImageView liver4 = view.findViewById(R.id.river4);
         ImageView liver3 = view.findViewById(R.id.river3);
