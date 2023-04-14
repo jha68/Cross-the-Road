@@ -6,151 +6,179 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameFragment">
-
+    <ImageView
+        android:id="@+id/infomation"
+        android:layout_width="match_parent"
+        android:background="#FFFFFF"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0714"
+        app:layout_constraintBottom_toTopOf="@id/goal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/difficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/text_margin_top"
         android:text="@string/difficulty"
+        android:elevation="100dp"
         app:layout_constraintEnd_toStartOf="@id/name"
         app:layout_constraintHorizontal_bias="0.803"
         app:layout_constraintStart_toEndOf="@id/lives"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/infomation"
+        app:layout_constraintBottom_toBottomOf="@id/infomation"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/goal"
+        />
 
     <TextView
         android:id="@+id/lives"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/text_margin_top"
         android:text="@string/lives"
+        android:elevation="100dp"
         app:layout_constraintEnd_toStartOf="@id/difficulty"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/infomation"
+        app:layout_constraintBottom_toBottomOf="@id/infomation"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/goal"/>
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/text_margin_top"
         android:text="@string/name"
+        android:elevation="100dp"
         app:layout_constraintEnd_toStartOf="@id/score"
         app:layout_constraintStart_toEndOf="@id/difficulty"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/infomation"
+        app:layout_constraintBottom_toBottomOf="@id/infomation"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/goal"/>
 
     <TextView
         android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/text_margin_top"
         android:text="@string/score"
+        android:elevation="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/name"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/infomation"
+        app:layout_constraintBottom_toBottomOf="@id/infomation"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/goal" />
 
     <TextView
         android:id="@+id/lives_value"
         android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="wrap_content"
         android:digits="3"
+        android:elevation="100dp"
         app:layout_constraintEnd_toEndOf="@id/lives"
         app:layout_constraintStart_toStartOf="@id/lives"
-        app:layout_constraintTop_toBottomOf="@id/lives" />
+        app:layout_constraintTop_toBottomOf="@id/lives"
+        app:layout_constraintBottom_toTopOf="@id/goal"/>
 
     <TextView
         android:id="@+id/name_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:text="@string/name_value"
+        android:elevation="100dp"
         app:layout_constraintEnd_toEndOf="@id/name"
         app:layout_constraintStart_toStartOf="@id/name"
-        app:layout_constraintTop_toBottomOf="@id/name" />
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintBottom_toTopOf="@id/goal"/>
 
     <TextView
         android:id="@+id/score_value"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="12dp"
-        android:minHeight="48dp"
+        android:elevation="100dp"
         app:layout_constraintEnd_toEndOf="@id/score"
         app:layout_constraintStart_toStartOf="@id/score"
-        app:layout_constraintTop_toBottomOf="@id/score" />
+        app:layout_constraintTop_toBottomOf="@id/score"
+        app:layout_constraintBottom_toTopOf="@id/goal"/>
 
     <TextView
         android:id="@+id/difficulty_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:elevation="100dp"
         app:layout_constraintEnd_toEndOf="@id/difficulty"
         app:layout_constraintStart_toStartOf="@id/difficulty"
-        app:layout_constraintTop_toBottomOf="@id/difficulty" />
+        app:layout_constraintTop_toBottomOf="@id/difficulty"
+        app:layout_constraintBottom_toTopOf="@id/goal"/>
 
     <ImageView
         android:id="@+id/userCharacter"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:layout_marginTop="600dp"
         android:elevation="100dp"
         android:src="@android:drawable/screen_background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/start_point"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@id/start_point"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/startCharacter"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:layout_marginTop="600dp"
         android:src="@android:drawable/screen_background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/userCharacter"
+        app:layout_constraintEnd_toEndOf="@id/userCharacter"
+        app:layout_constraintStart_toStartOf="@id/userCharacter"
+        app:layout_constraintTop_toTopOf="@id/userCharacter"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/car1"
         android:layout_width="60dp"
-        android:layout_height="62dp"
+        android:layout_height="0dp"
         android:elevation="50dp"
         android:src="@drawable/car1"
+        app:layout_constraintHeight_percent="0.065"
         app:layout_constraintBottom_toTopOf="@id/start_point"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/road4"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/car1_1"
         android:layout_width="60dp"
-        android:layout_height="62dp"
+        android:layout_height="0dp"
         android:elevation="50dp"
         android:src="@drawable/car1"
+        app:layout_constraintHeight_percent="0.065"
         app:layout_constraintBottom_toTopOf="@id/start_point"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/road4"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/car2"
         android:layout_width="110dp"
-        android:layout_height="62dp"
+        android:layout_height="0dp"
         android:elevation="50dp"
         android:src="@drawable/car2"
+        app:layout_constraintHeight_percent="0.065"
         app:layout_constraintBottom_toTopOf="@id/road5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/road3"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/car2_1"
         android:layout_width="110dp"
-        android:layout_height="62dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.065"
         android:layout_marginLeft="100dp"
         android:elevation="50dp"
         android:src="@drawable/car2"
@@ -158,88 +186,95 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/road3"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/car3"
         android:layout_width="55dp"
-        android:layout_height="62dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.065"
         android:elevation="50dp"
         android:src="@drawable/car3"
         app:layout_constraintBottom_toTopOf="@id/road4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/road2"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/car3_1"
         android:layout_width="55dp"
-        android:layout_height="62dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.065"
         android:layout_marginLeft="160dp"
         android:elevation="50dp"
         android:src="@drawable/car3"
         app:layout_constraintBottom_toTopOf="@id/road4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/road2"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/car3_2"
         android:layout_width="55dp"
-        android:layout_height="62dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.065"
         android:layout_marginLeft="310dp"
         android:elevation="50dp"
         android:src="@drawable/car3"
         app:layout_constraintBottom_toTopOf="@id/road4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/road2"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/car4"
         android:layout_width="64dp"
-        android:layout_height="62dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.065"
         android:elevation="50dp"
         android:src="@drawable/car4"
         app:layout_constraintBottom_toTopOf="@id/road3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/road1"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/car4_1"
         android:layout_width="64dp"
-        android:layout_height="62dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.065"
         android:layout_marginLeft="200dp"
         android:elevation="50dp"
         android:src="@drawable/car4"
         app:layout_constraintBottom_toTopOf="@id/road3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/road1"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/car5"
         android:layout_width="62dp"
-        android:layout_height="62dp"
+        android:layout_height="02dp"
+        app:layout_constraintHeight_percent="0.065"
         android:elevation="50dp"
         android:src="@drawable/car5"
         app:layout_constraintBottom_toTopOf="@id/road2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/safe_point"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/car5_1"
         android:layout_width="62dp"
-        android:layout_height="62dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.065"
         android:layout_marginLeft="250dp"
         android:elevation="50dp"
         android:src="@drawable/car5"
         app:layout_constraintBottom_toTopOf="@id/road2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/safe_point"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintVertical_bias="0.5" />
 
 
     <ImageView
@@ -301,8 +336,9 @@
     <ImageView
         android:id="@+id/start_point"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
         android:background="#9933ff"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0714"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -311,8 +347,9 @@
     <ImageView
         android:id="@+id/road1"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
         android:src="@color/black"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0714"
         app:layout_constraintBottom_toTopOf="@id/road2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -321,8 +358,9 @@
     <ImageView
         android:id="@+id/road2"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
         android:src="@color/black"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0714"
         app:layout_constraintBottom_toTopOf="@id/road3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -331,8 +369,9 @@
     <ImageView
         android:id="@+id/road3"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
         android:src="@color/black"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0714"
         app:layout_constraintBottom_toTopOf="@id/road4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -341,8 +380,9 @@
     <ImageView
         android:id="@+id/road4"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
         android:src="@color/black"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0714"
         app:layout_constraintBottom_toTopOf="@id/road5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -351,8 +391,9 @@
     <ImageView
         android:id="@+id/road5"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
         android:src="@color/black"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0714"
         app:layout_constraintBottom_toTopOf="@id/start_point"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -361,8 +402,9 @@
     <ImageView
         android:id="@+id/safe_point"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:background="#9933ff"
+        app:layout_constraintHeight_percent="0.0714"
         app:layout_constraintBottom_toTopOf="@id/road1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -371,8 +413,9 @@
     <ImageView
         android:id="@+id/river1"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
         android:background="#000033"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0714"
         app:layout_constraintBottom_toTopOf="@id/river2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -381,8 +424,9 @@
     <ImageView
         android:id="@+id/river2"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
         android:background="#000033"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0714"
         app:layout_constraintBottom_toTopOf="@id/river3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -391,8 +435,9 @@
     <ImageView
         android:id="@+id/river3"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
         android:background="#000033"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0714"
         app:layout_constraintBottom_toTopOf="@id/river4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -402,8 +447,9 @@
     <ImageView
         android:id="@+id/river4"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
         android:background="#000033"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0714"
         app:layout_constraintBottom_toTopOf="@id/river5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -413,8 +459,9 @@
     <ImageView
         android:id="@+id/river5"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
         android:background="#000033"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0714"
         app:layout_constraintBottom_toTopOf="@id/safe_point"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -424,19 +471,20 @@
     <ImageView
         android:id="@+id/goal"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="100dp"
         android:background="#009900"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0714"
         app:layout_constraintBottom_toTopOf="@id/river1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/infomation" />
 
     <ImageView
         android:id="@+id/goal_1"
         android:layout_width="50dp"
-        android:layout_height="45dp"
         android:background="#000033"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0642"
         app:layout_constraintBottom_toTopOf="@id/river1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
@@ -445,8 +493,9 @@
     <ImageView
         android:id="@+id/goal_2"
         android:layout_width="50dp"
-        android:layout_height="45dp"
         android:background="#000033"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0642"
         app:layout_constraintBottom_toTopOf="@id/river1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.3"
@@ -455,8 +504,9 @@
     <ImageView
         android:id="@+id/goal_3"
         android:layout_width="50dp"
-        android:layout_height="45dp"
         android:background="#000033"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0642"
         app:layout_constraintBottom_toTopOf="@id/river1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -464,8 +514,9 @@
     <ImageView
         android:id="@+id/goal_4"
         android:layout_width="50dp"
-        android:layout_height="45dp"
         android:background="#000033"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0642"
         app:layout_constraintBottom_toTopOf="@id/river1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.7"
@@ -474,24 +525,44 @@
     <ImageView
         android:id="@+id/goal_5"
         android:layout_width="50dp"
-        android:layout_height="45dp"
         android:background="#000033"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.0642"
         app:layout_constraintBottom_toTopOf="@id/river1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent" />
+    <ImageView
+        android:id="@+id/log5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/longlog"
+        app:layout_constraintBottom_toTopOf="@+id/river2"
+        app:layout_constraintEnd_toEndOf="@id/river3"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toStartOf="@+id/river3"
+        app:layout_constraintTop_toBottomOf="@+id/goal"/>
+    <ImageView
+        android:id="@+id/log4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/longlog"
+        app:layout_constraintBottom_toTopOf="@+id/river3"
+        app:layout_constraintEnd_toEndOf="@id/river3"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="@+id/river3"
+        app:layout_constraintTop_toBottomOf="@+id/river1"/>
 
     <ImageView
         android:id="@+id/log3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/longlog"
-        app:layout_constraintBottom_toTopOf="@+id/safe_point"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/river4"
+        app:layout_constraintEnd_toEndOf="@id/river3"
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="@+id/river3"
-        app:layout_constraintTop_toTopOf="@+id/river1"
-        app:layout_constraintVertical_bias="0.505" />
+        app:layout_constraintTop_toBottomOf="@+id/river2"/>
 
     <ImageView
         android:id="@+id/log2"

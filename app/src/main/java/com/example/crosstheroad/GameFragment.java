@@ -18,6 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -51,6 +53,8 @@ public class GameFragment extends Fragment {
     private ImageView log1;
     private ImageView log2;
     private ImageView log3;
+    private ImageView log4;
+    private ImageView log5;
 
     private Bundle bundle = new Bundle();
 
@@ -119,13 +123,12 @@ public class GameFragment extends Fragment {
         log1 = view.findViewById(R.id.log1);
         log2 = view.findViewById(R.id.log2);
         log3 = view.findViewById(R.id.log3);
+        log4 = view.findViewById(R.id.log4);
+        log5 = view.findViewById(R.id.log5);
 
-        WindowManager wm = getActivity().getWindowManager();
-        Display display = wm.getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        screenWidth = size.x;
-        screenHeight = size.y;
+        Point screenSize = getScreenSize();
+        screenWidth = screenSize.x;
+        screenHeight = screenSize.y;
         character = view.findViewById(R.id.userCharacter);
 
         //event handler (moving vehicles)
@@ -138,27 +141,82 @@ public class GameFragment extends Fragment {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                handler.post(() -> logs(10, -6, -8, character, view));
+                handler.post(() -> checkLogs(10, -6, 8, -4, 4, character, view));
             }
         }, 0, 40);
     }
-    private void logs(int speed1, int speed2, int speed3, ImageView character, @NonNull View view) {
+
+    private Point getScreenSize() {
+        WindowManager wm = getActivity().getWindowManager();
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        return size;
+    }
+
+    private void checkLogs(int speed1, int speed2, int speed3, int speed4, int speed5, ImageView character, @NonNull View view) {
+        List<ImageView> logs = Arrays.asList(log1, log2, log3);
         if (log1 != null && log1.getX() > screenWidth) {
             log1.setX(-log1.getWidth());
         }
-        if (log2 != null && log2.getX() > screenWidth) {
-            log2.setX(-log2.getWidth());
+        if (log2 != null && log2.getX() + log2.getWidth() < 0) {
+            log2.setX(screenWidth + log2.getWidth());
         }
-        if (log3 != null && log3.getX() + log3.getWidth() < 0) {
-            log3.setX(screenWidth + log3.getWidth());
+        if (log3 != null && log3.getX() > screenWidth) {
+            log3.setX(-log3.getWidth());
+        }
+        if (log4 != null && log4.getX() + log4.getWidth() < 0) {
+            log4.setX(screenWidth + log4.getWidth());
+        }
+        if (log5 != null && log5.getX() > screenWidth) {
+            log5.setX(-log5.getWidth());
         }
         log1.setX(log1.getX() + speed1);
         log2.setX(log2.getX() + speed2);
         log3.setX(log3.getX() + speed3);
+        log4.setX(log4.getX() + speed4);
+        log5.setX(log5.getX() + speed5);
+        ImageView liver5 = view.findViewById(R.id.river5);
+        ImageView liver4 = view.findViewById(R.id.river4);
+        ImageView liver3 = view.findViewById(R.id.river3);
+        ImageView liver2 = view.findViewById(R.id.river2);
+        ImageView liver1 = view.findViewById(R.id.river1);
+
+
+        if (isIntersectWithLogs(character, log1, liver5)) {
+            character.setX(character.getX() + speed1);
+        }
+
+        if (isIntersectWithLogs(character, log2, liver4)) {
+            character.setX(character.getX() + speed2);
+        }
+
+        if (isIntersectWithLogs(character, log3, liver3)) {
+            character.setX(character.getX() + speed3);
+        }
+        if (isIntersectWithLogs(character, log4, liver2)) {
+            character.setX(character.getX() + speed4);
+        }
+        if (isIntersectWithLogs(character, log5, liver1)) {
+            character.setX(character.getX() + speed5);
+        }
     }
+
+    private boolean isIntersectWithLogs(ImageView character, ImageView log, ImageView liver) {
+        if (character.getX() >= log.getX() && (character.getX() + character.getWidth())
+                <= (log.getX() + log.getWidth()) && character.getY() >= liver.getY()
+                && (character.getY() + character.getHeight()) <= (liver.getY() + liver.getHeight())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     // helper function to change the vehicle's position
     private void changePos(int speed1, int speed2, int speed3, int speed4,
                            int speed5, ImageView character, @NonNull View view) {
+        List<ImageView> cars = Arrays.asList(car1, car11, car2, car21, car3, car31, car32, car4, car41, car5, car51);
         if (car1 != null && car1.getX() > screenWidth) {
             car1.setX(-car1.getWidth());
         }
@@ -203,32 +261,14 @@ public class GameFragment extends Fragment {
         car41.setX(car41.getX() + speed4);
         car5.setX(car5.getX() + speed5);
         car51.setX(car51.getX() + speed5);
-
-        if (isCollidingWithCars(character, car1)
-                ||
-                isCollidingWithCars(character, car11)
-                ||
-                isCollidingWithCars(character, car2)
-                ||
-                isCollidingWithCars(character, car21)
-                ||
-                isCollidingWithCars(character, car3)
-                ||
-                isCollidingWithCars(character, car31)
-                ||
-                isCollidingWithCars(character, car32)
-                ||
-                isCollidingWithCars(character, car4)
-                ||
-                isCollidingWithCars(character, car41)
-                ||
-                isCollidingWithCars(character, car5)
-                ||
-                isCollidingWithCars(character, car51)) {
+        View rootView = view.getRootView();
+        int width = rootView.getWidth();
+        if (isCollidingWithAnyCar(character, cars) || character.getX() <= 0
+                || character.getX() + character.getWidth() >= width) {
             // Decrement player lives and reset score and position
 
             TextView livesValue = view.findViewById(R.id.lives_value);
-            if (lives == 0) {
+            if (lives <= 0) {
                 NavHostFragment.findNavController(GameFragment.this)
                         .navigate(R.id.action_GameFragment_to_EndFragment);
             } else {
@@ -263,6 +303,68 @@ public class GameFragment extends Fragment {
         car.getHitRect(carRect);
 
         return characterRect.intersect(carRect);
+    }
+
+    private boolean isCollidingWithAnyCar(ImageView character, List<ImageView> cars) {
+        for (ImageView car : cars) {
+            if (isCollidingWithCars(character, car)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void isWater(@NonNull View view) {
+        ImageView character = getView().findViewById(R.id.userCharacter);
+        ImageView startCharacter = getView().findViewById(R.id.startCharacter);
+        ImageView liver5 = getView().findViewById(R.id.river5);
+        ImageView liver4 = getView().findViewById(R.id.river4);
+        ImageView liver3 = getView().findViewById(R.id.river3);
+        ImageView liver2 = getView().findViewById(R.id.river2);
+        ImageView liver1 = getView().findViewById(R.id.river1);
+        Rect characterRect = new Rect();
+        character.getHitRect(characterRect);
+        Rect liver5Rect = new Rect();
+        liver5.getHitRect(liver5Rect);
+
+        Rect liver4Rect = new Rect();
+        liver4.getHitRect(liver4Rect);
+
+        Rect liver3Rect = new Rect();
+        liver3.getHitRect(liver3Rect);
+
+        Rect liver2Rect = new Rect();
+        liver2.getHitRect(liver2Rect);
+
+        Rect liver1Rect = new Rect();
+        liver1.getHitRect(liver1Rect);
+        View rootView = view.getRootView();
+        int width = rootView.getWidth();
+
+        if ((characterRect.intersect(liver5Rect) && !isIntersectWithLogs(character, log1, liver5))
+                || (characterRect.intersect(liver4Rect) && !isIntersectWithLogs(character, log2, liver4))
+                || (characterRect.intersect(liver3Rect) && !isIntersectWithLogs(character, log3, liver3))
+                || (characterRect.intersect(liver2Rect) && !isIntersectWithLogs(character, log4, liver2))
+                || (characterRect.intersect(liver1Rect) && !isIntersectWithLogs(character, log5, liver1))
+                || character.getX() <= 0
+                || character.getX() + character.getWidth() >= width) {
+            character.setX(startCharacter.getX());
+            character.setY(startCharacter.getY());
+            TextView livesValue = getView().findViewById(R.id.lives_value);
+            livesValue.setText(String.valueOf(--lives));
+            maxHeight = Double.POSITIVE_INFINITY;
+            score = 0;
+            TextView scoreValue = view.findViewById(R.id.score_value);
+            String scoreString = String.valueOf(score);
+            scoreValue.setText(scoreString);
+            if (lives <= 0) {
+                NavHostFragment.findNavController(GameFragment.this)
+                        .navigate(R.id.action_GameFragment_to_EndFragment);
+
+                // Pass score to the EndFragment
+                bundle.putDouble("user_endscore", score);
+            }
+        }
     }
 
     private void setUpScoreValue(@NonNull View view) {
@@ -303,6 +405,9 @@ public class GameFragment extends Fragment {
 
     private void setUpUpButton(@NonNull View view) {
         ImageView upArrowButton = view.findViewById(R.id.up_arrow);
+        Point screenSize = getScreenSize();
+        screenWidth = screenSize.x;
+        screenHeight = screenSize.y;
         upArrowButton.setOnClickListener(v -> {
             // Your code here
             // This code will be executed when the ImageView is clicked
@@ -332,7 +437,7 @@ public class GameFragment extends Fragment {
                 landing = R.drawable.yellow_up;
             }
 
-            if (character.getY() > 300) {
+            if (character.getY() > screenHeight / 7) {
                 if (maxHeight > character.getY()) {
                     maxHeight = character.getY();
                     score += points[(int) maxHeight % 4];
@@ -340,7 +445,7 @@ public class GameFragment extends Fragment {
                     String scoreString = String.valueOf(score);
                     scoreValue.setText(scoreString);
                 }
-                character.setY(character.getY() - 170);
+                character.setY(character.getY() - view.findViewById(R.id.road1).getHeight());
                 isWater(view);
                 new Handler().postDelayed(() -> {
                     character.setImageResource(landing);
@@ -351,7 +456,7 @@ public class GameFragment extends Fragment {
                         maxHeight = Double.POSITIVE_INFINITY;
                     }
                 }, 200);
-                if (character.getY() < 300) {
+                if (character.getY() < screenHeight / 7) {
                     if (character.getX() >= goal1.getX()
                             && character.getX() + character.getWidth()
                             <= goal1.getX() + goalWidth) {
@@ -387,6 +492,9 @@ public class GameFragment extends Fragment {
     private void setUpDownButton(@NonNull View view) {
 
         ImageView bottomArrowButton = view.findViewById(R.id.bottom_arrow);
+        Point screenSize = getScreenSize();
+        screenWidth = screenSize.x;
+        screenHeight = screenSize.y;
         bottomArrowButton.setOnClickListener(v -> {
             // Your code here
             // This code will be executed when the ImageView is clicked
@@ -407,7 +515,7 @@ public class GameFragment extends Fragment {
             }
 
             if (character.getY() < startPoint) {
-                character.setY(character.getY() + 170);
+                character.setY(character.getY() + view.findViewById(R.id.road1).getHeight());
                 isWater(view);
             }
 
@@ -418,6 +526,9 @@ public class GameFragment extends Fragment {
 
     private void setUpRightButton(@NonNull View view) {
         ImageView rightArrowButton = view.findViewById(R.id.right_arrow);
+        Point screenSize = getScreenSize();
+        screenWidth = screenSize.x;
+        screenHeight = screenSize.y;
         rightArrowButton.setOnClickListener(v -> {
             // Your code here
             // This code will be executed when the ImageView is clicked
@@ -436,8 +547,8 @@ public class GameFragment extends Fragment {
                 landing = R.drawable.yellow_right;
             }
 
-            if (character.getX() < width - 200) {
-                character.setX(character.getX() + 100);
+            if (character.getX() < width - width / 5) {
+                character.setX(character.getX() + width / 10);
                 isWater(view);
             }
 
@@ -447,10 +558,15 @@ public class GameFragment extends Fragment {
 
     private void setUpLeftButton(@NonNull View view) {
         ImageView leftArrowButton = view.findViewById(R.id.left_arrow);
+        Point screenSize = getScreenSize();
+        screenWidth = screenSize.x;
+        screenHeight = screenSize.y;
         leftArrowButton.setOnClickListener(v -> {
             // Your code here
             // This code will be executed when the ImageView is clicked
             character = view.findViewById(R.id.userCharacter);
+            View rootView = view.getRootView();
+            int width = rootView.getWidth();
             int landing;
             if (getSpriteInt() == 0) {
                 character.setImageResource(R.drawable.blue_left1);
@@ -464,7 +580,7 @@ public class GameFragment extends Fragment {
             }
 
             if (character.getX() > 100) {
-                character.setX(character.getX() - 100);
+                character.setX(character.getX() - width / 10);
                 isWater(view);
             }
 
@@ -488,33 +604,7 @@ public class GameFragment extends Fragment {
             imageView.setImageResource(R.drawable.yellow_up);
         }
     }
-    private void isWater(@NonNull View view) {
-        ImageView character = getView().findViewById(R.id.userCharacter);
-        ImageView startCharacter = getView().findViewById(R.id.startCharacter);
-        float characterX = character.getX();
-        float characterY = character.getY();
-        float startPointY = startCharacter.getY();
 
-        if ((0 < characterX && characterX < screenWidth)
-                && (100 < characterY && characterY < startPointY / 2)) {
-            character.setX(startCharacter.getX());
-            character.setY(startCharacter.getY());
-            TextView livesValue = getView().findViewById(R.id.lives_value);
-            livesValue.setText(String.valueOf(--lives));
-            maxHeight = Double.POSITIVE_INFINITY;
-            score = 0;
-            TextView scoreValue = view.findViewById(R.id.score_value);
-            String scoreString = String.valueOf(score);
-            scoreValue.setText(scoreString);
-            if (lives == 0) {
-                NavHostFragment.findNavController(GameFragment.this)
-                        .navigate(R.id.action_GameFragment_to_EndFragment);
-
-                // Pass score to the EndFragment
-                bundle.putDouble("user_endscore", score);
-            }
-        }
-    }
 
     public double getScore() {
         return score;
