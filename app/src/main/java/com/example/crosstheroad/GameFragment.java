@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
@@ -33,7 +34,7 @@ public class GameFragment extends Fragment {
     private int spriteInt;
     private double maxHeight = Double.POSITIVE_INFINITY;
     private final int[] points = {5, 10, 15, 20};
-    private int count = 0;
+    private int goalCount = 0;
 
     //variables  for vehicles
     private int screenHeight;
@@ -288,6 +289,7 @@ public class GameFragment extends Fragment {
                 String livesString = String.valueOf(getLives());
                 livesValue.setText(livesString);
                 score = 0;
+                goalCount = 0;
                 goal1.setImageResource(R.drawable.frog_dead);
                 goal2.setImageResource(R.drawable.frog_dead);
                 goal3.setImageResource(R.drawable.frog_dead);
@@ -360,6 +362,7 @@ public class GameFragment extends Fragment {
             livesValue.setText(String.valueOf(--lives));
             maxHeight = Double.POSITIVE_INFINITY;
             score = 0;
+            goalCount = 0;
             goal1.setImageResource(R.drawable.frog_dead);
             goal2.setImageResource(R.drawable.frog_dead);
             goal3.setImageResource(R.drawable.frog_dead);
@@ -472,58 +475,133 @@ public class GameFragment extends Fragment {
                             && character.getX() + character.getWidth()
                             <= goal1.getX() + goalWidth) {
                         goal1.setImageResource(R.drawable.catched_frog);
+                        goalCount++;
+                        score += 1000;
+                        TextView scoreValue = view.findViewById(R.id.score_value);
+                        String scoreString = String.valueOf(score);
+                        scoreValue.setText(scoreString);
+                        if (goalCount >= 5) {
+                            NavHostFragment.findNavController(GameFragment.this)
+                                    .navigate(R.id.action_GameFragment_to_EndFragment);
+
+                            // Pass score to the EndFragment
+                            bundle.putDouble("user_endscore", score);
+                        }
                     } else if (character.getX() >= goal2.getX()
                             && character.getX() + character.getWidth()
                             <= goal2.getX() + goalWidth) {
                         goal2.setImageResource(R.drawable.catched_frog);
+                        goalCount++;
+                        score += 1000;
+                        TextView scoreValue = view.findViewById(R.id.score_value);
+                        String scoreString = String.valueOf(score);
+                        scoreValue.setText(scoreString);
+                        if (goalCount >= 5) {
+                            NavHostFragment.findNavController(GameFragment.this)
+                                    .navigate(R.id.action_GameFragment_to_EndFragment);
+
+                            // Pass score to the EndFragment
+                            bundle.putDouble("user_endscore", score);
+                        }
                     } else if (character.getX() >= goal3.getX()
                             && character.getX() + character.getWidth()
                             <= goal3.getX() + goalWidth) {
                         goal3.setImageResource(R.drawable.catched_frog);
+                        goalCount++;
+                        score += 1000;
+                        TextView scoreValue = view.findViewById(R.id.score_value);
+                        String scoreString = String.valueOf(score);
+                        scoreValue.setText(scoreString);
+                        if (goalCount >= 5) {
+                            NavHostFragment.findNavController(GameFragment.this)
+                                    .navigate(R.id.action_GameFragment_to_EndFragment);
+
+                            // Pass score to the EndFragment
+                            bundle.putDouble("user_endscore", score);
+                        }
                     } else if (character.getX() >= goal4.getX()
                             && character.getX() + character.getWidth()
                             <= goal4.getX() + goalWidth) {
                         goal4.setImageResource(R.drawable.catched_frog);
+                        goalCount++;
+                        score += 1000;
+                        TextView scoreValue = view.findViewById(R.id.score_value);
+                        String scoreString = String.valueOf(score);
+                        scoreValue.setText(scoreString);
+                        if (goalCount >= 5) {
+                            NavHostFragment.findNavController(GameFragment.this)
+                                    .navigate(R.id.action_GameFragment_to_EndFragment);
+
+                            // Pass score to the EndFragment
+                            bundle.putDouble("user_endscore", score);
+                        }
                     } else if (character.getX() >= goal5.getX()
                             && character.getX() + character.getWidth()
                             <= goal5.getX() + goalWidth) {
                         goal5.setImageResource(R.drawable.catched_frog);
+                        goalCount++;
+                        score += 1000;
+                        TextView scoreValue = view.findViewById(R.id.score_value);
+                        String scoreString = String.valueOf(score);
+                        scoreValue.setText(scoreString);
+                        if (goalCount >= 5) {
+                            NavHostFragment.findNavController(GameFragment.this)
+                                    .navigate(R.id.action_GameFragment_to_EndFragment);
+
+                            // Pass score to the EndFragment
+                            bundle.putDouble("user_endscore", score);
+                        }
                     } else {
-                        TextView livesValue = view.findViewById(R.id.lives_value);
-                        setLives(getArguments().getInt("lives") - (++count));
-                        String livesString = String.valueOf(getLives());
-                        livesValue.setText(livesString);
+                        if (lives <= 0) {
+                            NavHostFragment.findNavController(GameFragment.this)
+                                    .navigate(R.id.action_GameFragment_to_EndFragment);
+
+                            // Pass score to the EndFragment
+                            bundle.putDouble("user_endscore", score);
+                        } else {
+                            // Respawn the character at the starting position
+                            ImageView startCharacter = getView().findViewById(R.id.startCharacter);
+                            character.setX(startCharacter.getX());
+                            character.setY(startCharacter.getY());
+                            TextView livesValue = getView().findViewById(R.id.lives_value);
+                            livesValue.setText(String.valueOf(--lives));
+                            maxHeight = Double.POSITIVE_INFINITY;
+                            score = 0;
+                            goalCount = 0;
+                            goal1.setImageResource(R.drawable.frog_dead);
+                            goal2.setImageResource(R.drawable.frog_dead);
+                            goal3.setImageResource(R.drawable.frog_dead);
+                            goal4.setImageResource(R.drawable.frog_dead);
+                            goal5.setImageResource(R.drawable.frog_dead);
+                            TextView scoreValue = view.findViewById(R.id.score_value);
+                            String scoreString = String.valueOf(score);
+                            scoreValue.setText(scoreString);
+                            if (lives <= 0) {
+                                NavHostFragment.findNavController(GameFragment.this)
+                                        .navigate(R.id.action_GameFragment_to_EndFragment);
+
+                                // Pass score to the EndFragment
+                                bundle.putDouble("user_endscore", score);
+                            }
+                        }
 
                     }
                 }
             }
         });
     }
-
     private void setUpDownButton(@NonNull View view) {
-
         ImageView bottomArrowButton = view.findViewById(R.id.bottom_arrow);
         Point screenSize = getScreenSize();
         screenWidth = screenSize.x;
         screenHeight = screenSize.y;
+
         bottomArrowButton.setOnClickListener(v -> {
-            // Your code here
-            // This code will be executed when the ImageView is clicked
-            View rootView = view.getRootView();
+            character = view.findViewById(R.id.userCharacter);
+            int landing = updateCharacterSpriteForDown();
+
             ImageView startCharacter = view.findViewById(R.id.startCharacter);
             int startPoint = (int) startCharacter.getY();
-            character = view.findViewById(R.id.userCharacter);
-            int landing;
-            if (getSpriteInt() == 0) {
-                character.setImageResource(R.drawable.blue_down1);
-                landing = R.drawable.blue_down;
-            } else if (getSpriteInt() == 1) {
-                character.setImageResource(R.drawable.green_down1);
-                landing = R.drawable.green_down;
-            } else {
-                character.setImageResource(R.drawable.yellow_down1);
-                landing = R.drawable.yellow_down;
-            }
 
             if (character.getY() < startPoint) {
                 character.setY(character.getY() + view.findViewById(R.id.road1).getHeight());
@@ -532,7 +610,21 @@ public class GameFragment extends Fragment {
 
             new Handler().postDelayed(() -> character.setImageResource(landing), 200);
         });
+    }
 
+    private int updateCharacterSpriteForDown() {
+        int landing;
+        if (getSpriteInt() == 0) {
+            character.setImageResource(R.drawable.blue_down1);
+            landing = R.drawable.blue_down;
+        } else if (getSpriteInt() == 1) {
+            character.setImageResource(R.drawable.green_down1);
+            landing = R.drawable.green_down;
+        } else {
+            character.setImageResource(R.drawable.yellow_down1);
+            landing = R.drawable.yellow_down;
+        }
+        return landing;
     }
 
     private void setUpRightButton(@NonNull View view) {
@@ -540,31 +632,36 @@ public class GameFragment extends Fragment {
         Point screenSize = getScreenSize();
         screenWidth = screenSize.x;
         screenHeight = screenSize.y;
-        rightArrowButton.setOnClickListener(v -> {
-            // Your code here
-            // This code will be executed when the ImageView is clicked
-            View rootView = view.getRootView();
-            int width = rootView.getWidth();
-            character = view.findViewById(R.id.userCharacter);
-            int landing;
-            if (getSpriteInt() == 0) {
-                character.setImageResource(R.drawable.blue_right1);
-                landing = R.drawable.blue_right;
-            } else if (getSpriteInt() == 1) {
-                character.setImageResource(R.drawable.green_right1);
-                landing = R.drawable.green_right;
-            } else {
-                character.setImageResource(R.drawable.yellow_right1);
-                landing = R.drawable.yellow_right;
-            }
 
-            if (character.getX() < width - width / 5) {
-                character.setX(character.getX() + width / 10);
+        rightArrowButton.setOnClickListener(v -> {
+            character = view.findViewById(R.id.userCharacter);
+            int landing = updateCharacterSpriteForRight();
+
+            int rootViewWidth = view.getRootView().getWidth();
+            int moveThreshold = rootViewWidth - rootViewWidth / 5;
+
+            if (character.getX() < moveThreshold) {
+                character.setX(character.getX() + rootViewWidth / 10);
                 isWater(view);
             }
 
             new Handler().postDelayed(() -> character.setImageResource(landing), 200);
         });
+    }
+
+    private int updateCharacterSpriteForRight() {
+        int landing;
+        if (getSpriteInt() == 0) {
+            character.setImageResource(R.drawable.blue_right1);
+            landing = R.drawable.blue_right;
+        } else if (getSpriteInt() == 1) {
+            character.setImageResource(R.drawable.green_right1);
+            landing = R.drawable.green_right;
+        } else {
+            character.setImageResource(R.drawable.yellow_right1);
+            landing = R.drawable.yellow_right;
+        }
+        return landing;
     }
 
     private void setUpLeftButton(@NonNull View view) {
@@ -572,32 +669,40 @@ public class GameFragment extends Fragment {
         Point screenSize = getScreenSize();
         screenWidth = screenSize.x;
         screenHeight = screenSize.y;
-        leftArrowButton.setOnClickListener(v -> {
-            // Your code here
-            // This code will be executed when the ImageView is clicked
-            character = view.findViewById(R.id.userCharacter);
-            View rootView = view.getRootView();
-            int width = rootView.getWidth();
-            int landing;
-            if (getSpriteInt() == 0) {
-                character.setImageResource(R.drawable.blue_left1);
-                landing = R.drawable.blue_left;
-            } else if (getSpriteInt() == 1) {
-                character.setImageResource(R.drawable.green_left1);
-                landing = R.drawable.green_left;
-            } else {
-                character.setImageResource(R.drawable.yellow_left1);
-                landing = R.drawable.yellow_left;
-            }
 
-            if (character.getX() > 100) {
-                character.setX(character.getX() - width / 10);
+        leftArrowButton.setOnClickListener(v -> {
+            character = view.findViewById(R.id.userCharacter);
+            int landing = updateCharacterSpriteForLeft();
+
+            int rootViewWidth = view.getRootView().getWidth();
+            int moveThreshold = 100;
+
+            if (character.getX() > moveThreshold) {
+                character.setX(character.getX() - rootViewWidth / 10);
                 isWater(view);
             }
 
             new Handler().postDelayed(() -> character.setImageResource(landing), 200);
         });
     }
+
+    private int updateCharacterSpriteForLeft() {
+        int landing;
+        if (getSpriteInt() == 0) {
+            character.setImageResource(R.drawable.blue_left1);
+            landing = R.drawable.blue_left;
+        } else if (getSpriteInt() == 1) {
+            character.setImageResource(R.drawable.green_left1);
+            landing = R.drawable.green_left;
+        } else {
+            character.setImageResource(R.drawable.yellow_left1);
+            landing = R.drawable.yellow_left;
+        }
+        return landing;
+    }
+
+
+
 
     private void setUpSprite(View view) {
         // Image changes depdends on user character
