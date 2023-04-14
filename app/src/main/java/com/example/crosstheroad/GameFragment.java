@@ -55,6 +55,11 @@ public class GameFragment extends Fragment {
     private ImageView log3;
     private ImageView log4;
     private ImageView log5;
+    private ImageView goal5;
+    private ImageView goal4;
+    private ImageView goal3;
+    private ImageView goal2;
+    private ImageView goal1;
 
     private Bundle bundle = new Bundle();
 
@@ -173,7 +178,6 @@ public class GameFragment extends Fragment {
         }
         log1.setX(log1.getX() + speed1);
         log2.setX(log2.getX() + speed2);
-        log3.setX(log3.getX() + speed3);
         log4.setX(log4.getX() + speed4);
         log5.setX(log5.getX() + speed5);
         ImageView liver5 = view.findViewById(R.id.river5);
@@ -189,10 +193,6 @@ public class GameFragment extends Fragment {
 
         if (isIntersectWithLogs(character, log2, liver4)) {
             character.setX(character.getX() + speed2);
-        }
-
-        if (isIntersectWithLogs(character, log3, liver3)) {
-            character.setX(character.getX() + speed3);
         }
         if (isIntersectWithLogs(character, log4, liver2)) {
             character.setX(character.getX() + speed4);
@@ -287,6 +287,11 @@ public class GameFragment extends Fragment {
                 String livesString = String.valueOf(getLives());
                 livesValue.setText(livesString);
                 score = 0;
+                goal1.setImageResource(R.drawable.frog_dead);
+                goal2.setImageResource(R.drawable.frog_dead);
+                goal3.setImageResource(R.drawable.frog_dead);
+                goal4.setImageResource(R.drawable.frog_dead);
+                goal5.setImageResource(R.drawable.frog_dead);
                 TextView scoreValue = view.findViewById(R.id.score_value);
                 String scoreString = String.valueOf(score);
                 scoreValue.setText(scoreString);
@@ -354,6 +359,11 @@ public class GameFragment extends Fragment {
             livesValue.setText(String.valueOf(--lives));
             maxHeight = Double.POSITIVE_INFINITY;
             score = 0;
+            goal1.setImageResource(R.drawable.frog_dead);
+            goal2.setImageResource(R.drawable.frog_dead);
+            goal3.setImageResource(R.drawable.frog_dead);
+            goal4.setImageResource(R.drawable.frog_dead);
+            goal5.setImageResource(R.drawable.frog_dead);
             TextView scoreValue = view.findViewById(R.id.score_value);
             String scoreString = String.valueOf(score);
             scoreValue.setText(scoreString);
@@ -413,11 +423,11 @@ public class GameFragment extends Fragment {
             // This code will be executed when the ImageView is clicked
 
             character = view.findViewById(R.id.userCharacter);
-            ImageView goal1 = view.findViewById(R.id.goal_1);
-            ImageView goal2 = view.findViewById(R.id.goal_2);
-            ImageView goal3 = view.findViewById(R.id.goal_3);
-            ImageView goal4 = view.findViewById(R.id.goal_4);
-            ImageView goal5 = view.findViewById(R.id.goal_5);
+            goal1 = view.findViewById(R.id.goal_1);
+            goal2 = view.findViewById(R.id.goal_2);
+            goal3 = view.findViewById(R.id.goal_3);
+            goal4 = view.findViewById(R.id.goal_4);
+            goal5 = view.findViewById(R.id.goal_5);
             int goalWidth = goal1.getWidth();
             int goalHeight = goal1.getHeight();
             ImageView goalFrog = new ImageView(getContext());
