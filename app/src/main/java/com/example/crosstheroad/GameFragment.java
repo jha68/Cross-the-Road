@@ -189,17 +189,17 @@ public class GameFragment extends Fragment {
 
 
         if (isIntersectWithLogs(character, log1, liver5)) {
-            character.setX(character.getX() + speed1);
+            character.setX(character.getX() + speedList[0]);
         }
 
         if (isIntersectWithLogs(character, log2, liver4)) {
-            character.setX(character.getX() + speed2);
+            character.setX(character.getX() + speedList[1]);
         }
         if (isIntersectWithLogs(character, log4, liver2)) {
-            character.setX(character.getX() + speed4);
+            character.setX(character.getX() + speedList[2]);
         }
         if (isIntersectWithLogs(character, log5, liver1)) {
-            character.setX(character.getX() + speed5);
+            character.setX(character.getX() + speedList[3]);
         }
     }
 
