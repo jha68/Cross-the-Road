@@ -213,6 +213,7 @@ public class GameFragment extends Fragment {
     }
 
 
+
     // helper function to change the vehicle's position
     private void changePos(int speed1, int speed2, int speed3, int speed4,
                            int speed5, ImageView character, @NonNull View view) {
