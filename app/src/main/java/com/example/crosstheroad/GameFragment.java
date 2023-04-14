@@ -146,7 +146,7 @@ public class GameFragment extends Fragment {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                handler.post(() -> checkLogs(10, -6, 8, -4, 4, character, view));
+                handler.post(() -> checkLogs(10, -6, -4, 4, character, view));
             }
         }, 0, 40);
     }
@@ -159,7 +159,7 @@ public class GameFragment extends Fragment {
         return size;
     }
 
-    private void checkLogs(int speed1, int speed2, int speed3, int speed4, int speed5, ImageView character, @NonNull View view) {
+    private void checkLogs(int speed1, int speed2, int speed4, int speed5, ImageView character, @NonNull View view) {
         List<ImageView> logs = Arrays.asList(log1, log2, log3);
         if (log1 != null && log1.getX() > screenWidth) {
             log1.setX(-log1.getWidth());
