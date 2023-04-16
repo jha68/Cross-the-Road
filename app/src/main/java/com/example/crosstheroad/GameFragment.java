@@ -530,32 +530,33 @@ public class GameFragment extends Fragment {
                         if (lives <= 0) {
                             gameDone();
                         } else {
-                            // Respawn the character at the starting position
-                            ImageView startCharacter = getView().findViewById(R.id.startCharacter);
-                            character.setX(startCharacter.getX());
-                            character.setY(startCharacter.getY());
-                            TextView livesValue = getView().findViewById(R.id.lives_value);
-                            livesValue.setText(String.valueOf(--lives));
-                            maxHeight = Double.POSITIVE_INFINITY;
-                            score = 0;
-                            goalCount = 0;
-                            goal1.setImageResource(R.drawable.frog_dead);
-                            goal2.setImageResource(R.drawable.frog_dead);
-                            goal3.setImageResource(R.drawable.frog_dead);
-                            goal4.setImageResource(R.drawable.frog_dead);
-                            goal5.setImageResource(R.drawable.frog_dead);
-                            TextView scoreValue = view.findViewById(R.id.score_value);
-                            String scoreString = String.valueOf(score);
-                            scoreValue.setText(scoreString);
+                            respawn(view);
                             if (lives <= 0) {
                                 gameDone();
                             }
                         }
-
                     }
                 }
             }
         });
+    }
+    private void respawn(View view) {
+        ImageView startCharacter = getView().findViewById(R.id.startCharacter);
+        character.setX(startCharacter.getX());
+        character.setY(startCharacter.getY());
+        TextView livesValue = getView().findViewById(R.id.lives_value);
+        livesValue.setText(String.valueOf(--lives));
+        maxHeight = Double.POSITIVE_INFINITY;
+        score = 0;
+        goalCount = 0;
+        goal1.setImageResource(R.drawable.frog_dead);
+        goal2.setImageResource(R.drawable.frog_dead);
+        goal3.setImageResource(R.drawable.frog_dead);
+        goal4.setImageResource(R.drawable.frog_dead);
+        goal5.setImageResource(R.drawable.frog_dead);
+        TextView scoreValue = view.findViewById(R.id.score_value);
+        String scoreString = String.valueOf(score);
+        scoreValue.setText(scoreString);
     }
     private void setUpDownButton(@NonNull View view) {
         ImageView bottomArrowButton = view.findViewById(R.id.bottom_arrow);
