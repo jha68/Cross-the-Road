@@ -535,7 +535,6 @@ public class GameFragment extends Fragment {
                                 gameDone();
                             }
                         }
-
                     }
                 }
             }
