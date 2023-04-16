@@ -669,11 +669,16 @@ public class GameFragment extends Fragment {
     }
 
     private void gameDone() {
-        NavHostFragment.findNavController(GameFragment.this)
-                .navigate(R.id.action_GameFragment_to_EndFragment);
-
-        // Pass score to the EndFragment
+        // Pass score to the other fragments
         bundle.putDouble("user_endscore", score);
+
+        if (lives <= 0) {
+            NavHostFragment.findNavController(GameFragment.this)
+                    .navigate(R.id.action_GameFragment_to_EndFragment, bundle);
+        } else {
+            NavHostFragment.findNavController(GameFragment.this)
+                    .navigate(R.id.action_GameFragment_to_WinFragment, bundle);
+        }
     }
 
 
@@ -693,7 +698,6 @@ public class GameFragment extends Fragment {
             imageView.setImageResource(R.drawable.yellow_up);
         }
     }
-
 
     public double getScore() {
         return score;
