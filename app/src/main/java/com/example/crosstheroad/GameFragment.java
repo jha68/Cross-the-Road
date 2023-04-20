@@ -18,7 +18,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
@@ -141,13 +140,13 @@ public class GameFragment extends Fragment {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                handler.post(() -> changePos(10, -6, -8, 13, -8, character, view));
+                handler.post(() -> changePos(5, -3, -4, 6, -2, character, view));
             }
         }, 0, 40);
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                int[] speedList = new int[] {10, -6, -4, 4};
+                int[] speedList = new int[] {3, -3, -2, 2};
                 handler.post(() -> checkLogs(speedList, character, view));
             }
         }, 0, 40);
@@ -205,20 +204,17 @@ public class GameFragment extends Fragment {
     }
 
     private boolean isIntersectWithLogs(ImageView character, ImageView log, ImageView liver) {
-        if (character.getX() >= log.getX() && (character.getX() + character.getWidth())
+        return character.getX() >= log.getX() && (character.getX() + character.getWidth())
                 <= (log.getX() + log.getWidth()) && character.getY() >= liver.getY()
-                && (character.getY() + character.getHeight()) <= (liver.getY() + liver.getHeight())) {
-            return true;
-        } else {
-            return false;
-        }
+                && (character.getY() + character.getHeight()) <= (liver.getY() + liver.getHeight());
     }
 
 
     // helper function to change the vehicle's position
     private void changePos(int speed1, int speed2, int speed3, int speed4,
                            int speed5, ImageView character, @NonNull View view) {
-        List<ImageView> cars = Arrays.asList(car1, car11, car2, car21, car3, car31, car32, car4, car41, car5, car51);
+        List<ImageView> cars = Arrays.asList(car1, car11, car2,
+                car21, car3, car31, car32, car4, car41, car5, car51);
         if (car1 != null && car1.getX() > screenWidth) {
             car1.setX(-car1.getWidth());
         }
@@ -349,10 +345,14 @@ public class GameFragment extends Fragment {
         int width = rootView.getWidth();
 
         if ((characterRect.intersect(liver5Rect) && !isIntersectWithLogs(character, log1, liver5))
-                || (characterRect.intersect(liver4Rect) && !isIntersectWithLogs(character, log2, liver4))
-                || (characterRect.intersect(liver3Rect) && !isIntersectWithLogs(character, log3, liver3))
-                || (characterRect.intersect(liver2Rect) && !isIntersectWithLogs(character, log4, liver2))
-                || (characterRect.intersect(liver1Rect) && !isIntersectWithLogs(character, log5, liver1))
+                || (characterRect.intersect(liver4Rect)
+                && !isIntersectWithLogs(character, log2, liver4))
+                || (characterRect.intersect(liver3Rect)
+                && !isIntersectWithLogs(character, log3, liver3))
+                || (characterRect.intersect(liver2Rect)
+                && !isIntersectWithLogs(character, log4, liver2))
+                || (characterRect.intersect(liver1Rect)
+                && !isIntersectWithLogs(character, log5, liver1))
                 || character.getX() <= 0
                 || character.getX() + character.getWidth() >= width) {
             character.setX(startCharacter.getX());
