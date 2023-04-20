@@ -1,19 +1,18 @@
 package com.example.crosstheroad;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+
 import com.example.crosstheroad.databinding.FragmentWinBinding;
 
-public class Win_Fragment extends Fragment {
+public class WinFragment extends Fragment {
 
     private @NonNull FragmentWinBinding binding;
     private double finalScore;
@@ -40,7 +39,7 @@ public class Win_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // Navigate to the SelectFragment
-                NavHostFragment.findNavController(Win_Fragment.this)
+                NavHostFragment.findNavController(WinFragment.this)
                         .navigate(R.id.action_winFragment_to_SelectFragment);
             }
         });

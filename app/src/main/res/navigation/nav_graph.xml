@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/WinFragment"
-        android:name="com.example.crosstheroad.Win_Fragment"
+        android:name="com.example.crosstheroad.WinFragment"
         android:label="fragment_win"
         tools:layout="@layout/fragment_win_">
         <action
