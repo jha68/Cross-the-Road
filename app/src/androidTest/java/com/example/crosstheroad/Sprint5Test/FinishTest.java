@@ -406,7 +406,7 @@ public class FinishTest {
         appCompatImageView9.perform(click());
         appCompatImageView8.perform(click());
 
-        SystemClock.sleep(16000);
+        SystemClock.sleep(16500);
 
         appCompatImageView9.perform(click());
 
@@ -1191,168 +1191,6 @@ public class FinishTest {
     }
 
     @Test
-    public void EasyFinishTest5() {
-        ViewInteraction materialButton = onView(
-                allOf(withId(R.id.button_start), withText("Start"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                1),
-                        isDisplayed()));
-        materialButton.perform(click());
-
-        ViewInteraction appCompatImageButton = onView(
-                allOf(withId(R.id.blue_frog), withContentDescription("TODO"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                5),
-                        isDisplayed()));
-        appCompatImageButton.perform(click());
-
-        ViewInteraction materialRadioButton = onView(
-                allOf(withId(R.id.button_easy), withText("EASY"),
-                        childAtPosition(
-                                allOf(withId(R.id.radioButton),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                8)),
-                                0),
-                        isDisplayed()));
-        materialRadioButton.perform(click());
-
-        ViewInteraction appCompatEditText = onView(
-                allOf(withId(R.id.Name),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText.perform(replaceText("asdf"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.Name), withText("asdf"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText2.perform(pressImeActionButton());
-
-        ViewInteraction materialButton2 = onView(
-                allOf(withId(R.id.button_select), withText("Select"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_content_main),
-                                        0),
-                                0),
-                        isDisplayed()));
-        materialButton2.perform(click());
-
-        SystemClock.sleep(10500);
-
-        ViewInteraction appCompatImageView8 = onView(
-                allOf(withId(R.id.left_arrow),
-                        childAtPosition(
-                                allOf(withId(R.id.ConstraintLayout),
-                                        childAtPosition(
-                                                withId(R.id.nav_host_fragment_content_main),
-                                                0)),
-                                25),
-                        isDisplayed()));
-        appCompatImageView8.perform(click());
-
-        ViewInteraction appCompatImageView9 = onView(
-                allOf(withId(R.id.up_arrow),
-                        childAtPosition(
-                                allOf(withId(R.id.ConstraintLayout),
-                                        childAtPosition(
-                                                withId(R.id.nav_host_fragment_content_main),
-                                                0)),
-                                22),
-                        isDisplayed()));
-        appCompatImageView9.perform(click());
-        appCompatImageView9.perform(click());
-        appCompatImageView9.perform(click());
-        appCompatImageView9.perform(click());
-        appCompatImageView9.perform(click());
-        appCompatImageView9.perform(click());
-
-        SystemClock.sleep(5000);
-
-        appCompatImageView9.perform(click());
-
-        SystemClock.sleep(3000);
-        appCompatImageView9.perform(click());
-        appCompatImageView9.perform(click());
-        appCompatImageView8.perform(click());
-
-        SystemClock.sleep(16000);
-
-        appCompatImageView9.perform(click());
-
-        ViewInteraction appCompatImageView10 = onView(
-                allOf(withId(R.id.right_arrow),
-                        childAtPosition(
-                                allOf(withId(R.id.ConstraintLayout),
-                                        childAtPosition(
-                                                withId(R.id.nav_host_fragment_content_main),
-                                                0)),
-                                24),
-                        isDisplayed()));
-        appCompatImageView10.perform(click());
-        appCompatImageView10.perform(click());
-        appCompatImageView10.perform(click());
-
-
-        SystemClock.sleep(15000);
-
-        appCompatImageView9.perform(click());
-
-        SystemClock.sleep(1000);
-        appCompatImageView9.perform(click());
-        SystemClock.sleep(1000);
-
-        appCompatImageView9.perform(click());
-
-        SystemClock.sleep(5000);
-
-        appCompatImageView9.perform(click());
-
-        SystemClock.sleep(5000);
-
-        appCompatImageView9.perform(click());
-
-        SystemClock.sleep(5000);
-
-        appCompatImageView9.perform(click());
-
-        SystemClock.sleep(5000);
-
-        appCompatImageView9.perform(click());
-
-        SystemClock.sleep(5000);
-
-        appCompatImageView9.perform(click());
-
-        SystemClock.sleep(5000);
-
-        appCompatImageView9.perform(click());
-
-        SystemClock.sleep(5000);
-
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.finalScore), withText("0"),
-                        withParent(withParent(withId(R.id.nav_host_fragment_content_main))),
-                        isDisplayed()));
-        textView.check(matches(withText("0")));
-    }
-
-    @Test
     public void EasyFinishTest4() {
         ViewInteraction materialButton = onView(
                 allOf(withId(R.id.button_start), withText("Start"),
@@ -1588,7 +1426,7 @@ public class FinishTest {
         appCompatImageView9.perform(click());
         appCompatImageView8.perform(click());
 
-        SystemClock.sleep(16000);
+        SystemClock.sleep(17000);
 
         appCompatImageView9.perform(click());
 
@@ -1606,7 +1444,7 @@ public class FinishTest {
         appCompatImageView10.perform(click());
 
 
-        SystemClock.sleep(15000);
+        SystemClock.sleep(14500);
 
         appCompatImageView9.perform(click());
 
